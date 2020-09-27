@@ -62,9 +62,6 @@
 #>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.VisualStudio.QualityTools.UnitTestFramework" />
-  </ItemGroup>
-  <ItemGroup>
     <Compile Include="Generated\Customizations\*\*.cs" />
     <Compile Include="Generated\Marshalling\*.cs" />
     <Compile Include="Custom\*\*\*.cs" />
