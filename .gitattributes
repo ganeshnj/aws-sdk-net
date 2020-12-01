@@ -3,3 +3,6 @@ sdk/*.sln merge=overridegenerated
 sdk/*.FxCop merge=overridegenerated
 sdk/code-analysis/AWSCodeAnalysisTestExtension/* merge=overridegenerated
 sdk/test/UnitTests/*.csproj merge=overridegenerated
+
+# Set the default behavior, in case people don't have core.autocrlf set.
+* text=auto
