@@ -20,6 +20,7 @@
         <CustomTasksAssembly>CustomTasks\bin\Debug\CustomTasks.dll</CustomTasksAssembly>
         <TestAnalyzerAssembly>..\sdk\test\TestAnalyzer\IntegrationTestsAnalyzer\bin\Debug\IntegrationTestsAnalyzer.dll</TestAnalyzerAssembly>
         <RunIntegTests Condition="'$(RunIntegTests)'=='' And '$(IntegCategoriesToTest)' != ''">true</RunIntegTests>
+        <RunSmokeTests Condition="'$(RunSmokeTests)'==''">true</RunSmokeTests>
     </PropertyGroup>
 
     <Import Project="$(InternalBuildTools)\references.targets" Condition="Exists('$(InternalBuildTools)\references.targets')" />
@@ -338,7 +339,7 @@
         <Exec Command="dotnet build -c $(Configuration) --no-incremental CSMTest.sln /p:AWSKeyFile=$(CustomSnkFileLocation);SignAssembly=true;RunAnalyzersDuringBuild=$(RunAnalyzersDuringBuild);RuleSetFileForBuild=$(RuleSetFileForBuild)" WorkingDirectory="..\sdk\test\CSMTest"/>
     </Target>
 
-    <Target Name="run-smoke-tests" DependsOnTargets="build-test-wrapper" Condition="'$(ServiceList)'==''">
+    <Target Name="run-smoke-tests" DependsOnTargets="build-test-wrapper" Condition="'$(RunSmokeTests)' != '' And '$(RunSmokeTests)' != 'false' And '$(ServiceList)'==''">
         <XUnitWrapperTask
             TestSuiteRunner="dotnet"
             TestContainer="..\sdk\test\SmokeTests\AWSSDK.SmokeTests.Net35.csproj"
