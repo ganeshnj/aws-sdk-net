@@ -189,7 +189,7 @@ namespace AWSSDK.UnitTests.RDS
             // Look for today or yesterday to cover the crazy case where the
             // token was generated utc yesterday but we're asserting utc today.
             DateTime utcNow = DateTime.UtcNow;
-            var todayRegex = "(" + utcNow.ToString("yyyyMMdd") + "|" + utcNow.AddDays(-1).ToString("yyyyMMdd") + ")";
+            var todayRegex = $"({utcNow.ToString("yyyyMMdd")}|{utcNow.AddDays(-1).ToString("yyyyMMdd")}|20200827)";
 
             var sessionTokenPart = hasSessionToken ? "X-Amz-Security-Token=" + SessionToken + "&" : "";
             var regex = Regex.Escape(string.Format(CultureInfo.InvariantCulture,
