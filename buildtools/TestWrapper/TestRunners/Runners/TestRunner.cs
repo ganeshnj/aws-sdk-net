@@ -309,7 +309,7 @@ namespace TestWrapper.TestRunners
 
             // add specific tests
             // dotnet test cannot handle parameterized test reruns (queries), so collapsing those failures to their distinct top theory
-            var testsList = tests.Select(testName => Regex.Replace(testName, @"\(.*\)$", "")).Distinct().ToList();
+            var testsList = tests.Select(testName => Regex.Replace(testName, @"\(.*\)$", "").Trim()).Distinct().ToList();
 
             string filter = null;
             if (testsList.Count > 0)
