@@ -40,6 +40,11 @@ namespace AWSSDK.UnitTests
         private const string AWS_RETRY_MODE_ENVIRONMENT_VARIABLE = "AWS_RETRY_MODE";
         private const string AWS_MAX_ATTEMPTS_ENVIRONMENT_VARIABLE = "AWS_MAX_ATTEMPTS";
 
+        private const string AWS_DEFAULT_REGION_ENVIRONMENT_VARIABLE = "AWS_DEFAULT_REGION";
+        private const string AWS_REGION_ENVIRONMENT_VARIABLE = "AWS_REGION";
+        private const string AWS_CONTAINER_CREDENTIALS_RELATIVE_URI_ENVIRONMENT_VARIABLE = "AWS_CONTAINER_CREDENTIALS_RELATIVE_URI";
+        private const string AWS_CONTAINER_CREDENTIALS_FULL_URI_ENVIRONMENT_VARIABLE = "AWS_CONTAINER_CREDENTIALS_FULL_URI";
+
         private static readonly string ProfileText = new StringBuilder()
             .AppendLine("[default]")
             .AppendLine("region=us-west-2")
@@ -91,7 +96,15 @@ namespace AWSSDK.UnitTests
         [TestMethod]
         public void TestOtherProfile()
         {
-            using (new FallbackFactoryTestFixture(ProfileText, "other"))
+            var envVariables = new Dictionary<string, string>()
+            {
+                {  AWS_DEFAULT_REGION_ENVIRONMENT_VARIABLE, null },
+                {  AWS_REGION_ENVIRONMENT_VARIABLE, null },
+                {  AWS_CONTAINER_CREDENTIALS_RELATIVE_URI_ENVIRONMENT_VARIABLE, null },
+                {  AWS_CONTAINER_CREDENTIALS_FULL_URI_ENVIRONMENT_VARIABLE, null },
+            };
+
+            using (new FallbackFactoryTestFixture(ProfileText, "other", envVariables))
             {
                 var creds = FallbackCredentialsFactory.GetCredentials();
                 Assert.AreEqual("other_aws_access_key_id", creds.GetCredentials().AccessKey);
@@ -127,7 +140,15 @@ namespace AWSSDK.UnitTests
         [TestMethod]
         public void TestProcessCredentialProfile()
         {
-            using (new FallbackFactoryTestFixture(ProfileText, "processCredential"))
+            var envVariables = new Dictionary<string, string>()
+            {
+                {  AWS_DEFAULT_REGION_ENVIRONMENT_VARIABLE, null },
+                {  AWS_REGION_ENVIRONMENT_VARIABLE, null },
+                {  AWS_CONTAINER_CREDENTIALS_RELATIVE_URI_ENVIRONMENT_VARIABLE, null },
+                {  AWS_CONTAINER_CREDENTIALS_FULL_URI_ENVIRONMENT_VARIABLE, null },
+            };
+
+            using (new FallbackFactoryTestFixture(ProfileText, "processCredential", envVariables))
             {
                 var credentials = FallbackCredentialsFactory.GetCredentials().GetCredentials();
                 Assert.AreEqual(ProcessAWSCredentialsTest.ActualAccessKey, credentials.AccessKey);
