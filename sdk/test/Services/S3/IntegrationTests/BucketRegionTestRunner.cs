@@ -60,8 +60,7 @@ namespace AWSSDK_DotNet.IntegrationTests.Tests.S3
             };
             USEast1Client = new AmazonS3Client(usEast1ClientConfig);
 
-            var sessionCredentials = new AmazonSecurityTokenServiceClient().GetSessionToken().Credentials;
-            USEast1ClientWithSessionCredentials = new AmazonS3Client(sessionCredentials, usEast1ClientConfig);
+            USEast1ClientWithSessionCredentials = new AmazonS3Client(usEast1ClientConfig);
 
             USWest1Client = new AmazonS3Client(new AmazonS3Config()
             {
