@@ -12,6 +12,8 @@ using AWSSDK_DotNet.IntegrationTests.Utils;
 using Amazon.IoT.Model;
 using Amazon.IoT;
 using System.Net;
+using System.Security.Cryptography.X509Certificates;
+using System.Net.Security;
 
 namespace AWSSDK_DotNet.IntegrationTests.Tests
 {
@@ -48,6 +50,8 @@ namespace AWSSDK_DotNet.IntegrationTests.Tests
                     THING_NAME = firstThing.ThingName;
                 }
             }
+
+            ServicePointManager.ServerCertificateValidationCallback += ServerCertificateValidationCallback;
         }
 
         [ClassCleanup]
@@ -65,7 +69,15 @@ namespace AWSSDK_DotNet.IntegrationTests.Tests
             {
                 Client.Dispose();
             }
+
+            ServicePointManager.ServerCertificateValidationCallback -= ServerCertificateValidationCallback;
         }
+
+        private static bool ServerCertificateValidationCallback(object sender, X509Certificate certificate, X509Chain chain, SslPolicyErrors sslpolicyerrors)
+        {
+            return true;
+        }
+
 
         [TestMethod]
         [TestCategory("IoTData")]
