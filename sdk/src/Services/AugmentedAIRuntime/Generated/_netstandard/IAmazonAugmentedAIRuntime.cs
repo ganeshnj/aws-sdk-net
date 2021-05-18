@@ -31,19 +31,12 @@ namespace Amazon.AugmentedAIRuntime
     /// <summary>
     /// Interface for accessing AugmentedAIRuntime
     ///
-    /// <important> 
-    /// <para>
-    /// Amazon Augmented AI is in preview release and is subject to change. We do not recommend
-    /// using this product in production environments.
-    /// </para>
-    ///  </important> 
-    /// <para>
     /// Amazon Augmented AI (Amazon A2I) adds the benefit of human judgment to any machine
     /// learning application. When an AI application can't evaluate data with a high degree
     /// of confidence, human reviewers can take over. This human review is called a human
     /// review workflow. To create and start a human review workflow, you need three resources:
     /// a <i>worker task template</i>, a <i>flow definition</i>, and a <i>human loop</i>.
-    /// </para>
+    /// 
     ///  
     /// <para>
     /// For information about these resources and prerequisites for using Amazon A2I, see
@@ -77,9 +70,6 @@ namespace Amazon.AugmentedAIRuntime
     /// APIs in Amazon A2I</a> in the Amazon SageMaker Developer Guide.
     /// </para>
     /// </summary>
-#if NETSTANDARD13
-    [Obsolete("Support for .NET Standard 1.3 is in maintenance mode and will only receive critical bug fixes and security patches. Visit https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/migration-from-net-standard-1-3.html for further details.")]
-#endif
     public partial interface IAmazonAugmentedAIRuntime : IAmazonService, IDisposable
     {
 #if AWS_ASYNC_ENUMERABLES_API
@@ -95,6 +85,12 @@ namespace Amazon.AugmentedAIRuntime
 
         /// <summary>
         /// Deletes the specified human loop for a flow definition.
+        /// 
+        ///  
+        /// <para>
+        /// If the human loop was deleted, this operation will return a <code>ResourceNotFoundException</code>.
+        /// 
+        /// </para>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DeleteHumanLoop service method.</param>
         /// <param name="cancellationToken">
@@ -106,7 +102,8 @@ namespace Amazon.AugmentedAIRuntime
         /// We couldn't process your request because of an issue with the server. Try again later.
         /// </exception>
         /// <exception cref="Amazon.AugmentedAIRuntime.Model.ResourceNotFoundException">
-        /// We couldn't find the requested resource.
+        /// We couldn't find the requested resource. Check that your resources exists and were
+        /// created in the same AWS Region as your request, and try your request again.
         /// </exception>
         /// <exception cref="Amazon.AugmentedAIRuntime.Model.ThrottlingException">
         /// You exceeded the maximum number of requests.
@@ -124,7 +121,8 @@ namespace Amazon.AugmentedAIRuntime
 
 
         /// <summary>
-        /// Returns information about the specified human loop.
+        /// Returns information about the specified human loop. If the human loop was deleted,
+        /// this operation will return a <code>ResourceNotFoundException</code> error.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DescribeHumanLoop service method.</param>
         /// <param name="cancellationToken">
@@ -136,7 +134,8 @@ namespace Amazon.AugmentedAIRuntime
         /// We couldn't process your request because of an issue with the server. Try again later.
         /// </exception>
         /// <exception cref="Amazon.AugmentedAIRuntime.Model.ResourceNotFoundException">
-        /// We couldn't find the requested resource.
+        /// We couldn't find the requested resource. Check that your resources exists and were
+        /// created in the same AWS Region as your request, and try your request again.
         /// </exception>
         /// <exception cref="Amazon.AugmentedAIRuntime.Model.ThrottlingException">
         /// You exceeded the maximum number of requests.
@@ -167,7 +166,8 @@ namespace Amazon.AugmentedAIRuntime
         /// We couldn't process your request because of an issue with the server. Try again later.
         /// </exception>
         /// <exception cref="Amazon.AugmentedAIRuntime.Model.ResourceNotFoundException">
-        /// We couldn't find the requested resource.
+        /// We couldn't find the requested resource. Check that your resources exists and were
+        /// created in the same AWS Region as your request, and try your request again.
         /// </exception>
         /// <exception cref="Amazon.AugmentedAIRuntime.Model.ThrottlingException">
         /// You exceeded the maximum number of requests.
@@ -201,8 +201,13 @@ namespace Amazon.AugmentedAIRuntime
         /// We couldn't process your request because of an issue with the server. Try again later.
         /// </exception>
         /// <exception cref="Amazon.AugmentedAIRuntime.Model.ServiceQuotaExceededException">
-        /// You exceeded your service quota. Delete some resources or request an increase in your
-        /// service quota.
+        /// You exceeded your service quota. Service quotas, also referred to as limits, are the
+        /// maximum number of service resources or operations for your AWS account. For a list
+        /// of Amazon A2I service quotes, see <a href="https://docs.aws.amazon.com/general/latest/gr/a2i.html">Amazon
+        /// Augmented AI Service Quotes</a>. Delete some resources or request an increase in your
+        /// service quota. You can request a quota increase using Service Quotas or the AWS Support
+        /// Center. To request an increase, see <a href="https://docs.aws.amazon.com/general/latest/gr/aws_service_limits.html">AWS
+        /// Service Quotas</a> in the <i>AWS General Reference</i>.
         /// </exception>
         /// <exception cref="Amazon.AugmentedAIRuntime.Model.ThrottlingException">
         /// You exceeded the maximum number of requests.
@@ -232,7 +237,8 @@ namespace Amazon.AugmentedAIRuntime
         /// We couldn't process your request because of an issue with the server. Try again later.
         /// </exception>
         /// <exception cref="Amazon.AugmentedAIRuntime.Model.ResourceNotFoundException">
-        /// We couldn't find the requested resource.
+        /// We couldn't find the requested resource. Check that your resources exists and were
+        /// created in the same AWS Region as your request, and try your request again.
         /// </exception>
         /// <exception cref="Amazon.AugmentedAIRuntime.Model.ThrottlingException">
         /// You exceeded the maximum number of requests.

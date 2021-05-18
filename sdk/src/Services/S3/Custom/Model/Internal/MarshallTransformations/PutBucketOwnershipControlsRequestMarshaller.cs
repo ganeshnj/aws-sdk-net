@@ -21,6 +21,7 @@ using System.Xml;
 using Amazon.Runtime;
 using Amazon.Runtime.Internal;
 using Amazon.Runtime.Internal.Transform;
+using Amazon.Runtime.Internal.Util;
 using Amazon.S3.Util;
 using Amazon.Util;
 
@@ -50,13 +51,12 @@ namespace Amazon.S3.Model.Internal.MarshallTransformations
             if (putBucketOwnershipControlsRequest.IsSetExpectedBucketOwner())
                 request.Headers.Add(S3Constants.AmzHeaderExpectedBucketOwner, S3Transforms.ToStringValue(putBucketOwnershipControlsRequest.ExpectedBucketOwner));
 
-            request.MarshallerVersion = 2;
             request.ResourcePath = string.Concat("/", S3Transforms.ToStringValue(putBucketOwnershipControlsRequest.BucketName));
 
             request.AddSubResource("ownershipControls");
 
-            var stringWriter = new StringWriter(System.Globalization.CultureInfo.InvariantCulture);
-            using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Encoding = Encoding.UTF8, OmitXmlDeclaration = true }))
+            var stringWriter = new XMLEncodedStringWriter(System.Globalization.CultureInfo.InvariantCulture);
+            using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Encoding = Encoding.UTF8, OmitXmlDeclaration = true, NewLineHandling = NewLineHandling.Entitize }))
             {
                 var ownershipControls = putBucketOwnershipControlsRequest.OwnershipControls;
 

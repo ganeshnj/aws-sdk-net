@@ -31,7 +31,8 @@ namespace Amazon.Imagebuilder.Model
     /// <summary>
     /// Container for the parameters to the CreateImage operation.
     /// Creates a new image. This request will create a new image along with all of the configured
-    /// output resources defined in the distribution configuration.
+    /// output resources defined in the distribution configuration. You must specify exactly
+    /// one recipe for your image, using either a ContainerRecipeArn or an ImageRecipeArn.
     /// </summary>
     public partial class CreateImageRequest : AmazonImagebuilderRequest
     {
@@ -47,7 +48,7 @@ namespace Amazon.Imagebuilder.Model
         /// <summary>
         /// Gets and sets the property ClientToken. 
         /// <para>
-        ///  The idempotency token used to make this request idempotent. 
+        ///  The idempotency token used to make this request idempotent.
         /// </para>
         /// </summary>
         [AWSProperty(Min=1, Max=36)]
@@ -86,7 +87,7 @@ namespace Amazon.Imagebuilder.Model
         /// Gets and sets the property DistributionConfigurationArn. 
         /// <para>
         ///  The Amazon Resource Name (ARN) of the distribution configuration that defines and
-        /// configures the outputs of your pipeline. 
+        /// configures the outputs of your pipeline.
         /// </para>
         /// </summary>
         public string DistributionConfigurationArn
@@ -106,7 +107,7 @@ namespace Amazon.Imagebuilder.Model
         /// <para>
         ///  Collects additional information about the image being created, including the operating
         /// system (OS) version and package list. This information is used to enhance the overall
-        /// experience of using EC2 Image Builder. Enabled by default. 
+        /// experience of using EC2 Image Builder. Enabled by default.
         /// </para>
         /// </summary>
         public bool EnhancedImageMetadataEnabled
@@ -125,7 +126,7 @@ namespace Amazon.Imagebuilder.Model
         /// Gets and sets the property ImageRecipeArn. 
         /// <para>
         ///  The Amazon Resource Name (ARN) of the image recipe that defines how images are configured,
-        /// tested, and assessed. 
+        /// tested, and assessed.
         /// </para>
         /// </summary>
         public string ImageRecipeArn
@@ -143,7 +144,7 @@ namespace Amazon.Imagebuilder.Model
         /// <summary>
         /// Gets and sets the property ImageTestsConfiguration. 
         /// <para>
-        ///  The image tests configuration of the image. 
+        ///  The image tests configuration of the image.
         /// </para>
         /// </summary>
         public ImageTestsConfiguration ImageTestsConfiguration
@@ -162,7 +163,7 @@ namespace Amazon.Imagebuilder.Model
         /// Gets and sets the property InfrastructureConfigurationArn. 
         /// <para>
         ///  The Amazon Resource Name (ARN) of the infrastructure configuration that defines the
-        /// environment in which your image will be built and tested. 
+        /// environment in which your image will be built and tested.
         /// </para>
         /// </summary>
         [AWSProperty(Required=true)]
@@ -181,7 +182,7 @@ namespace Amazon.Imagebuilder.Model
         /// <summary>
         /// Gets and sets the property Tags. 
         /// <para>
-        ///  The tags of the image. 
+        ///  The tags of the image.
         /// </para>
         /// </summary>
         [AWSProperty(Min=1, Max=50)]

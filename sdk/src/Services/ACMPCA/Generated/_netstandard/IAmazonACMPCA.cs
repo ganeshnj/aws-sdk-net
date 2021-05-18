@@ -50,9 +50,6 @@ namespace Amazon.ACMPCA
     /// </para>
     ///  </note>
     /// </summary>
-#if NETSTANDARD13
-    [Obsolete("Support for .NET Standard 1.3 is in maintenance mode and will only receive critical bug fixes and security patches. Visit https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/migration-from-net-standard-1-3.html for further details.")]
-#endif
     public partial interface IAmazonACMPCA : IAmazonService, IDisposable
     {
 #if AWS_ASYNC_ENUMERABLES_API
@@ -79,7 +76,7 @@ namespace Amazon.ACMPCA
         /// 
         ///  
         /// <para>
-        /// ACM Private CAA assets that are stored in Amazon S3 can be protected with encryption.
+        /// ACM Private CA assets that are stored in Amazon S3 can be protected with encryption.
         /// For more information, see <a href="https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaCreateCa.html#crl-encryption">Encrypting
         /// Your CRLs</a>.
         /// </para>
@@ -138,7 +135,7 @@ namespace Amazon.ACMPCA
         /// </para>
         ///  </note> 
         /// <para>
-        /// ACM Private CAA assets that are stored in Amazon S3 can be protected with encryption.
+        /// ACM Private CA assets that are stored in Amazon S3 can be protected with encryption.
         /// For more information, see <a href="https://docs.aws.amazon.com/acm-pca/latest/userguide/PcaAuditReport.html#audit-report-encryption">Encrypting
         /// Your Audit Reports</a>.
         /// </para>

@@ -36,6 +36,7 @@ namespace Amazon.SimpleSystemsManagement.Model
     {
         private List<AttachmentsSource> _attachments = new List<AttachmentsSource>();
         private string _content;
+        private string _displayName;
         private DocumentFormat _documentFormat;
         private string _documentVersion;
         private string _name;
@@ -81,6 +82,27 @@ namespace Amazon.SimpleSystemsManagement.Model
         }
 
         /// <summary>
+        /// Gets and sets the property DisplayName. 
+        /// <para>
+        /// The friendly name of the Systems Manager document that you want to update. This value
+        /// can differ for each version of the document. If you do not specify a value for this
+        /// parameter in your request, the existing value is applied to the new document version.
+        /// </para>
+        /// </summary>
+        [AWSProperty(Max=1024)]
+        public string DisplayName
+        {
+            get { return this._displayName; }
+            set { this._displayName = value; }
+        }
+
+        // Check to see if DisplayName property is set
+        internal bool IsSetDisplayName()
+        {
+            return this._displayName != null;
+        }
+
+        /// <summary>
         /// Gets and sets the property DocumentFormat. 
         /// <para>
         /// Specify the document format for the new document version. Systems Manager supports
@@ -102,9 +124,9 @@ namespace Amazon.SimpleSystemsManagement.Model
         /// <summary>
         /// Gets and sets the property DocumentVersion. 
         /// <para>
-        /// (Required) The latest version of the document that you want to update. The latest
-        /// document version can be specified using the $LATEST variable or by the version number.
-        /// Updating a previous version of a document is not supported.
+        /// The version of the document that you want to update. Currently, Systems Manager supports
+        /// updating only the latest version of the document. You can specify the version number
+        /// of the latest version or use the <code>$LATEST</code> variable.
         /// </para>
         /// </summary>
         public string DocumentVersion
@@ -122,7 +144,7 @@ namespace Amazon.SimpleSystemsManagement.Model
         /// <summary>
         /// Gets and sets the property Name. 
         /// <para>
-        /// The name of the document that you want to update.
+        /// The name of the Systems Manager document that you want to update.
         /// </para>
         /// </summary>
         [AWSProperty(Required=true)]

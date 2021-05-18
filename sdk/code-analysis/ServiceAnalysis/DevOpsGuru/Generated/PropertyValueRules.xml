@@ -13,6 +13,12 @@
     <pattern>^[\w-]*$</pattern>
   </property-value-rule>
   <property-value-rule>
+    <property>Amazon.DevOpsGuru.Model.DescribeFeedbackRequest.InsightId</property>
+    <min>1</min>
+    <max>100</max>
+    <pattern>^[\w-]*$</pattern>
+  </property-value-rule>
+  <property-value-rule>
     <property>Amazon.DevOpsGuru.Model.DescribeInsightRequest.Id</property>
     <min>1</min>
     <max>100</max>
@@ -26,6 +32,18 @@
   </property-value-rule>
   <property-value-rule>
     <property>Amazon.DevOpsGuru.Model.DescribeResourceCollectionHealthResponse.NextToken</property>
+    <min>36</min>
+    <max>36</max>
+    <pattern>^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$</pattern>
+  </property-value-rule>
+  <property-value-rule>
+    <property>Amazon.DevOpsGuru.Model.GetCostEstimationRequest.NextToken</property>
+    <min>36</min>
+    <max>36</max>
+    <pattern>^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$</pattern>
+  </property-value-rule>
+  <property-value-rule>
+    <property>Amazon.DevOpsGuru.Model.GetCostEstimationResponse.NextToken</property>
     <min>36</min>
     <max>36</max>
     <pattern>^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$</pattern>
@@ -151,6 +169,12 @@
     <min>36</min>
     <max>36</max>
     <pattern>^[a-f0-9]{8}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{4}-[a-f0-9]{12}$</pattern>
+  </property-value-rule>
+  <property-value-rule>
+    <property>Amazon.DevOpsGuru.Model.StartCostEstimationRequest.ClientToken</property>
+    <min>1</min>
+    <max>100</max>
+    <pattern>^[a-zA-Z0-9]+[a-zA-Z0-9-]*$</pattern>
   </property-value-rule>
   <property-value-rule>
     <property>Amazon.DevOpsGuru.Model.CloudFormationHealth.StackName</property>
@@ -318,6 +342,12 @@
     <min>1</min>
     <max>530</max>
     <pattern>^[\s\S]*$</pattern>
+  </property-value-rule>
+  <property-value-rule>
+    <property>Amazon.DevOpsGuru.Model.ServiceResourceCost.Type</property>
+    <min>1</min>
+    <max>256</max>
+    <pattern>^[a-zA-Z]+[a-zA-Z0-9-_:]*$</pattern>
   </property-value-rule>
   <property-value-rule>
     <property>Amazon.DevOpsGuru.Model.SnsChannelConfig.TopicArn</property>

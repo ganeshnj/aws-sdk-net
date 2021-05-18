@@ -34,6 +34,7 @@ namespace Amazon.Macie2.Model
     public partial class BucketMetadata
     {
         private string _accountId;
+        private AllowsUnencryptedObjectUploads _allowsUnencryptedObjectUploads;
         private string _bucketArn;
         private DateTime? _bucketCreatedAt;
         private string _bucketName;
@@ -46,6 +47,7 @@ namespace Amazon.Macie2.Model
         private BucketPublicAccess _publicAccess;
         private string _region;
         private ReplicationDetails _replicationDetails;
+        private BucketServerSideEncryption _serverSideEncryption;
         private SharedAccess _sharedAccess;
         private long? _sizeInBytes;
         private long? _sizeInBytesCompressed;
@@ -70,6 +72,44 @@ namespace Amazon.Macie2.Model
         internal bool IsSetAccountId()
         {
             return this._accountId != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the property AllowsUnencryptedObjectUploads. 
+        /// <para>
+        /// Specifies whether the bucket policy for the bucket requires server-side encryption
+        /// of objects when objects are uploaded to the bucket. Possible values are:
+        /// </para>
+        ///  <ul><li>
+        /// <para>
+        /// FALSE - The bucket policy requires server-side encryption of new objects. PutObject
+        /// requests must include the x-amz-server-side-encryption header and the value for that
+        /// header must be AES256 or aws:kms.
+        /// </para>
+        /// </li> <li>
+        /// <para>
+        /// TRUE - The bucket doesn't have a bucket policy or it has a bucket policy that doesn't
+        /// require server-side encryption of new objects. If a bucket policy exists, it doesn't
+        /// require PutObject requests to include the x-amz-server-side-encryption header and
+        /// it doesn't require the value for that header to be AES256 or aws:kms.
+        /// </para>
+        /// </li> <li>
+        /// <para>
+        /// UNKNOWN - Amazon Macie can't determine whether the bucket policy requires server-side
+        /// encryption of new objects.
+        /// </para>
+        /// </li></ul>
+        /// </summary>
+        public AllowsUnencryptedObjectUploads AllowsUnencryptedObjectUploads
+        {
+            get { return this._allowsUnencryptedObjectUploads; }
+            set { this._allowsUnencryptedObjectUploads = value; }
+        }
+
+        // Check to see if AllowsUnencryptedObjectUploads property is set
+        internal bool IsSetAllowsUnencryptedObjectUploads()
+        {
+            return this._allowsUnencryptedObjectUploads != null;
         }
 
         /// <summary>
@@ -153,6 +193,12 @@ namespace Amazon.Macie2.Model
         /// the bucket. These objects use a supported storage class and have a file name extension
         /// for a supported file or storage format.
         /// </para>
+        ///  
+        /// <para>
+        /// If versioning is enabled for the bucket, Macie calculates this value based on the
+        /// size of the latest version of each applicable object in the bucket. This value doesn't
+        /// reflect the storage size of all versions of each applicable object in the bucket.
+        /// </para>
         /// </summary>
         public long ClassifiableSizeInBytes
         {
@@ -189,7 +235,7 @@ namespace Amazon.Macie2.Model
         /// Gets and sets the property LastUpdated. 
         /// <para>
         /// The date and time, in UTC and extended ISO 8601 format, when Amazon Macie most recently
-        /// retrieved data about the bucket from Amazon S3.
+        /// retrieved both bucket and object metadata from Amazon S3 for the bucket.
         /// </para>
         /// </summary>
         public DateTime LastUpdated
@@ -245,9 +291,8 @@ namespace Amazon.Macie2.Model
         /// <summary>
         /// Gets and sets the property PublicAccess. 
         /// <para>
-        /// Specifies whether the bucket is publicly accessible. If this value is true, an access
-        /// control list (ACL), bucket policy, or block public access settings allow the bucket
-        /// to be accessed by the general public.
+        /// Specifies whether the bucket is publicly accessible due to the combination of permissions
+        /// settings that apply to the bucket, and provides information about those settings.
         /// </para>
         /// </summary>
         public BucketPublicAccess PublicAccess
@@ -300,6 +345,25 @@ namespace Amazon.Macie2.Model
         }
 
         /// <summary>
+        /// Gets and sets the property ServerSideEncryption. 
+        /// <para>
+        /// Specifies whether the bucket encrypts new objects by default and, if so, the type
+        /// of server-side encryption that's used.
+        /// </para>
+        /// </summary>
+        public BucketServerSideEncryption ServerSideEncryption
+        {
+            get { return this._serverSideEncryption; }
+            set { this._serverSideEncryption = value; }
+        }
+
+        // Check to see if ServerSideEncryption property is set
+        internal bool IsSetServerSideEncryption()
+        {
+            return this._serverSideEncryption != null;
+        }
+
+        /// <summary>
         /// Gets and sets the property SharedAccess.  
         /// <para>
         /// Specifies whether the bucket is shared with another AWS account. Possible values are:
@@ -342,6 +406,12 @@ namespace Amazon.Macie2.Model
         /// <para>
         /// The total storage size, in bytes, of the bucket.
         /// </para>
+        ///  
+        /// <para>
+        /// If versioning is enabled for the bucket, Amazon Macie calculates this value based
+        /// on the size of the latest version of each object in the bucket. This value doesn't
+        /// reflect the storage size of all versions of each object in the bucket.
+        /// </para>
         /// </summary>
         public long SizeInBytes
         {
@@ -358,7 +428,14 @@ namespace Amazon.Macie2.Model
         /// <summary>
         /// Gets and sets the property SizeInBytesCompressed. 
         /// <para>
-        /// The total compressed storage size, in bytes, of the bucket.
+        /// The total storage size, in bytes, of the objects that are compressed (.gz, .gzip,
+        /// .zip) files in the bucket.
+        /// </para>
+        ///  
+        /// <para>
+        /// If versioning is enabled for the bucket, Macie calculates this value based on the
+        /// size of the latest version of each applicable object in the bucket. This value doesn't
+        /// reflect the storage size of all versions of each applicable object in the bucket.
         /// </para>
         /// </summary>
         public long SizeInBytesCompressed

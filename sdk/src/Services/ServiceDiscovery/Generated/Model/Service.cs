@@ -44,6 +44,7 @@ namespace Amazon.ServiceDiscovery.Model
         private int? _instanceCount;
         private string _name;
         private string _namespaceId;
+        private ServiceType _type;
 
         /// <summary>
         /// Gets and sets the property Arn. 
@@ -90,8 +91,8 @@ namespace Amazon.ServiceDiscovery.Model
         /// Gets and sets the property CreatorRequestId. 
         /// <para>
         /// A unique string that identifies the request and that allows failed requests to be
-        /// retried without the risk of executing the operation twice. <code>CreatorRequestId</code>
-        /// can be any unique string, for example, a date/time stamp.
+        /// retried without the risk of running the operation twice. <code>CreatorRequestId</code>
+        /// can be any unique string, for example, a date/timestamp.
         /// </para>
         /// </summary>
         [AWSProperty(Max=64)]
@@ -268,6 +269,39 @@ namespace Amazon.ServiceDiscovery.Model
         internal bool IsSetNamespaceId()
         {
             return this._namespaceId != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the property Type. 
+        /// <para>
+        /// Describes the systems that can be used to discover the service instances.
+        /// </para>
+        ///  <dl> <dt>DNS_HTTP</dt> <dd> 
+        /// <para>
+        /// The service instances can be discovered using either DNS queries or the <code>DiscoverInstances</code>
+        /// API operation.
+        /// </para>
+        ///  </dd> <dt>HTTP</dt> <dd> 
+        /// <para>
+        /// The service instances can only be discovered using the <code>DiscoverInstances</code>
+        /// API operation.
+        /// </para>
+        ///  </dd> <dt>DNS</dt> <dd> 
+        /// <para>
+        /// Reserved.
+        /// </para>
+        ///  </dd> </dl>
+        /// </summary>
+        public ServiceType Type
+        {
+            get { return this._type; }
+            set { this._type = value; }
+        }
+
+        // Check to see if Type property is set
+        internal bool IsSetType()
+        {
+            return this._type != null;
         }
 
     }

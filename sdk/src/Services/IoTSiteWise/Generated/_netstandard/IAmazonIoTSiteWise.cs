@@ -38,9 +38,6 @@ namespace Amazon.IoTSiteWise
     /// SiteWise User Guide</a>. For information about AWS IoT SiteWise quotas, see <a href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html">Quotas</a>
     /// in the <i>AWS IoT SiteWise User Guide</i>.
     /// </summary>
-#if NETSTANDARD13
-    [Obsolete("Support for .NET Standard 1.3 is in maintenance mode and will only receive critical bug fixes and security patches. Visit https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/migration-from-net-standard-1-3.html for further details.")]
-#endif
     public partial interface IAmazonIoTSiteWise : IAmazonService, IDisposable
     {
 #if AWS_ASYNC_ENUMERABLES_API
@@ -617,42 +614,6 @@ namespace Amazon.IoTSiteWise
         /// </exception>
         /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/iotsitewise-2019-12-02/CreatePortal">REST API Reference for CreatePortal Operation</seealso>
         Task<CreatePortalResponse> CreatePortalAsync(CreatePortalRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
-
-        #endregion
-                
-        #region  CreatePresignedPortalUrl
-
-
-
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="request">Container for the necessary parameters to execute the CreatePresignedPortalUrl service method.</param>
-        /// <param name="cancellationToken">
-        ///     A cancellation token that can be used by other objects or threads to receive notice of cancellation.
-        /// </param>
-        /// 
-        /// <returns>The response from the CreatePresignedPortalUrl service method, as returned by IoTSiteWise.</returns>
-        /// <exception cref="Amazon.IoTSiteWise.Model.InternalFailureException">
-        /// AWS IoT SiteWise can't process your request right now. Try again later.
-        /// </exception>
-        /// <exception cref="Amazon.IoTSiteWise.Model.InvalidRequestException">
-        /// The request isn't valid. This can occur if your request contains malformed JSON or
-        /// unsupported characters. Check your request and try again.
-        /// </exception>
-        /// <exception cref="Amazon.IoTSiteWise.Model.ThrottlingException">
-        /// Your request exceeded a rate limit. For example, you might have exceeded the number
-        /// of AWS IoT SiteWise assets that can be created per second, the allowed number of messages
-        /// per second, and so on.
-        /// 
-        ///  
-        /// <para>
-        /// For more information, see <a href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html">Quotas</a>
-        /// in the <i>AWS IoT SiteWise User Guide</i>.
-        /// </para>
-        /// </exception>
-        /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/iotsitewise-2019-12-02/CreatePresignedPortalUrl">REST API Reference for CreatePresignedPortalUrl Operation</seealso>
-        Task<CreatePresignedPortalUrlResponse> CreatePresignedPortalUrlAsync(CreatePresignedPortalUrlRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
 
         #endregion
                 
@@ -1666,6 +1627,65 @@ namespace Amazon.IoTSiteWise
         /// </exception>
         /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/iotsitewise-2019-12-02/GetAssetPropertyValueHistory">REST API Reference for GetAssetPropertyValueHistory Operation</seealso>
         Task<GetAssetPropertyValueHistoryResponse> GetAssetPropertyValueHistoryAsync(GetAssetPropertyValueHistoryRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
+
+        #endregion
+                
+        #region  GetInterpolatedAssetPropertyValues
+
+
+
+        /// <summary>
+        /// Get interpolated values for an asset property for a specified time interval, during
+        /// a period of time. For example, you can use the this operation to return the interpolated
+        /// temperature values for a wind turbine every 24 hours over a duration of 7 days.
+        /// 
+        ///  
+        /// <para>
+        /// To identify an asset property, you must specify one of the following:
+        /// </para>
+        ///  <ul> <li> 
+        /// <para>
+        /// The <code>assetId</code> and <code>propertyId</code> of an asset property.
+        /// </para>
+        ///  </li> <li> 
+        /// <para>
+        /// A <code>propertyAlias</code>, which is a data stream alias (for example, <code>/company/windfarm/3/turbine/7/temperature</code>).
+        /// To define an asset property's alias, see <a href="https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html">UpdateAssetProperty</a>.
+        /// </para>
+        ///  </li> </ul>
+        /// </summary>
+        /// <param name="request">Container for the necessary parameters to execute the GetInterpolatedAssetPropertyValues service method.</param>
+        /// <param name="cancellationToken">
+        ///     A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+        /// </param>
+        /// 
+        /// <returns>The response from the GetInterpolatedAssetPropertyValues service method, as returned by IoTSiteWise.</returns>
+        /// <exception cref="Amazon.IoTSiteWise.Model.InternalFailureException">
+        /// AWS IoT SiteWise can't process your request right now. Try again later.
+        /// </exception>
+        /// <exception cref="Amazon.IoTSiteWise.Model.InvalidRequestException">
+        /// The request isn't valid. This can occur if your request contains malformed JSON or
+        /// unsupported characters. Check your request and try again.
+        /// </exception>
+        /// <exception cref="Amazon.IoTSiteWise.Model.ResourceNotFoundException">
+        /// The requested resource can't be found.
+        /// </exception>
+        /// <exception cref="Amazon.IoTSiteWise.Model.ServiceUnavailableException">
+        /// The requested service is unavailable.
+        /// </exception>
+        /// <exception cref="Amazon.IoTSiteWise.Model.ThrottlingException">
+        /// Your request exceeded a rate limit. For example, you might have exceeded the number
+        /// of AWS IoT SiteWise assets that can be created per second, the allowed number of messages
+        /// per second, and so on.
+        /// 
+        ///  
+        /// <para>
+        /// For more information, see <a href="https://docs.aws.amazon.com/iot-sitewise/latest/userguide/quotas.html">Quotas</a>
+        /// in the <i>AWS IoT SiteWise User Guide</i>.
+        /// </para>
+        /// </exception>
+        /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/iotsitewise-2019-12-02/GetInterpolatedAssetPropertyValues">REST API Reference for GetInterpolatedAssetPropertyValues Operation</seealso>
+        Task<GetInterpolatedAssetPropertyValuesResponse> GetInterpolatedAssetPropertyValuesAsync(GetInterpolatedAssetPropertyValuesRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
 
         #endregion
                 

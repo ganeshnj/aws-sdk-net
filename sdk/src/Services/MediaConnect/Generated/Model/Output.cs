@@ -38,7 +38,9 @@ namespace Amazon.MediaConnect.Model
         private string _destination;
         private Encryption _encryption;
         private string _entitlementArn;
+        private string _listenerAddress;
         private string _mediaLiveInputArn;
+        private List<MediaStreamOutputConfiguration> _mediaStreamOutputConfigurations = new List<MediaStreamOutputConfiguration>();
         private string _name;
         private string _outputArn;
         private int? _port;
@@ -124,6 +126,25 @@ namespace Amazon.MediaConnect.Model
         }
 
         /// <summary>
+        /// Gets and sets the property ListenerAddress. The IP address that the receiver requires
+        /// in order to establish a connection with the flow. For public networking, the ListenerAddress
+        /// is represented by the elastic IP address of the flow. For private networking, the
+        /// ListenerAddress is represented by the elastic network interface IP address of the
+        /// VPC. This field applies only to outputs that use the Zixi pull or SRT listener protocol.
+        /// </summary>
+        public string ListenerAddress
+        {
+            get { return this._listenerAddress; }
+            set { this._listenerAddress = value; }
+        }
+
+        // Check to see if ListenerAddress property is set
+        internal bool IsSetListenerAddress()
+        {
+            return this._listenerAddress != null;
+        }
+
+        /// <summary>
         /// Gets and sets the property MediaLiveInputArn. The input ARN of the AWS Elemental MediaLive
         /// channel. This parameter is relevant only for outputs that were added by creating a
         /// MediaLive input.
@@ -138,6 +159,22 @@ namespace Amazon.MediaConnect.Model
         internal bool IsSetMediaLiveInputArn()
         {
             return this._mediaLiveInputArn != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the property MediaStreamOutputConfigurations. The configuration for
+        /// each media stream that is associated with the output.
+        /// </summary>
+        public List<MediaStreamOutputConfiguration> MediaStreamOutputConfigurations
+        {
+            get { return this._mediaStreamOutputConfigurations; }
+            set { this._mediaStreamOutputConfigurations = value; }
+        }
+
+        // Check to see if MediaStreamOutputConfigurations property is set
+        internal bool IsSetMediaStreamOutputConfigurations()
+        {
+            return this._mediaStreamOutputConfigurations != null && this._mediaStreamOutputConfigurations.Count > 0; 
         }
 
         /// <summary>

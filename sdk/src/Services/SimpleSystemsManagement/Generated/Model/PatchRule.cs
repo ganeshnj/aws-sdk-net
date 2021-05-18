@@ -45,10 +45,10 @@ namespace Amazon.SimpleSystemsManagement.Model
         /// The number of days after the release date of each patch matched by the rule that the
         /// patch is marked as approved in the patch baseline. For example, a value of <code>7</code>
         /// means that patches are approved seven days after they are released. Not supported
-        /// on Ubuntu Server.
+        /// on Debian Server or Ubuntu Server.
         /// </para>
         /// </summary>
-        [AWSProperty(Min=0, Max=100)]
+        [AWSProperty(Min=0, Max=360)]
         public int ApproveAfterDays
         {
             get { return this._approveAfterDays.GetValueOrDefault(); }
@@ -65,7 +65,8 @@ namespace Amazon.SimpleSystemsManagement.Model
         /// Gets and sets the property ApproveUntilDate. 
         /// <para>
         /// The cutoff date for auto approval of released patches. Any patches released on or
-        /// before this date are installed automatically. Not supported on Ubuntu Server.
+        /// before this date are installed automatically. Not supported on Debian Server or Ubuntu
+        /// Server.
         /// </para>
         ///  
         /// <para>

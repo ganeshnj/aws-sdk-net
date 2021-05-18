@@ -41,9 +41,6 @@ namespace Amazon.IoTDeviceAdvisor
     /// to get your device qualified for the AWS Partner Device Catalog without the need to
     /// send your device in and wait for it to be tested.
     /// </summary>
-#if NETSTANDARD13
-    [Obsolete("Support for .NET Standard 1.3 is in maintenance mode and will only receive critical bug fixes and security patches. Visit https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/migration-from-net-standard-1-3.html for further details.")]
-#endif
     public partial interface IAmazonIoTDeviceAdvisor : IAmazonService, IDisposable
     {
 #if AWS_ASYNC_ENUMERABLES_API
@@ -259,27 +256,6 @@ namespace Amazon.IoTDeviceAdvisor
 
         #endregion
                 
-        #region  ListTestCases
-
-
-
-        /// <summary>
-        /// Lists all the test cases in the test suite.
-        /// </summary>
-        /// <param name="request">Container for the necessary parameters to execute the ListTestCases service method.</param>
-        /// <param name="cancellationToken">
-        ///     A cancellation token that can be used by other objects or threads to receive notice of cancellation.
-        /// </param>
-        /// 
-        /// <returns>The response from the ListTestCases service method, as returned by IoTDeviceAdvisor.</returns>
-        /// <exception cref="Amazon.IoTDeviceAdvisor.Model.InternalServerException">
-        /// Sends Internal Failure Exception.
-        /// </exception>
-        /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/iotdeviceadvisor-2020-09-18/ListTestCases">REST API Reference for ListTestCases Operation</seealso>
-        Task<ListTestCasesResponse> ListTestCasesAsync(ListTestCasesRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
-
-        #endregion
-                
         #region  StartSuiteRun
 
 
@@ -304,6 +280,33 @@ namespace Amazon.IoTDeviceAdvisor
         /// </exception>
         /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/iotdeviceadvisor-2020-09-18/StartSuiteRun">REST API Reference for StartSuiteRun Operation</seealso>
         Task<StartSuiteRunResponse> StartSuiteRunAsync(StartSuiteRunRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
+
+        #endregion
+                
+        #region  StopSuiteRun
+
+
+
+        /// <summary>
+        /// Stops a Device Advisor test suite run that is currently running.
+        /// </summary>
+        /// <param name="request">Container for the necessary parameters to execute the StopSuiteRun service method.</param>
+        /// <param name="cancellationToken">
+        ///     A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+        /// </param>
+        /// 
+        /// <returns>The response from the StopSuiteRun service method, as returned by IoTDeviceAdvisor.</returns>
+        /// <exception cref="Amazon.IoTDeviceAdvisor.Model.InternalServerException">
+        /// Sends Internal Failure Exception.
+        /// </exception>
+        /// <exception cref="Amazon.IoTDeviceAdvisor.Model.ResourceNotFoundException">
+        /// Sends Resource Not Found Exception.
+        /// </exception>
+        /// <exception cref="Amazon.IoTDeviceAdvisor.Model.ValidationException">
+        /// Sends invalid request exception.
+        /// </exception>
+        /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/iotdeviceadvisor-2020-09-18/StopSuiteRun">REST API Reference for StopSuiteRun Operation</seealso>
+        Task<StopSuiteRunResponse> StopSuiteRunAsync(StopSuiteRunRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
 
         #endregion
                 

@@ -60,10 +60,9 @@ namespace Amazon.Route53.Model.Internal.MarshallTransformations
                 throw new AmazonRoute53Exception("Request object does not have required field HostedZoneId set");
             request.AddPathResource("{Id}", StringUtils.FromString(publicRequest.HostedZoneId));
             request.ResourcePath = "/2013-04-01/hostedzone/{Id}/disassociatevpc";
-            request.MarshallerVersion = 2;
 
-            var stringWriter = new StringWriter(CultureInfo.InvariantCulture);
-            using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Encoding = System.Text.Encoding.UTF8, OmitXmlDeclaration = true }))
+            var stringWriter = new XMLEncodedStringWriter(CultureInfo.InvariantCulture);
+            using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Encoding = System.Text.Encoding.UTF8, OmitXmlDeclaration = true, NewLineHandling = NewLineHandling.Entitize }))
             {   
                 xmlWriter.WriteStartElement("DisassociateVPCFromHostedZoneRequest", "https://route53.amazonaws.com/doc/2013-04-01/");    
                 

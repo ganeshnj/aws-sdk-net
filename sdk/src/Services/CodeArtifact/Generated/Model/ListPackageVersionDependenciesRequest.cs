@@ -31,12 +31,11 @@ namespace Amazon.CodeArtifact.Model
     /// <summary>
     /// Container for the parameters to the ListPackageVersionDependencies operation.
     /// Returns the direct dependencies for a package version. The dependencies are returned
-    /// as <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDependency.html">
-    /// <code>PackageDependency</code> </a> objects. CodeArtifact extracts the dependencies
-    /// for a package version from the metadata file for the package format (for example,
-    /// the <code>package.json</code> file for npm packages and the <code>pom.xml</code> file
-    /// for Maven). Any package version dependencies that are not listed in the configuration
-    /// file are not returned.
+    /// as <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDependency.html">PackageDependency</a>
+    /// objects. CodeArtifact extracts the dependencies for a package version from the metadata
+    /// file for the package format (for example, the <code>package.json</code> file for npm
+    /// packages and the <code>pom.xml</code> file for Maven). Any package version dependencies
+    /// that are not listed in the configuration file are not returned.
     /// </summary>
     public partial class ListPackageVersionDependenciesRequest : AmazonCodeArtifactRequest
     {
@@ -52,8 +51,8 @@ namespace Amazon.CodeArtifact.Model
         /// <summary>
         /// Gets and sets the property Domain. 
         /// <para>
-        ///  The domain that contains the repository that contains the requested package version
-        /// dependencies. 
+        ///  The name of the domain that contains the repository that contains the requested package
+        /// version dependencies. 
         /// </para>
         /// </summary>
         [AWSProperty(Required=true, Min=2, Max=50)]
@@ -108,10 +107,6 @@ namespace Amazon.CodeArtifact.Model
         ///  <code>maven</code>: A Maven package that contains compiled code in a distributable
         /// format, such as a JAR file. 
         /// </para>
-        ///  </li> <li> 
-        /// <para>
-        ///  <code>nuget</code>: A NuGet package. 
-        /// </para>
         ///  </li> </ul>
         /// </summary>
         [AWSProperty(Required=true)]
@@ -144,11 +139,6 @@ namespace Amazon.CodeArtifact.Model
         ///  </li> <li> 
         /// <para>
         ///  A Python package does not contain a corresponding component, so Python packages do
-        /// not have a namespace. 
-        /// </para>
-        ///  </li> <li> 
-        /// <para>
-        ///  A NuGet package does not contain a corresponding component, so NuGet packages do
         /// not have a namespace. 
         /// </para>
         ///  </li> </ul>

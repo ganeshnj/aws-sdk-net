@@ -60,7 +60,6 @@ namespace Amazon.DevOpsGuru.Model.Internal.MarshallTransformations
             request.HttpMethod = "POST";
 
             request.ResourcePath = "/recommendations";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -70,6 +69,12 @@ namespace Amazon.DevOpsGuru.Model.Internal.MarshallTransformations
                 {
                     context.Writer.WritePropertyName("InsightId");
                     context.Writer.Write(publicRequest.InsightId);
+                }
+
+                if(publicRequest.IsSetLocale())
+                {
+                    context.Writer.WritePropertyName("Locale");
+                    context.Writer.Write(publicRequest.Locale);
                 }
 
                 if(publicRequest.IsSetNextToken())

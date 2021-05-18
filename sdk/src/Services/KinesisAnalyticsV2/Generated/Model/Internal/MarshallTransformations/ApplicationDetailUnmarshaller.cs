@@ -82,6 +82,12 @@ namespace Amazon.KinesisAnalyticsV2.Model.Internal.MarshallTransformations
                     unmarshalledObject.ApplicationDescription = unmarshaller.Unmarshall(context);
                     continue;
                 }
+                if (context.TestExpression("ApplicationMaintenanceConfigurationDescription", targetDepth))
+                {
+                    var unmarshaller = ApplicationMaintenanceConfigurationDescriptionUnmarshaller.Instance;
+                    unmarshalledObject.ApplicationMaintenanceConfigurationDescription = unmarshaller.Unmarshall(context);
+                    continue;
+                }
                 if (context.TestExpression("ApplicationName", targetDepth))
                 {
                     var unmarshaller = StringUnmarshaller.Instance;
@@ -100,10 +106,34 @@ namespace Amazon.KinesisAnalyticsV2.Model.Internal.MarshallTransformations
                     unmarshalledObject.ApplicationVersionId = unmarshaller.Unmarshall(context);
                     continue;
                 }
+                if (context.TestExpression("ApplicationVersionRolledBackFrom", targetDepth))
+                {
+                    var unmarshaller = LongUnmarshaller.Instance;
+                    unmarshalledObject.ApplicationVersionRolledBackFrom = unmarshaller.Unmarshall(context);
+                    continue;
+                }
+                if (context.TestExpression("ApplicationVersionRolledBackTo", targetDepth))
+                {
+                    var unmarshaller = LongUnmarshaller.Instance;
+                    unmarshalledObject.ApplicationVersionRolledBackTo = unmarshaller.Unmarshall(context);
+                    continue;
+                }
+                if (context.TestExpression("ApplicationVersionUpdatedFrom", targetDepth))
+                {
+                    var unmarshaller = LongUnmarshaller.Instance;
+                    unmarshalledObject.ApplicationVersionUpdatedFrom = unmarshaller.Unmarshall(context);
+                    continue;
+                }
                 if (context.TestExpression("CloudWatchLoggingOptionDescriptions", targetDepth))
                 {
                     var unmarshaller = new ListUnmarshaller<CloudWatchLoggingOptionDescription, CloudWatchLoggingOptionDescriptionUnmarshaller>(CloudWatchLoggingOptionDescriptionUnmarshaller.Instance);
                     unmarshalledObject.CloudWatchLoggingOptionDescriptions = unmarshaller.Unmarshall(context);
+                    continue;
+                }
+                if (context.TestExpression("ConditionalToken", targetDepth))
+                {
+                    var unmarshaller = StringUnmarshaller.Instance;
+                    unmarshalledObject.ConditionalToken = unmarshaller.Unmarshall(context);
                     continue;
                 }
                 if (context.TestExpression("CreateTimestamp", targetDepth))

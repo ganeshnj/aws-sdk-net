@@ -63,7 +63,6 @@ namespace Amazon.EKS.Model.Internal.MarshallTransformations
                 throw new AmazonEKSException("Request object does not have required field ClusterName set");
             request.AddPathResource("{name}", StringUtils.FromString(publicRequest.ClusterName));
             request.ResourcePath = "/clusters/{name}/node-groups";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -197,6 +196,22 @@ namespace Amazon.EKS.Model.Internal.MarshallTransformations
                             context.Writer.Write(publicRequestTagsValue);
                     }
                     context.Writer.WriteObjectEnd();
+                }
+
+                if(publicRequest.IsSetTaints())
+                {
+                    context.Writer.WritePropertyName("taints");
+                    context.Writer.WriteArrayStart();
+                    foreach(var publicRequestTaintsListValue in publicRequest.Taints)
+                    {
+                        context.Writer.WriteObjectStart();
+
+                        var marshaller = TaintMarshaller.Instance;
+                        marshaller.Marshall(publicRequestTaintsListValue, context);
+
+                        context.Writer.WriteObjectEnd();
+                    }
+                    context.Writer.WriteArrayEnd();
                 }
 
                 if(publicRequest.IsSetVersion())

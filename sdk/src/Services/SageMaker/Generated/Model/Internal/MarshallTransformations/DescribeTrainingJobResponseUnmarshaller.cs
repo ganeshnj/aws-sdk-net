@@ -117,6 +117,12 @@ namespace Amazon.SageMaker.Model.Internal.MarshallTransformations
                     response.EnableNetworkIsolation = unmarshaller.Unmarshall(context);
                     continue;
                 }
+                if (context.TestExpression("Environment", targetDepth))
+                {
+                    var unmarshaller = new DictionaryUnmarshaller<string, string, StringUnmarshaller, StringUnmarshaller>(StringUnmarshaller.Instance, StringUnmarshaller.Instance);
+                    response.Environment = unmarshaller.Unmarshall(context);
+                    continue;
+                }
                 if (context.TestExpression("ExperimentConfig", targetDepth))
                 {
                     var unmarshaller = ExperimentConfigUnmarshaller.Instance;
@@ -199,6 +205,12 @@ namespace Amazon.SageMaker.Model.Internal.MarshallTransformations
                 {
                     var unmarshaller = ResourceConfigUnmarshaller.Instance;
                     response.ResourceConfig = unmarshaller.Unmarshall(context);
+                    continue;
+                }
+                if (context.TestExpression("RetryStrategy", targetDepth))
+                {
+                    var unmarshaller = RetryStrategyUnmarshaller.Instance;
+                    response.RetryStrategy = unmarshaller.Unmarshall(context);
                     continue;
                 }
                 if (context.TestExpression("RoleArn", targetDepth))

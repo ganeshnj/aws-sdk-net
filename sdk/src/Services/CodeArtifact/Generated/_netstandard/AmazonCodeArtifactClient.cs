@@ -39,12 +39,11 @@ namespace Amazon.CodeArtifact
     /// Implementation for accessing CodeArtifact
     ///
     /// AWS CodeArtifact is a fully managed artifact repository compatible with language-native
-    /// package managers and build tools such as npm, Apache Maven, NuGet, and pip. You can
-    /// use CodeArtifact to share packages with development teams and pull packages. Packages
-    /// can be pulled from both public and CodeArtifact repositories. You can also create
-    /// an upstream relationship between a CodeArtifact repository and another repository,
-    /// which effectively merges their contents from the point of view of a package manager
-    /// client. 
+    /// package managers and build tools such as npm, Apache Maven, and pip. You can use CodeArtifact
+    /// to share packages with development teams and pull packages. Packages can be pulled
+    /// from both public and CodeArtifact repositories. You can also create an upstream relationship
+    /// between a CodeArtifact repository and another repository, which effectively merges
+    /// their contents from the point of view of a package manager client. 
     /// 
     ///  
     /// <para>
@@ -61,8 +60,7 @@ namespace Amazon.CodeArtifact
     /// versions</a>, each of which maps to a set of assets, or files. Repositories are polyglot,
     /// so a single repository can contain packages of any supported type. Each repository
     /// exposes endpoints for fetching and publishing packages using tools like the <b> <code>npm</code>
-    /// </b> CLI, the <b> <code>NuGet</code> </b> CLI, the Maven CLI (<b> <code>mvn</code>
-    /// </b>), and <b> <code>pip</code> </b>.
+    /// </b> CLI, the Maven CLI (<b> <code>mvn</code> </b>), and <b> <code>pip</code> </b>.
     /// </para>
     ///  </li> <li> 
     /// <para>
@@ -94,8 +92,7 @@ namespace Amazon.CodeArtifact
     ///  <b>Package</b>: A <i>package</i> is a bundle of software and the metadata required
     /// to resolve dependencies and install the software. CodeArtifact supports <a href="https://docs.aws.amazon.com/codeartifact/latest/ug/using-npm.html">npm</a>,
     /// <a href="https://docs.aws.amazon.com/codeartifact/latest/ug/using-python.html">PyPI</a>,
-    /// <a href="https://docs.aws.amazon.com/codeartifact/latest/ug/using-maven">Maven</a>,
-    /// and <a href="https://docs.aws.amazon.com/codeartifact/latest/ug/using-nuget">NuGet</a>
+    /// and <a href="https://docs.aws.amazon.com/codeartifact/latest/ug/using-maven">Maven</a>
     /// package formats.
     /// </para>
     ///  
@@ -194,8 +191,8 @@ namespace Amazon.CodeArtifact
     /// </para>
     ///  </li> <li> 
     /// <para>
-    ///  <code>DescribePackageVersion</code>: Returns a <code> <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">PackageVersionDescription</a>
-    /// </code> object that contains details about a package version. 
+    ///  <code>DescribePackageVersion</code>: Returns a <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">PackageVersionDescription</a>
+    /// object that contains details about a package version. 
     /// </para>
     ///  </li> <li> 
     /// <para>
@@ -252,10 +249,6 @@ namespace Amazon.CodeArtifact
     /// <para>
     ///  <code>maven</code> 
     /// </para>
-    ///  </li> <li> 
-    /// <para>
-    ///  <code>nuget</code> 
-    /// </para>
     ///  </li> </ul> </li> <li> 
     /// <para>
     ///  <code>GetRepositoryPermissionsPolicy</code>: Returns the resource policy that is
@@ -295,24 +288,12 @@ namespace Amazon.CodeArtifact
     /// </para>
     ///  </li> <li> 
     /// <para>
-    ///  <code>ListTagsForResource</code>: Returns a list of the tags associated with a resource.
-    /// </para>
-    ///  </li> <li> 
-    /// <para>
     ///  <code>PutDomainPermissionsPolicy</code>: Attaches a resource policy to a domain.
     /// </para>
     ///  </li> <li> 
     /// <para>
     ///  <code>PutRepositoryPermissionsPolicy</code>: Sets the resource policy on a repository
     /// that specifies permissions to access it. 
-    /// </para>
-    ///  </li> <li> 
-    /// <para>
-    ///  <code>TagResource</code>: Adds or updates tags for a resource.
-    /// </para>
-    ///  </li> <li> 
-    /// <para>
-    ///  <code>UntagResource</code>: Removes a tag from a resource. 
     /// </para>
     ///  </li> <li> 
     /// <para>
@@ -325,9 +306,6 @@ namespace Amazon.CodeArtifact
     /// </para>
     ///  </li> </ul>
     /// </summary>
-#if NETSTANDARD13
-    [Obsolete("Support for .NET Standard 1.3 is in maintenance mode and will only receive critical bug fixes and security patches. Visit https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/migration-from-net-standard-1-3.html for further details.")]
-#endif
     public partial class AmazonCodeArtifactClient : AmazonServiceClient, IAmazonCodeArtifact
     {
         private static IServiceMetadata serviceMetadata = new AmazonCodeArtifactMetadata();
@@ -927,9 +905,8 @@ namespace Amazon.CodeArtifact
         /// in your repository. If you want to remove a package version from your repository and
         /// be able to restore it later, set its status to <code>Archived</code>. Archived packages
         /// cannot be downloaded from a repository and don't show up with list package APIs (for
-        /// example, <code> <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html">ListackageVersions</a>
-        /// </code>), but you can restore them using <code> <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_UpdatePackageVersionsStatus.html">UpdatePackageVersionsStatus</a>
-        /// </code>.
+        /// example, <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html">ListackageVersions</a>),
+        /// but you can restore them using <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_UpdatePackageVersionsStatus.html">UpdatePackageVersionsStatus</a>.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DeletePackageVersions service method.</param>
         /// <param name="cancellationToken">
@@ -1101,9 +1078,8 @@ namespace Amazon.CodeArtifact
 
 
         /// <summary>
-        /// Returns a <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DomainDescription.html">
-        /// <code>DomainDescription</code> </a> object that contains information about the requested
-        /// domain.
+        /// Returns a <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DomainDescription.html">DomainDescription</a>
+        /// object that contains information about the requested domain.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DescribeDomain service method.</param>
         /// <param name="cancellationToken">
@@ -1154,9 +1130,8 @@ namespace Amazon.CodeArtifact
 
 
         /// <summary>
-        /// Returns a <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">
-        /// <code>PackageVersionDescription</code> </a> object that contains information about
-        /// the requested package version.
+        /// Returns a <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">PackageVersionDescription</a>
+        /// object that contains information about the requested package version.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DescribePackageVersion service method.</param>
         /// <param name="cancellationToken">
@@ -1326,14 +1301,14 @@ namespace Amazon.CodeArtifact
         /// 
         ///  
         /// <para>
-        ///  To view all disposed package versions in a repository, use <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html">
-        /// <code>ListPackageVersions</code> </a> and set the <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html#API_ListPackageVersions_RequestSyntax">
-        /// <code>status</code> </a> parameter to <code>Disposed</code>. 
+        ///  To view all disposed package versions in a repository, use <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html">ListPackageVersions</a>
+        /// and set the <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackageVersions.html#API_ListPackageVersions_RequestSyntax">status</a>
+        /// parameter to <code>Disposed</code>. 
         /// </para>
         ///  
         /// <para>
-        ///  To view information about a disposed package version, use <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html">
-        /// <code>DescribePackageVersion</code> </a>.. 
+        ///  To view information about a disposed package version, use <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_DescribePackageVersion.html">DescribePackageVersion</a>.
+        /// 
         /// </para>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DisposePackageVersions service method.</param>
@@ -1658,10 +1633,6 @@ namespace Amazon.CodeArtifact
         /// <para>
         ///  <code>maven</code> 
         /// </para>
-        ///  </li> <li> 
-        /// <para>
-        ///  <code>nuget</code> 
-        /// </para>
         ///  </li> </ul>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the GetRepositoryEndpoint service method.</param>
@@ -1764,9 +1735,9 @@ namespace Amazon.CodeArtifact
 
 
         /// <summary>
-        /// Returns a list of <code> <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">DomainSummary</a>
-        /// </code> objects for all domains owned by the AWS account that makes this call. Each
-        /// returned <code>DomainSummary</code> object contains information about a domain.
+        /// Returns a list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">DomainSummary</a>
+        /// objects for all domains owned by the AWS account that makes this call. Each returned
+        /// <code>DomainSummary</code> object contains information about a domain.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the ListDomains service method.</param>
         /// <param name="cancellationToken">
@@ -1813,9 +1784,8 @@ namespace Amazon.CodeArtifact
 
 
         /// <summary>
-        /// Returns a list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageSummary.html">
-        /// <code>PackageSummary</code> </a> objects for packages in a repository that match the
-        /// request parameters.
+        /// Returns a list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageSummary.html">PackageSummary</a>
+        /// objects for packages in a repository that match the request parameters.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the ListPackages service method.</param>
         /// <param name="cancellationToken">
@@ -1866,8 +1836,8 @@ namespace Amazon.CodeArtifact
 
 
         /// <summary>
-        /// Returns a list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html">
-        /// <code>AssetSummary</code> </a> objects for assets in a package version.
+        /// Returns a list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html">AssetSummary</a>
+        /// objects for assets in a package version.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the ListPackageVersionAssets service method.</param>
         /// <param name="cancellationToken">
@@ -1919,12 +1889,11 @@ namespace Amazon.CodeArtifact
 
         /// <summary>
         /// Returns the direct dependencies for a package version. The dependencies are returned
-        /// as <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDependency.html">
-        /// <code>PackageDependency</code> </a> objects. CodeArtifact extracts the dependencies
-        /// for a package version from the metadata file for the package format (for example,
-        /// the <code>package.json</code> file for npm packages and the <code>pom.xml</code> file
-        /// for Maven). Any package version dependencies that are not listed in the configuration
-        /// file are not returned.
+        /// as <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageDependency.html">PackageDependency</a>
+        /// objects. CodeArtifact extracts the dependencies for a package version from the metadata
+        /// file for the package format (for example, the <code>package.json</code> file for npm
+        /// packages and the <code>pom.xml</code> file for Maven). Any package version dependencies
+        /// that are not listed in the configuration file are not returned.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the ListPackageVersionDependencies service method.</param>
         /// <param name="cancellationToken">
@@ -1975,9 +1944,8 @@ namespace Amazon.CodeArtifact
 
 
         /// <summary>
-        /// Returns a list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html">
-        /// <code>PackageVersionSummary</code> </a> objects for package versions in a repository
-        /// that match the request parameters.
+        /// Returns a list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html">PackageVersionSummary</a>
+        /// objects for package versions in a repository that match the request parameters.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the ListPackageVersions service method.</param>
         /// <param name="cancellationToken">
@@ -2028,10 +1996,9 @@ namespace Amazon.CodeArtifact
 
 
         /// <summary>
-        /// Returns a list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html">
-        /// <code>RepositorySummary</code> </a> objects. Each <code>RepositorySummary</code> contains
-        /// information about a repository in the specified AWS account and that matches the input
-        /// parameters.
+        /// Returns a list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html">RepositorySummary</a>
+        /// objects. Each <code>RepositorySummary</code> contains information about a repository
+        /// in the specified AWS account and that matches the input parameters.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the ListRepositories service method.</param>
         /// <param name="cancellationToken">
@@ -2078,10 +2045,9 @@ namespace Amazon.CodeArtifact
 
 
         /// <summary>
-        /// Returns a list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html">
-        /// <code>RepositorySummary</code> </a> objects. Each <code>RepositorySummary</code> contains
-        /// information about a repository in the specified domain and that matches the input
-        /// parameters.
+        /// Returns a list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_RepositorySummary.html">RepositorySummary</a>
+        /// objects. Each <code>RepositorySummary</code> contains information about a repository
+        /// in the specified domain and that matches the input parameters.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the ListRepositoriesInDomain service method.</param>
         /// <param name="cancellationToken">

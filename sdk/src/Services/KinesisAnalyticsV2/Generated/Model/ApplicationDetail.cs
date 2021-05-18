@@ -37,10 +37,15 @@ namespace Amazon.KinesisAnalyticsV2.Model
         private string _applicationARN;
         private ApplicationConfigurationDescription _applicationConfigurationDescription;
         private string _applicationDescription;
+        private ApplicationMaintenanceConfigurationDescription _applicationMaintenanceConfigurationDescription;
         private string _applicationName;
         private ApplicationStatus _applicationStatus;
         private long? _applicationVersionId;
+        private long? _applicationVersionRolledBackFrom;
+        private long? _applicationVersionRolledBackTo;
+        private long? _applicationVersionUpdatedFrom;
         private List<CloudWatchLoggingOptionDescription> _cloudWatchLoggingOptionDescriptions = new List<CloudWatchLoggingOptionDescription>();
+        private string _conditionalToken;
         private DateTime? _createTimestamp;
         private DateTime? _lastUpdateTimestamp;
         private RuntimeEnvironment _runtimeEnvironment;
@@ -103,6 +108,24 @@ namespace Amazon.KinesisAnalyticsV2.Model
         }
 
         /// <summary>
+        /// Gets and sets the property ApplicationMaintenanceConfigurationDescription. 
+        /// <para>
+        /// The details of the maintenance configuration for the application.
+        /// </para>
+        /// </summary>
+        public ApplicationMaintenanceConfigurationDescription ApplicationMaintenanceConfigurationDescription
+        {
+            get { return this._applicationMaintenanceConfigurationDescription; }
+            set { this._applicationMaintenanceConfigurationDescription = value; }
+        }
+
+        // Check to see if ApplicationMaintenanceConfigurationDescription property is set
+        internal bool IsSetApplicationMaintenanceConfigurationDescription()
+        {
+            return this._applicationMaintenanceConfigurationDescription != null;
+        }
+
+        /// <summary>
         /// Gets and sets the property ApplicationName. 
         /// <para>
         /// The name of the application.
@@ -161,6 +184,65 @@ namespace Amazon.KinesisAnalyticsV2.Model
         }
 
         /// <summary>
+        /// Gets and sets the property ApplicationVersionRolledBackFrom. 
+        /// <para>
+        /// If you reverted the application using <a>RollbackApplication</a>, the application
+        /// version when <code>RollbackApplication</code> was called.
+        /// </para>
+        /// </summary>
+        [AWSProperty(Min=1, Max=999999999)]
+        public long ApplicationVersionRolledBackFrom
+        {
+            get { return this._applicationVersionRolledBackFrom.GetValueOrDefault(); }
+            set { this._applicationVersionRolledBackFrom = value; }
+        }
+
+        // Check to see if ApplicationVersionRolledBackFrom property is set
+        internal bool IsSetApplicationVersionRolledBackFrom()
+        {
+            return this._applicationVersionRolledBackFrom.HasValue; 
+        }
+
+        /// <summary>
+        /// Gets and sets the property ApplicationVersionRolledBackTo. 
+        /// <para>
+        /// The version to which you want to roll back the application.
+        /// </para>
+        /// </summary>
+        [AWSProperty(Min=1, Max=999999999)]
+        public long ApplicationVersionRolledBackTo
+        {
+            get { return this._applicationVersionRolledBackTo.GetValueOrDefault(); }
+            set { this._applicationVersionRolledBackTo = value; }
+        }
+
+        // Check to see if ApplicationVersionRolledBackTo property is set
+        internal bool IsSetApplicationVersionRolledBackTo()
+        {
+            return this._applicationVersionRolledBackTo.HasValue; 
+        }
+
+        /// <summary>
+        /// Gets and sets the property ApplicationVersionUpdatedFrom. 
+        /// <para>
+        /// The previous application version before the latest application update. <a>RollbackApplication</a>
+        /// reverts the application to this version.
+        /// </para>
+        /// </summary>
+        [AWSProperty(Min=1, Max=999999999)]
+        public long ApplicationVersionUpdatedFrom
+        {
+            get { return this._applicationVersionUpdatedFrom.GetValueOrDefault(); }
+            set { this._applicationVersionUpdatedFrom = value; }
+        }
+
+        // Check to see if ApplicationVersionUpdatedFrom property is set
+        internal bool IsSetApplicationVersionUpdatedFrom()
+        {
+            return this._applicationVersionUpdatedFrom.HasValue; 
+        }
+
+        /// <summary>
         /// Gets and sets the property CloudWatchLoggingOptionDescriptions. 
         /// <para>
         /// Describes the application Amazon CloudWatch logging options.
@@ -176,6 +258,25 @@ namespace Amazon.KinesisAnalyticsV2.Model
         internal bool IsSetCloudWatchLoggingOptionDescriptions()
         {
             return this._cloudWatchLoggingOptionDescriptions != null && this._cloudWatchLoggingOptionDescriptions.Count > 0; 
+        }
+
+        /// <summary>
+        /// Gets and sets the property ConditionalToken. 
+        /// <para>
+        /// A value you use to implement strong concurrency for application updates.
+        /// </para>
+        /// </summary>
+        [AWSProperty(Min=1, Max=512)]
+        public string ConditionalToken
+        {
+            get { return this._conditionalToken; }
+            set { this._conditionalToken = value; }
+        }
+
+        // Check to see if ConditionalToken property is set
+        internal bool IsSetConditionalToken()
+        {
+            return this._conditionalToken != null;
         }
 
         /// <summary>
@@ -217,8 +318,8 @@ namespace Amazon.KinesisAnalyticsV2.Model
         /// <summary>
         /// Gets and sets the property RuntimeEnvironment. 
         /// <para>
-        /// The runtime environment for the application (<code>SQL-1.0</code>, <code>FLINK-1_6</code>,
-        /// or <code>FLINK-1_8</code>).
+        /// The runtime environment for the application (<code>SQL-1_0</code>, <code>FLINK-1_6</code>,
+        /// <code>FLINK-1_8</code>, or <code>FLINK-1_11</code>).
         /// </para>
         /// </summary>
         [AWSProperty(Required=true)]

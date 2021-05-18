@@ -21,6 +21,7 @@ using Amazon.Runtime;
 using Amazon.Runtime.Internal;
 using Amazon.Runtime.Internal.Transform;
 using Amazon.Util;
+using Amazon.Runtime.Internal.Util;
 
 #pragma warning disable 1591
 
@@ -48,14 +49,13 @@ namespace Amazon.S3.Model.Internal.MarshallTransformations
             if (string.IsNullOrEmpty(putBucketLoggingRequest.BucketName))
                 throw new System.ArgumentException("BucketName is a required property and must be set before making this call.", "PutBucketLoggingRequest.BucketName");
 
-			request.MarshallerVersion = 2;
 			request.ResourcePath = string.Concat("/", S3Transforms.ToStringValue(putBucketLoggingRequest.BucketName));
 
             request.AddSubResource("logging");
 
-            var stringWriter = new StringWriter(System.Globalization.CultureInfo.InvariantCulture);
+            var stringWriter = new XMLEncodedStringWriter(System.Globalization.CultureInfo.InvariantCulture);
 
-            using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Encoding = System.Text.Encoding.UTF8, OmitXmlDeclaration = true }))
+            using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Encoding = System.Text.Encoding.UTF8, OmitXmlDeclaration = true, NewLineHandling = NewLineHandling.Entitize }))
             {
                 xmlWriter.WriteStartElement("BucketLoggingStatus", "");
                 var bucketLoggingStatusBucketLoggingStatus = putBucketLoggingRequest.LoggingConfig;

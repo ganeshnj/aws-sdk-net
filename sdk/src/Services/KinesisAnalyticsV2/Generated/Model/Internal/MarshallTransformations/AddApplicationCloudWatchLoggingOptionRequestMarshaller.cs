@@ -62,7 +62,6 @@ namespace Amazon.KinesisAnalyticsV2.Model.Internal.MarshallTransformations
             request.HttpMethod = "POST";
 
             request.ResourcePath = "/";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -83,6 +82,12 @@ namespace Amazon.KinesisAnalyticsV2.Model.Internal.MarshallTransformations
                     marshaller.Marshall(publicRequest.CloudWatchLoggingOption, context);
 
                     context.Writer.WriteObjectEnd();
+                }
+
+                if(publicRequest.IsSetConditionalToken())
+                {
+                    context.Writer.WritePropertyName("ConditionalToken");
+                    context.Writer.Write(publicRequest.ConditionalToken);
                 }
 
                 if(publicRequest.IsSetCurrentApplicationVersionId())

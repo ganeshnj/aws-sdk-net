@@ -12,7 +12,6 @@
     "CreateDashboard": "<p>Creates a dashboard in an AWS IoT SiteWise Monitor project.</p>",
     "CreateGateway": "<p>Creates a gateway, which is a virtual or edge device that delivers industrial data streams from local servers to AWS IoT SiteWise. For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateway-connector.html\">Ingesting data using a gateway</a> in the <i>AWS IoT SiteWise User Guide</i>.</p>",
     "CreatePortal": "<p>Creates a portal, which can contain projects and dashboards. AWS IoT SiteWise Monitor uses AWS SSO or IAM to authenticate portal users and manage user permissions.</p> <note> <p>Before you can sign in to a new portal, you must add at least one identity to that portal. For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/administer-portals.html#portal-change-admins\">Adding or removing portal administrators</a> in the <i>AWS IoT SiteWise User Guide</i>.</p> </note>",
-    "CreatePresignedPortalUrl": null,
     "CreateProject": "<p>Creates a project in the specified portal.</p>",
     "DeleteAccessPolicy": "<p>Deletes an access policy that grants the specified identity access to the specified AWS IoT SiteWise Monitor resource. You can use this operation to revoke access to an AWS IoT SiteWise Monitor resource.</p>",
     "DeleteAsset": "<p>Deletes an asset. This action can't be undone. For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/delete-assets-and-models.html\">Deleting assets and models</a> in the <i>AWS IoT SiteWise User Guide</i>. </p> <note> <p>You can't delete an asset that's associated to another asset. For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_DisassociateAssets.html\">DisassociateAssets</a>.</p> </note>",
@@ -36,6 +35,7 @@
     "GetAssetPropertyAggregates": "<p>Gets aggregated values for an asset property. For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#aggregates\">Querying aggregates</a> in the <i>AWS IoT SiteWise User Guide</i>.</p> <p>To identify an asset property, you must specify one of the following:</p> <ul> <li> <p>The <code>assetId</code> and <code>propertyId</code> of an asset property.</p> </li> <li> <p>A <code>propertyAlias</code>, which is a data stream alias (for example, <code>/company/windfarm/3/turbine/7/temperature</code>). To define an asset property's alias, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html\">UpdateAssetProperty</a>.</p> </li> </ul>",
     "GetAssetPropertyValue": "<p>Gets an asset property's current value. For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#current-values\">Querying current values</a> in the <i>AWS IoT SiteWise User Guide</i>.</p> <p>To identify an asset property, you must specify one of the following:</p> <ul> <li> <p>The <code>assetId</code> and <code>propertyId</code> of an asset property.</p> </li> <li> <p>A <code>propertyAlias</code>, which is a data stream alias (for example, <code>/company/windfarm/3/turbine/7/temperature</code>). To define an asset property's alias, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html\">UpdateAssetProperty</a>.</p> </li> </ul>",
     "GetAssetPropertyValueHistory": "<p>Gets the history of an asset property's values. For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/query-industrial-data.html#historical-values\">Querying historical values</a> in the <i>AWS IoT SiteWise User Guide</i>.</p> <p>To identify an asset property, you must specify one of the following:</p> <ul> <li> <p>The <code>assetId</code> and <code>propertyId</code> of an asset property.</p> </li> <li> <p>A <code>propertyAlias</code>, which is a data stream alias (for example, <code>/company/windfarm/3/turbine/7/temperature</code>). To define an asset property's alias, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html\">UpdateAssetProperty</a>.</p> </li> </ul>",
+    "GetInterpolatedAssetPropertyValues": "<p>Get interpolated values for an asset property for a specified time interval, during a period of time. For example, you can use the this operation to return the interpolated temperature values for a wind turbine every 24 hours over a duration of 7 days.</p> <p>To identify an asset property, you must specify one of the following:</p> <ul> <li> <p>The <code>assetId</code> and <code>propertyId</code> of an asset property.</p> </li> <li> <p>A <code>propertyAlias</code>, which is a data stream alias (for example, <code>/company/windfarm/3/turbine/7/temperature</code>). To define an asset property's alias, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/APIReference/API_UpdateAssetProperty.html\">UpdateAssetProperty</a>.</p> </li> </ul>",
     "ListAccessPolicies": "<p>Retrieves a paginated list of access policies for an identity (an AWS SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise Monitor resource (a portal or project).</p>",
     "ListAssetModels": "<p>Retrieves a paginated list of summaries of all asset models.</p>",
     "ListAssetRelationships": "<p>Retrieves a paginated list of asset relationships for an asset. You can use this operation to identify an asset's root asset and all associated assets between that asset and its root.</p>",
@@ -86,7 +86,7 @@
         "DescribePortalResponse$roleArn": "<p>The <a href=\"https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html\">ARN</a> of the service role that allows the portal's users to access your AWS IoT SiteWise resources on your behalf. For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/monitor-service-role.html\">Using service roles for AWS IoT SiteWise Monitor</a> in the <i>AWS IoT SiteWise User Guide</i>.</p>",
         "DescribeProjectResponse$projectArn": "<p>The <a href=\"https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html\">ARN</a> of the project, which has the following format.</p> <p> <code>arn:${Partition}:iotsitewise:${Region}:${Account}:project/${ProjectId}</code> </p>",
         "Greengrass$groupArn": "<p>The <a href=\"https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html\">ARN</a> of the Greengrass group. For more information about how to find a group's ARN, see <a href=\"https://docs.aws.amazon.com/greengrass/latest/apireference/listgroups-get.html\">ListGroups</a> and <a href=\"https://docs.aws.amazon.com/greengrass/latest/apireference/getgroup-get.html\">GetGroup</a> in the <i>AWS IoT Greengrass API Reference</i>.</p>",
-        "IAMRoleIdentity$arn": "<p>The ARN of the IAM role. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.htmll#identifiers-arns\">IAM ARNs</a> in the <i>IAM User Guide</i>.</p>",
+        "IAMRoleIdentity$arn": "<p>The ARN of the IAM role. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html\">IAM ARNs</a> in the <i>IAM User Guide</i>.</p>",
         "IAMUserIdentity$arn": "<p>The ARN of the IAM user. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html\">IAM ARNs</a> in the <i>IAM User Guide</i>.</p> <note> <p>If you delete the IAM user, access policies that contain this identity include an empty <code>arn</code>. You can delete the access policy for the IAM user that no longer exists.</p> </note>",
         "ListAccessPoliciesRequest$iamArn": "<p>The ARN of the IAM user. For more information, see <a href=\"https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_identifiers.html\">IAM ARNs</a> in the <i>IAM User Guide</i>. This parameter is required if you specify <code>IAM</code> for <code>identityType</code>.</p>",
         "PortalSummary$roleArn": "<p>The <a href=\"https://docs.aws.amazon.com/general/latest/gr/aws-arns-and-namespaces.html\">ARN</a> of the service role that allows the portal's users to access your AWS IoT SiteWise resources on your behalf. For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/monitor-service-role.html\">Using service roles for AWS IoT SiteWise Monitor</a> in the <i>AWS IoT SiteWise User Guide</i>.</p>",
@@ -337,6 +337,7 @@
         "GetAssetPropertyAggregatesRequest$propertyAlias": "<p>The property alias that identifies the property, such as an OPC-UA server data stream path (for example, <code>/company/windfarm/3/turbine/7/temperature</code>). For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html\">Mapping industrial data streams to asset properties</a> in the <i>AWS IoT SiteWise User Guide</i>.</p>",
         "GetAssetPropertyValueHistoryRequest$propertyAlias": "<p>The property alias that identifies the property, such as an OPC-UA server data stream path (for example, <code>/company/windfarm/3/turbine/7/temperature</code>). For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html\">Mapping industrial data streams to asset properties</a> in the <i>AWS IoT SiteWise User Guide</i>.</p>",
         "GetAssetPropertyValueRequest$propertyAlias": "<p>The property alias that identifies the property, such as an OPC-UA server data stream path (for example, <code>/company/windfarm/3/turbine/7/temperature</code>). For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html\">Mapping industrial data streams to asset properties</a> in the <i>AWS IoT SiteWise User Guide</i>.</p>",
+        "GetInterpolatedAssetPropertyValuesRequest$propertyAlias": "<p>The property alias that identifies the property, such as an OPC-UA server data stream path (for example, <code>/company/windfarm/3/turbine/7/temperature</code>). For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html\">Mapping industrial data streams to asset properties</a> in the <i>AWS IoT SiteWise User Guide</i>.</p>",
         "PutAssetPropertyValueEntry$propertyAlias": "<p>The property alias that identifies the property, such as an OPC-UA server data stream path (for example, <code>/company/windfarm/3/turbine/7/temperature</code>). For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/connect-data-streams.html\">Mapping industrial data streams to asset properties</a> in the <i>AWS IoT SiteWise User Guide</i>.</p>"
       }
     },
@@ -648,16 +649,6 @@
       }
     },
     "CreatePortalResponse": {
-      "base": null,
-      "refs": {
-      }
-    },
-    "CreatePresignedPortalUrlRequest": {
-      "base": null,
-      "refs": {
-      }
-    },
-    "CreatePresignedPortalUrlResponse": {
       "base": null,
       "refs": {
       }
@@ -1044,6 +1035,16 @@
       "refs": {
       }
     },
+    "GetInterpolatedAssetPropertyValuesRequest": {
+      "base": null,
+      "refs": {
+      }
+    },
+    "GetInterpolatedAssetPropertyValuesResponse": {
+      "base": null,
+      "refs": {
+      }
+    },
     "Greengrass": {
       "base": "<p>Contains details for a gateway that runs on AWS IoT Greengrass. To create a gateway that runs on AWS IoT Greengrass, you must add the IoT SiteWise connector to a Greengrass group and deploy it. Your Greengrass group must also have permissions to upload data to AWS IoT SiteWise. For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/gateway-connector.html\">Ingesting data using a gateway</a> in the <i>AWS IoT SiteWise User Guide</i>.</p>",
       "refs": {
@@ -1100,7 +1101,6 @@
         "CreateDashboardResponse$dashboardId": "<p>The ID of the dashboard.</p>",
         "CreateGatewayResponse$gatewayId": "<p>The ID of the gateway device. You can use this ID when you call other AWS IoT SiteWise APIs.</p>",
         "CreatePortalResponse$portalId": "<p>The ID of the created portal.</p>",
-        "CreatePresignedPortalUrlRequest$portalId": null,
         "CreateProjectRequest$portalId": "<p>The ID of the portal in which to create the project.</p>",
         "CreateProjectResponse$projectId": "<p>The ID of the project.</p>",
         "DashboardSummary$id": "<p>The ID of the dashboard.</p>",
@@ -1144,6 +1144,8 @@
         "GetAssetPropertyValueHistoryRequest$propertyId": "<p>The ID of the asset property.</p>",
         "GetAssetPropertyValueRequest$assetId": "<p>The ID of the asset.</p>",
         "GetAssetPropertyValueRequest$propertyId": "<p>The ID of the asset property.</p>",
+        "GetInterpolatedAssetPropertyValuesRequest$assetId": "<p>The ID of the asset.</p>",
+        "GetInterpolatedAssetPropertyValuesRequest$propertyId": "<p>The ID of the asset property.</p>",
         "IDs$member": null,
         "Image$id": "<p>The ID of an existing image. Specify this parameter to keep an existing image.</p>",
         "ImageLocation$id": "<p>The ID of the image.</p>",
@@ -1240,10 +1242,34 @@
       "refs": {
       }
     },
+    "InterpolatedAssetPropertyValue": {
+      "base": "<p>Contains information about an interpolated asset property value.</p>",
+      "refs": {
+        "InterpolatedAssetPropertyValues$member": null
+      }
+    },
+    "InterpolatedAssetPropertyValues": {
+      "base": null,
+      "refs": {
+        "GetInterpolatedAssetPropertyValuesResponse$interpolatedAssetPropertyValues": "<p>The requested interpolated values.</p>"
+      }
+    },
+    "InterpolationType": {
+      "base": null,
+      "refs": {
+        "GetInterpolatedAssetPropertyValuesRequest$type": "<p>The interpolation type.</p> <p>Valid values: <code>LINEAR_INTERPOLATION</code> </p>"
+      }
+    },
     "Interval": {
       "base": null,
       "refs": {
         "TumblingWindow$interval": "<p>The time interval for the tumbling window. Note that <code>w</code> represents weeks, <code>d</code> represents days, <code>h</code> represents hours, and <code>m</code> represents minutes. AWS IoT SiteWise computes the <code>1w</code> interval the end of Sunday at midnight each week (UTC), the <code>1d</code> interval at the end of each day at midnight (UTC), the <code>1h</code> interval at the end of each hour, and so on. </p> <p>When AWS IoT SiteWise aggregates data points for metric computations, the start of each interval is exclusive and the end of each interval is inclusive. AWS IoT SiteWise places the computed data point at the end of the interval.</p>"
+      }
+    },
+    "IntervalInSeconds": {
+      "base": null,
+      "refs": {
+        "GetInterpolatedAssetPropertyValuesRequest$intervalInSeconds": "<p>The time interval in seconds over which to interpolate data. Each interval starts when the previous one ends.</p>"
       }
     },
     "InvalidRequestException": {
@@ -1398,6 +1424,12 @@
         "VariableValue$hierarchyId": "<p>The ID of the hierarchy to query for the property ID. You can use the hierarchy's name instead of the hierarchy's ID.</p> <p>You use a hierarchy ID instead of a model ID because you can have several hierarchies using the same model and therefore the same <code>propertyId</code>. For example, you might have separately grouped assets that come from the same asset model. For more information, see <a href=\"https://docs.aws.amazon.com/iot-sitewise/latest/userguide/asset-hierarchies.html\">Asset hierarchies</a> in the <i>AWS IoT SiteWise User Guide</i>.</p>"
       }
     },
+    "MaxInterpolatedResults": {
+      "base": null,
+      "refs": {
+        "GetInterpolatedAssetPropertyValuesRequest$maxResults": "<p>The maximum number of results to be returned per paginated request. If not specified, the default value is 10.</p>"
+      }
+    },
     "MaxResults": {
       "base": null,
       "refs": {
@@ -1507,6 +1539,8 @@
         "GetAssetPropertyAggregatesResponse$nextToken": "<p>The token for the next set of results, or null if there are no additional results.</p>",
         "GetAssetPropertyValueHistoryRequest$nextToken": "<p>The token to be used for the next set of paginated results.</p>",
         "GetAssetPropertyValueHistoryResponse$nextToken": "<p>The token for the next set of results, or null if there are no additional results.</p>",
+        "GetInterpolatedAssetPropertyValuesRequest$nextToken": "<p>The token to be used for the next set of paginated results.</p>",
+        "GetInterpolatedAssetPropertyValuesResponse$nextToken": "<p>The token for the next set of results, or null if there are no additional results.</p>",
         "ListAccessPoliciesRequest$nextToken": "<p>The token to be used for the next set of paginated results.</p>",
         "ListAccessPoliciesResponse$nextToken": "<p>The token for the next set of results, or null if there are no additional results.</p>",
         "ListAssetModelsRequest$nextToken": "<p>The token to be used for the next set of paginated results.</p>",
@@ -1532,6 +1566,8 @@
     "OffsetInNanos": {
       "base": null,
       "refs": {
+        "GetInterpolatedAssetPropertyValuesRequest$startTimeOffsetInNanos": "<p>The nanosecond offset converted from <code>startTimeInSeconds</code>.</p>",
+        "GetInterpolatedAssetPropertyValuesRequest$endTimeOffsetInNanos": "<p>The nanosecond offset converted from <code>endTimeInSeconds</code>.</p>",
         "TimeInNanos$offsetInNanos": "<p>The nanosecond offset from <code>timeInSeconds</code>.</p>"
       }
     },
@@ -1731,6 +1767,7 @@
       "refs": {
         "AggregatedValue$quality": "<p>The quality of the aggregated data.</p>",
         "AssetPropertyValue$quality": "<p>The quality of the asset property value.</p>",
+        "GetInterpolatedAssetPropertyValuesRequest$quality": "<p>The quality of the asset property value. You can use this parameter as a filter to choose only the asset property values that have a specific quality.</p>",
         "Qualities$member": null
       }
     },
@@ -1790,12 +1827,6 @@
       "refs": {
       }
     },
-    "SessionDurationSeconds": {
-      "base": null,
-      "refs": {
-        "CreatePresignedPortalUrlRequest$sessionDurationSeconds": null
-      }
-    },
     "TagKey": {
       "base": null,
       "refs": {
@@ -1848,12 +1879,15 @@
       "base": "<p>Contains a timestamp with optional nanosecond granularity.</p>",
       "refs": {
         "AssetPropertyValue$timestamp": "<p>The timestamp of the asset property value.</p>",
+        "InterpolatedAssetPropertyValue$timestamp": null,
         "Timestamps$member": null
       }
     },
     "TimeInSeconds": {
       "base": null,
       "refs": {
+        "GetInterpolatedAssetPropertyValuesRequest$startTimeInSeconds": "<p>The exclusive start of the range from which to interpolate data, expressed in seconds in Unix epoch time.</p>",
+        "GetInterpolatedAssetPropertyValuesRequest$endTimeInSeconds": "<p>The inclusive end of the range from which to interpolate data, expressed in seconds in Unix epoch time.</p>",
         "TimeInNanos$timeInSeconds": "<p>The timestamp date, in seconds, in the Unix epoch format. Fractional nanosecond data is provided by <code>offsetInNanos</code>.</p>"
       }
     },
@@ -2038,7 +2072,6 @@
       "base": null,
       "refs": {
         "CreatePortalResponse$portalStartUrl": "<p>The URL for the AWS IoT SiteWise Monitor portal. You can use this URL to access portals that use AWS SSO for authentication. For portals that use IAM for authentication, you must use the AWS IoT SiteWise console to get a URL that you can use to access the portal.</p>",
-        "CreatePresignedPortalUrlResponse$presignedPortalUrl": null,
         "DescribePortalResponse$portalStartUrl": "<p>The URL for the AWS IoT SiteWise Monitor portal. You can use this URL to access portals that use AWS SSO for authentication. For portals that use IAM for authentication, you must use the AWS IoT SiteWise console to get a URL that you can use to access the portal.</p>",
         "ImageLocation$url": "<p>The URL where the image is available. The URL is valid for 15 minutes so that you can view and download the image</p>",
         "PortalSummary$startUrl": "<p>The URL for the AWS IoT SiteWise Monitor portal. You can use this URL to access portals that use AWS SSO for authentication. For portals that use IAM for authentication, you must use the AWS IoT SiteWise console to get a URL that you can use to access the portal.</p>"
@@ -2065,13 +2098,8 @@
     "Variant": {
       "base": "<p>Contains an asset property value (of a single type only).</p>",
       "refs": {
-        "AssetPropertyValue$value": "<p>The value of the asset property (see <code>Variant</code>).</p>"
-      }
-    },
-    "state": {
-      "base": null,
-      "refs": {
-        "CreatePresignedPortalUrlRequest$state": null
+        "AssetPropertyValue$value": "<p>The value of the asset property (see <code>Variant</code>).</p>",
+        "InterpolatedAssetPropertyValue$value": null
       }
     }
   }

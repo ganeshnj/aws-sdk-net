@@ -37,6 +37,7 @@ namespace Amazon.MediaConvert.Model
         private AvailBlanking _availBlanking;
         private EsamSettings _esam;
         private List<Input> _inputs = new List<Input>();
+        private KantarWatermarkSettings _kantarWatermark;
         private MotionImageInserter _motionImageInserter;
         private NielsenConfiguration _nielsenConfiguration;
         private NielsenNonLinearWatermarkSettings _nielsenNonLinearWatermark;
@@ -80,6 +81,7 @@ namespace Amazon.MediaConvert.Model
 
         /// <summary>
         /// Gets and sets the property Esam. Settings for Event Signaling And Messaging (ESAM).
+        /// If you don't do ad insertion, you can ignore these settings.
         /// </summary>
         public EsamSettings Esam
         {
@@ -111,9 +113,28 @@ namespace Amazon.MediaConvert.Model
         }
 
         /// <summary>
+        /// Gets and sets the property KantarWatermark. Use these settings only when you use Kantar
+        /// watermarking. Specify the values that MediaConvert uses to generate and place Kantar
+        /// watermarks in your output audio. These settings apply to every output in your job.
+        /// In addition to specifying these values, you also need to store your Kantar credentials
+        /// in AWS Secrets Manager. For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/kantar-watermarking.html.
+        /// </summary>
+        public KantarWatermarkSettings KantarWatermark
+        {
+            get { return this._kantarWatermark; }
+            set { this._kantarWatermark = value; }
+        }
+
+        // Check to see if KantarWatermark property is set
+        internal bool IsSetKantarWatermark()
+        {
+            return this._kantarWatermark != null;
+        }
+
+        /// <summary>
         /// Gets and sets the property MotionImageInserter. Overlay motion graphics on top of
         /// your video. The motion graphics that you specify here appear on all outputs in all
-        /// output groups.
+        /// output groups. For more information, see https://docs.aws.amazon.com/mediaconvert/latest/ug/motion-graphic-overlay.html.
         /// </summary>
         public MotionImageInserter MotionImageInserter
         {
@@ -191,8 +212,8 @@ namespace Amazon.MediaConvert.Model
         }
 
         /// <summary>
-        /// Gets and sets the property TimecodeConfig. Contains settings used to acquire and adjust
-        /// timecode information from inputs.
+        /// Gets and sets the property TimecodeConfig. These settings control how the service
+        /// handles timecodes throughout the job. These settings don't affect input clipping.
         /// </summary>
         public TimecodeConfig TimecodeConfig
         {

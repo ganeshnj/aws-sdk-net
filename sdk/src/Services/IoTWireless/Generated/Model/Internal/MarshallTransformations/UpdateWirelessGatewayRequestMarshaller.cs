@@ -63,7 +63,6 @@ namespace Amazon.IoTWireless.Model.Internal.MarshallTransformations
                 throw new AmazonIoTWirelessException("Request object does not have required field Id set");
             request.AddPathResource("{Id}", StringUtils.FromString(publicRequest.Id));
             request.ResourcePath = "/wireless-gateways/{Id}";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -75,10 +74,37 @@ namespace Amazon.IoTWireless.Model.Internal.MarshallTransformations
                     context.Writer.Write(publicRequest.Description);
                 }
 
+                if(publicRequest.IsSetJoinEuiFilters())
+                {
+                    context.Writer.WritePropertyName("JoinEuiFilters");
+                    context.Writer.WriteArrayStart();
+                    foreach(var publicRequestJoinEuiFiltersListValue in publicRequest.JoinEuiFilters)
+                    {
+                        context.Writer.WriteArrayStart();
+                        foreach(var publicRequestJoinEuiFiltersListValueListValue in publicRequestJoinEuiFiltersListValue)
+                        {
+                                context.Writer.Write(publicRequestJoinEuiFiltersListValueListValue);
+                        }
+                        context.Writer.WriteArrayEnd();
+                    }
+                    context.Writer.WriteArrayEnd();
+                }
+
                 if(publicRequest.IsSetName())
                 {
                     context.Writer.WritePropertyName("Name");
                     context.Writer.Write(publicRequest.Name);
+                }
+
+                if(publicRequest.IsSetNetIdFilters())
+                {
+                    context.Writer.WritePropertyName("NetIdFilters");
+                    context.Writer.WriteArrayStart();
+                    foreach(var publicRequestNetIdFiltersListValue in publicRequest.NetIdFilters)
+                    {
+                            context.Writer.Write(publicRequestNetIdFiltersListValue);
+                    }
+                    context.Writer.WriteArrayEnd();
                 }
 
         

@@ -1,4 +1,3 @@
-#if !NETSTANDARD13
 /*
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
@@ -227,6 +226,13 @@ namespace Amazon.Chime.Model
         {
             return new ListVoiceConnectorsPaginator(this.client, request);
         }
+
+        /// <summary>
+        /// Paginator for SearchAvailablePhoneNumbers operation
+        ///</summary>
+        public ISearchAvailablePhoneNumbersPaginator SearchAvailablePhoneNumbers(SearchAvailablePhoneNumbersRequest request) 
+        {
+            return new SearchAvailablePhoneNumbersPaginator(this.client, request);
+        }
     }
 }
-#endif

@@ -70,6 +70,12 @@ namespace Amazon.Macie2.Model.Internal.MarshallTransformations
                     unmarshalledObject.AccountId = unmarshaller.Unmarshall(context);
                     continue;
                 }
+                if (context.TestExpression("allowsUnencryptedObjectUploads", targetDepth))
+                {
+                    var unmarshaller = StringUnmarshaller.Instance;
+                    unmarshalledObject.AllowsUnencryptedObjectUploads = unmarshaller.Unmarshall(context);
+                    continue;
+                }
                 if (context.TestExpression("bucketArn", targetDepth))
                 {
                     var unmarshaller = StringUnmarshaller.Instance;
@@ -140,6 +146,12 @@ namespace Amazon.Macie2.Model.Internal.MarshallTransformations
                 {
                     var unmarshaller = ReplicationDetailsUnmarshaller.Instance;
                     unmarshalledObject.ReplicationDetails = unmarshaller.Unmarshall(context);
+                    continue;
+                }
+                if (context.TestExpression("serverSideEncryption", targetDepth))
+                {
+                    var unmarshaller = BucketServerSideEncryptionUnmarshaller.Instance;
+                    unmarshalledObject.ServerSideEncryption = unmarshaller.Unmarshall(context);
                     continue;
                 }
                 if (context.TestExpression("sharedAccess", targetDepth))

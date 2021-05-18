@@ -30,12 +30,25 @@ namespace Amazon.SecurityHub.Model
 {
     /// <summary>
     /// Container for the parameters to the GetMasterAccount operation.
-    /// Provides the details for the Security Hub master account for the current member account.
+    /// This method is deprecated. Instead, use <code>GetAdministratorAccount</code>.
     /// 
     ///  
     /// <para>
-    /// Can be used by both member accounts that are in an organization and accounts that
-    /// were invited manually.
+    /// The Security Hub console continues to use <code>GetMasterAccount</code>. It will eventually
+    /// change to use <code>GetAdministratorAccount</code>. Any IAM policies that specifically
+    /// control access to this function must continue to use <code>GetMasterAccount</code>.
+    /// You should also add <code>GetAdministratorAccount</code> to your policies to ensure
+    /// that the correct permissions are in place after the console begins to use <code>GetAdministratorAccount</code>.
+    /// </para>
+    ///  
+    /// <para>
+    /// Provides the details for the Security Hub administrator account for the current member
+    /// account.
+    /// </para>
+    ///  
+    /// <para>
+    /// Can be used by both member accounts that are managed using Organizations and accounts
+    /// that were invited manually.
     /// </para>
     /// </summary>
     public partial class GetMasterAccountRequest : AmazonSecurityHubRequest

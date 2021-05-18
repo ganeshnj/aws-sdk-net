@@ -62,7 +62,6 @@ namespace Amazon.SageMaker.Model.Internal.MarshallTransformations
             request.HttpMethod = "POST";
 
             request.ResourcePath = "/";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -133,6 +132,20 @@ namespace Amazon.SageMaker.Model.Internal.MarshallTransformations
                 {
                     context.Writer.WritePropertyName("EnableNetworkIsolation");
                     context.Writer.Write(publicRequest.EnableNetworkIsolation);
+                }
+
+                if(publicRequest.IsSetEnvironment())
+                {
+                    context.Writer.WritePropertyName("Environment");
+                    context.Writer.WriteObjectStart();
+                    foreach (var publicRequestEnvironmentKvp in publicRequest.Environment)
+                    {
+                        context.Writer.WritePropertyName(publicRequestEnvironmentKvp.Key);
+                        var publicRequestEnvironmentValue = publicRequestEnvironmentKvp.Value;
+
+                            context.Writer.Write(publicRequestEnvironmentValue);
+                    }
+                    context.Writer.WriteObjectEnd();
                 }
 
                 if(publicRequest.IsSetExperimentConfig())
@@ -221,6 +234,17 @@ namespace Amazon.SageMaker.Model.Internal.MarshallTransformations
 
                     var marshaller = ResourceConfigMarshaller.Instance;
                     marshaller.Marshall(publicRequest.ResourceConfig, context);
+
+                    context.Writer.WriteObjectEnd();
+                }
+
+                if(publicRequest.IsSetRetryStrategy())
+                {
+                    context.Writer.WritePropertyName("RetryStrategy");
+                    context.Writer.WriteObjectStart();
+
+                    var marshaller = RetryStrategyMarshaller.Instance;
+                    marshaller.Marshall(publicRequest.RetryStrategy, context);
 
                     context.Writer.WriteObjectEnd();
                 }

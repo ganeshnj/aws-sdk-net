@@ -1035,6 +1035,18 @@ namespace Amazon.SageMaker
         /// </summary>
         public static readonly AutoMLJobSecondaryStatus CandidateDefinitionsGenerated = new AutoMLJobSecondaryStatus("CandidateDefinitionsGenerated");
         /// <summary>
+        /// Constant Completed for AutoMLJobSecondaryStatus
+        /// </summary>
+        public static readonly AutoMLJobSecondaryStatus Completed = new AutoMLJobSecondaryStatus("Completed");
+        /// <summary>
+        /// Constant DeployingModel for AutoMLJobSecondaryStatus
+        /// </summary>
+        public static readonly AutoMLJobSecondaryStatus DeployingModel = new AutoMLJobSecondaryStatus("DeployingModel");
+        /// <summary>
+        /// Constant ExplainabilityError for AutoMLJobSecondaryStatus
+        /// </summary>
+        public static readonly AutoMLJobSecondaryStatus ExplainabilityError = new AutoMLJobSecondaryStatus("ExplainabilityError");
+        /// <summary>
         /// Constant Failed for AutoMLJobSecondaryStatus
         /// </summary>
         public static readonly AutoMLJobSecondaryStatus Failed = new AutoMLJobSecondaryStatus("Failed");
@@ -1043,6 +1055,10 @@ namespace Amazon.SageMaker
         /// </summary>
         public static readonly AutoMLJobSecondaryStatus FeatureEngineering = new AutoMLJobSecondaryStatus("FeatureEngineering");
         /// <summary>
+        /// Constant GeneratingExplainabilityReport for AutoMLJobSecondaryStatus
+        /// </summary>
+        public static readonly AutoMLJobSecondaryStatus GeneratingExplainabilityReport = new AutoMLJobSecondaryStatus("GeneratingExplainabilityReport");
+        /// <summary>
         /// Constant MaxAutoMLJobRuntimeReached for AutoMLJobSecondaryStatus
         /// </summary>
         public static readonly AutoMLJobSecondaryStatus MaxAutoMLJobRuntimeReached = new AutoMLJobSecondaryStatus("MaxAutoMLJobRuntimeReached");
@@ -1050,6 +1066,10 @@ namespace Amazon.SageMaker
         /// Constant MaxCandidatesReached for AutoMLJobSecondaryStatus
         /// </summary>
         public static readonly AutoMLJobSecondaryStatus MaxCandidatesReached = new AutoMLJobSecondaryStatus("MaxCandidatesReached");
+        /// <summary>
+        /// Constant ModelDeploymentError for AutoMLJobSecondaryStatus
+        /// </summary>
+        public static readonly AutoMLJobSecondaryStatus ModelDeploymentError = new AutoMLJobSecondaryStatus("ModelDeploymentError");
         /// <summary>
         /// Constant ModelTuning for AutoMLJobSecondaryStatus
         /// </summary>
@@ -3988,6 +4008,56 @@ namespace Amazon.SageMaker
         /// <param name="value">The string value to convert to the constant class.</param>
         /// <returns></returns>
         public static implicit operator ImageVersionStatus(string value)
+        {
+            return FindValue(value);
+        }
+    }
+
+
+    /// <summary>
+    /// Constants used for properties of type InferenceExecutionMode.
+    /// </summary>
+    public class InferenceExecutionMode : ConstantClass
+    {
+
+        /// <summary>
+        /// Constant Direct for InferenceExecutionMode
+        /// </summary>
+        public static readonly InferenceExecutionMode Direct = new InferenceExecutionMode("Direct");
+        /// <summary>
+        /// Constant Serial for InferenceExecutionMode
+        /// </summary>
+        public static readonly InferenceExecutionMode Serial = new InferenceExecutionMode("Serial");
+
+        /// <summary>
+        /// This constant constructor does not need to be called if the constant
+        /// you are attempting to use is already defined as a static instance of 
+        /// this class.
+        /// This constructor should be used to construct constants that are not
+        /// defined as statics, for instance if attempting to use a feature that is
+        /// newer than the current version of the SDK.
+        /// </summary>
+        public InferenceExecutionMode(string value)
+            : base(value)
+        {
+        }
+
+        /// <summary>
+        /// Finds the constant for the unique value.
+        /// </summary>
+        /// <param name="value">The unique value for the constant</param>
+        /// <returns>The constant for the unique value</returns>
+        public static InferenceExecutionMode FindValue(string value)
+        {
+            return FindValue<InferenceExecutionMode>(value);
+        }
+
+        /// <summary>
+        /// Utility method to convert strings to the constant class.
+        /// </summary>
+        /// <param name="value">The string value to convert to the constant class.</param>
+        /// <returns></returns>
+        public static implicit operator InferenceExecutionMode(string value)
         {
             return FindValue(value);
         }
@@ -8093,6 +8163,10 @@ namespace Amazon.SageMaker
         /// </summary>
         public static readonly SecondaryStatus PreparingTrainingStack = new SecondaryStatus("PreparingTrainingStack");
         /// <summary>
+        /// Constant Restarting for SecondaryStatus
+        /// </summary>
+        public static readonly SecondaryStatus Restarting = new SecondaryStatus("Restarting");
+        /// <summary>
         /// Constant Starting for SecondaryStatus
         /// </summary>
         public static readonly SecondaryStatus Starting = new SecondaryStatus("Starting");
@@ -8896,6 +8970,10 @@ namespace Amazon.SageMaker
         /// Constant Ml_c5 for TargetDevice
         /// </summary>
         public static readonly TargetDevice Ml_c5 = new TargetDevice("ml_c5");
+        /// <summary>
+        /// Constant Ml_eia2 for TargetDevice
+        /// </summary>
+        public static readonly TargetDevice Ml_eia2 = new TargetDevice("ml_eia2");
         /// <summary>
         /// Constant Ml_g4dn for TargetDevice
         /// </summary>

@@ -62,7 +62,6 @@ namespace Amazon.ECS.Model.Internal.MarshallTransformations
             request.HttpMethod = "POST";
 
             request.ResourcePath = "/";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -88,6 +87,17 @@ namespace Amazon.ECS.Model.Internal.MarshallTransformations
                 {
                     context.Writer.WritePropertyName("cpu");
                     context.Writer.Write(publicRequest.Cpu);
+                }
+
+                if(publicRequest.IsSetEphemeralStorage())
+                {
+                    context.Writer.WritePropertyName("ephemeralStorage");
+                    context.Writer.WriteObjectStart();
+
+                    var marshaller = EphemeralStorageMarshaller.Instance;
+                    marshaller.Marshall(publicRequest.EphemeralStorage, context);
+
+                    context.Writer.WriteObjectEnd();
                 }
 
                 if(publicRequest.IsSetExecutionRoleArn())

@@ -1,4 +1,3 @@
-#if !NETSTANDARD13
 /*
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
@@ -35,6 +34,11 @@ namespace Amazon.IoTSiteWise.Model
         /// Paginator for GetAssetPropertyValueHistory operation
         ///</summary>
         IGetAssetPropertyValueHistoryPaginator GetAssetPropertyValueHistory(GetAssetPropertyValueHistoryRequest request);
+
+        /// <summary>
+        /// Paginator for GetInterpolatedAssetPropertyValues operation
+        ///</summary>
+        IGetInterpolatedAssetPropertyValuesPaginator GetInterpolatedAssetPropertyValues(GetInterpolatedAssetPropertyValuesRequest request);
 
         /// <summary>
         /// Paginator for ListAccessPolicies operation
@@ -87,4 +91,3 @@ namespace Amazon.IoTSiteWise.Model
         IListProjectsPaginator ListProjects(ListProjectsRequest request);
     }
 }
-#endif

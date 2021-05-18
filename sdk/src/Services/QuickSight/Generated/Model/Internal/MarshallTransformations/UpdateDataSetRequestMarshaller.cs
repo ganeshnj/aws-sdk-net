@@ -66,7 +66,6 @@ namespace Amazon.QuickSight.Model.Internal.MarshallTransformations
                 throw new AmazonQuickSightException("Request object does not have required field DataSetId set");
             request.AddPathResource("{DataSetId}", StringUtils.FromString(publicRequest.DataSetId));
             request.ResourcePath = "/accounts/{AwsAccountId}/data-sets/{DataSetId}";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -102,6 +101,25 @@ namespace Amazon.QuickSight.Model.Internal.MarshallTransformations
                         context.Writer.WriteObjectEnd();
                     }
                     context.Writer.WriteArrayEnd();
+                }
+
+                if(publicRequest.IsSetFieldFolders())
+                {
+                    context.Writer.WritePropertyName("FieldFolders");
+                    context.Writer.WriteObjectStart();
+                    foreach (var publicRequestFieldFoldersKvp in publicRequest.FieldFolders)
+                    {
+                        context.Writer.WritePropertyName(publicRequestFieldFoldersKvp.Key);
+                        var publicRequestFieldFoldersValue = publicRequestFieldFoldersKvp.Value;
+
+                        context.Writer.WriteObjectStart();
+
+                        var marshaller = FieldFolderMarshaller.Instance;
+                        marshaller.Marshall(publicRequestFieldFoldersValue, context);
+
+                        context.Writer.WriteObjectEnd();
+                    }
+                    context.Writer.WriteObjectEnd();
                 }
 
                 if(publicRequest.IsSetImportMode())

@@ -44,8 +44,8 @@ namespace Amazon.CodeArtifact.Model
         /// <summary>
         /// Gets and sets the property Assets. 
         /// <para>
-        ///  The returned list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html">
-        /// <code>AssetSummary</code> </a> objects. 
+        ///  The returned list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_AssetSummary.html">AssetSummary</a>
+        /// objects. 
         /// </para>
         /// </summary>
         public List<AssetSummary> Assets
@@ -95,11 +95,6 @@ namespace Amazon.CodeArtifact.Model
         ///  </li> <li> 
         /// <para>
         ///  A Python package does not contain a corresponding component, so Python packages do
-        /// not have a namespace. 
-        /// </para>
-        ///  </li> <li> 
-        /// <para>
-        ///  A NuGet package does not contain a corresponding component, so NuGet packages do
         /// not have a namespace. 
         /// </para>
         ///  </li> </ul>

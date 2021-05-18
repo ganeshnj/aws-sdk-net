@@ -1,4 +1,3 @@
-#if !NETSTANDARD13
 /*
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
@@ -30,6 +29,11 @@ namespace Amazon.DevOpsGuru.Model
         /// Paginator for DescribeResourceCollectionHealth operation
         ///</summary>
         IDescribeResourceCollectionHealthPaginator DescribeResourceCollectionHealth(DescribeResourceCollectionHealthRequest request);
+
+        /// <summary>
+        /// Paginator for GetCostEstimation operation
+        ///</summary>
+        IGetCostEstimationPaginator GetCostEstimation(GetCostEstimationRequest request);
 
         /// <summary>
         /// Paginator for GetResourceCollection operation
@@ -67,4 +71,3 @@ namespace Amazon.DevOpsGuru.Model
         ISearchInsightsPaginator SearchInsights(SearchInsightsRequest request);
     }
 }
-#endif

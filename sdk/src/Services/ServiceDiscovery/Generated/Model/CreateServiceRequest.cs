@@ -84,13 +84,14 @@ namespace Amazon.ServiceDiscovery.Model
         private string _name;
         private string _namespaceId;
         private List<Tag> _tags = new List<Tag>();
+        private ServiceTypeOption _type;
 
         /// <summary>
         /// Gets and sets the property CreatorRequestId. 
         /// <para>
         /// A unique string that identifies the request and that allows failed <code>CreateService</code>
-        /// requests to be retried without the risk of executing the operation twice. <code>CreatorRequestId</code>
-        /// can be any unique string, for example, a date/time stamp.
+        /// requests to be retried without the risk of running the operation twice. <code>CreatorRequestId</code>
+        /// can be any unique string, for example, a date/timestamp.
         /// </para>
         /// </summary>
         [AWSProperty(Max=64)]
@@ -211,16 +212,16 @@ namespace Amazon.ServiceDiscovery.Model
         ///  
         /// <para>
         /// If you want AWS Cloud Map to create an <code>SRV</code> record when you register an
-        /// instance, and if you're using a system that requires a specific <code>SRV</code> format,
+        /// instance and you're using a system that requires a specific <code>SRV</code> format,
         /// such as <a href="http://www.haproxy.org/">HAProxy</a>, specify the following for <code>Name</code>:
         /// </para>
         ///  <ul> <li> 
         /// <para>
-        /// Start the name with an underscore (_), such as <code>_exampleservice</code> 
+        /// Start the name with an underscore (_), such as <code>_exampleservice</code>.
         /// </para>
         ///  </li> <li> 
         /// <para>
-        /// End the name with <i>._protocol</i>, such as <code>._tcp</code> 
+        /// End the name with <i>._protocol</i>, such as <code>._tcp</code>.
         /// </para>
         ///  </li> </ul> 
         /// <para>
@@ -232,6 +233,15 @@ namespace Amazon.ServiceDiscovery.Model
         /// <para>
         ///  <code>_exampleservice._tcp.example.com</code> 
         /// </para>
+        ///  <note> 
+        /// <para>
+        /// For services that are accessible by DNS queries, you can't create multiple services
+        /// with names that differ only by case (such as EXAMPLE and example). Otherwise, these
+        /// services have the same DNS name and can't be distinguished. However, if you use a
+        /// namespace that's only accessible by API calls, then you can create services that with
+        /// names that differ only by case.
+        /// </para>
+        ///  </note>
         /// </summary>
         [AWSProperty(Required=true)]
         public string Name
@@ -249,7 +259,9 @@ namespace Amazon.ServiceDiscovery.Model
         /// <summary>
         /// Gets and sets the property NamespaceId. 
         /// <para>
-        /// The ID of the namespace that you want to use to create the service.
+        /// The ID of the namespace that you want to use to create the service. The namespace
+        /// ID must be specified, but it can be specified either here or in the <code>DnsConfig</code>
+        /// object.
         /// </para>
         /// </summary>
         [AWSProperty(Max=64)]
@@ -268,9 +280,9 @@ namespace Amazon.ServiceDiscovery.Model
         /// <summary>
         /// Gets and sets the property Tags. 
         /// <para>
-        /// The tags to add to the service. Each tag consists of a key and an optional value,
-        /// both of which you define. Tag keys can have a maximum character length of 128 characters,
-        /// and tag values can have a maximum length of 256 characters.
+        /// The tags to add to the service. Each tag consists of a key and an optional value that
+        /// you define. Tags keys can be up to 128 characters in length, and tag values can be
+        /// up to 256 characters in length.
         /// </para>
         /// </summary>
         [AWSProperty(Min=0, Max=200)]
@@ -284,6 +296,26 @@ namespace Amazon.ServiceDiscovery.Model
         internal bool IsSetTags()
         {
             return this._tags != null && this._tags.Count > 0; 
+        }
+
+        /// <summary>
+        /// Gets and sets the property Type. 
+        /// <para>
+        /// If present, specifies that the service instances are only discoverable using the <code>DiscoverInstances</code>
+        /// API operation. No DNS records will be registered for the service instances. The only
+        /// valid value is <code>HTTP</code>.
+        /// </para>
+        /// </summary>
+        public ServiceTypeOption Type
+        {
+            get { return this._type; }
+            set { this._type = value; }
+        }
+
+        // Check to see if Type property is set
+        internal bool IsSetType()
+        {
+            return this._type != null;
         }
 
     }

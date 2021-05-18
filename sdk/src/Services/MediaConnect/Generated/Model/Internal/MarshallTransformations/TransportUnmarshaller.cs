@@ -82,6 +82,18 @@ namespace Amazon.MediaConnect.Model.Internal.MarshallTransformations
                     unmarshalledObject.MaxLatency = unmarshaller.Unmarshall(context);
                     continue;
                 }
+                if (context.TestExpression("maxSyncBuffer", targetDepth))
+                {
+                    var unmarshaller = IntUnmarshaller.Instance;
+                    unmarshalledObject.MaxSyncBuffer = unmarshaller.Unmarshall(context);
+                    continue;
+                }
+                if (context.TestExpression("minLatency", targetDepth))
+                {
+                    var unmarshaller = IntUnmarshaller.Instance;
+                    unmarshalledObject.MinLatency = unmarshaller.Unmarshall(context);
+                    continue;
+                }
                 if (context.TestExpression("protocol", targetDepth))
                 {
                     var unmarshaller = StringUnmarshaller.Instance;

@@ -40,9 +40,6 @@ namespace Amazon.MTurk
     ///
     /// Amazon Mechanical Turk API Reference
     /// </summary>
-#if NETSTANDARD13
-    [Obsolete("Support for .NET Standard 1.3 is in maintenance mode and will only receive critical bug fixes and security patches. Visit https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/migration-from-net-standard-1-3.html for further details.")]
-#endif
     public partial class AmazonMTurkClient : AmazonServiceClient, IAmazonMTurk
     {
         private static IServiceMetadata serviceMetadata = new AmazonMTurkMetadata();
@@ -206,6 +203,24 @@ namespace Amazon.MTurk
         }
 
         #endregion
+#if AWS_ASYNC_ENUMERABLES_API
+        private IMTurkPaginatorFactory _paginators;
+
+        /// <summary>
+        /// Paginators for the service
+        /// </summary>
+        public IMTurkPaginatorFactory Paginators 
+        {
+            get 
+            {
+                if (this._paginators == null) 
+                {
+                    this._paginators = new MTurkPaginatorFactory(this);
+                }
+                return this._paginators;
+            }
+        }
+#endif
 
         #region Overrides
 
@@ -988,8 +1003,12 @@ namespace Amazon.MTurk
 
 
         /// <summary>
-        /// The <code>GetAccountBalance</code> operation retrieves the amount of money in your
-        /// Amazon Mechanical Turk account.
+        /// The <code>GetAccountBalance</code> operation retrieves the Prepaid HITs balance in
+        /// your Amazon Mechanical Turk account if you are a Prepaid Requester. Alternatively,
+        /// this operation will retrieve the remaining available AWS Billing usage if you have
+        /// enabled AWS Billing. Note: If you have enabled AWS Billing and still have a remaining
+        /// Prepaid HITs balance, this balance can be viewed on the My Account page in the Requester
+        /// console.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the GetAccountBalance service method.</param>
         /// <param name="cancellationToken">

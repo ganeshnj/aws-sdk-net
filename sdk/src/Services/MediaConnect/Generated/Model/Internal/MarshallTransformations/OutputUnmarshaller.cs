@@ -94,10 +94,22 @@ namespace Amazon.MediaConnect.Model.Internal.MarshallTransformations
                     unmarshalledObject.EntitlementArn = unmarshaller.Unmarshall(context);
                     continue;
                 }
+                if (context.TestExpression("listenerAddress", targetDepth))
+                {
+                    var unmarshaller = StringUnmarshaller.Instance;
+                    unmarshalledObject.ListenerAddress = unmarshaller.Unmarshall(context);
+                    continue;
+                }
                 if (context.TestExpression("mediaLiveInputArn", targetDepth))
                 {
                     var unmarshaller = StringUnmarshaller.Instance;
                     unmarshalledObject.MediaLiveInputArn = unmarshaller.Unmarshall(context);
+                    continue;
+                }
+                if (context.TestExpression("mediaStreamOutputConfigurations", targetDepth))
+                {
+                    var unmarshaller = new ListUnmarshaller<MediaStreamOutputConfiguration, MediaStreamOutputConfigurationUnmarshaller>(MediaStreamOutputConfigurationUnmarshaller.Instance);
+                    unmarshalledObject.MediaStreamOutputConfigurations = unmarshaller.Unmarshall(context);
                     continue;
                 }
                 if (context.TestExpression("name", targetDepth))

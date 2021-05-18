@@ -1,4 +1,3 @@
-#if !NETSTANDARD13
 /*
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
@@ -41,6 +40,12 @@ namespace Amazon.ConfigService.Model
         /// Enumerable containing all full responses for the operation
         /// </summary>
         public IPaginatedEnumerable<SelectAggregateResourceConfigResponse> Responses => new PaginatedResponse<SelectAggregateResourceConfigResponse>(this);
+
+        /// <summary>
+        /// Enumerable containing all of the Results
+        /// </summary>
+        public IPaginatedEnumerable<string> Results => 
+            new PaginatedResultKeyResponse<SelectAggregateResourceConfigResponse, string>(this, (i) => i.Results);
 
         internal SelectAggregateResourceConfigPaginator(IAmazonConfigService client, SelectAggregateResourceConfigRequest request)
         {
@@ -90,4 +95,3 @@ namespace Amazon.ConfigService.Model
 #endif
     }
 }
-#endif

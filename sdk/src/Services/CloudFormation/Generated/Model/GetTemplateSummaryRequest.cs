@@ -48,10 +48,51 @@ namespace Amazon.CloudFormation.Model
     /// </summary>
     public partial class GetTemplateSummaryRequest : AmazonCloudFormationRequest
     {
+        private CallAs _callAs;
         private string _stackName;
         private string _stackSetName;
         private string _templateBody;
         private string _templateURL;
+
+        /// <summary>
+        /// Gets and sets the property CallAs. 
+        /// <para>
+        /// [Service-managed permissions] Specifies whether you are acting as an account administrator
+        /// in the organization's management account or as a delegated administrator in a member
+        /// account.
+        /// </para>
+        ///  
+        /// <para>
+        /// By default, <code>SELF</code> is specified. Use <code>SELF</code> for stack sets with
+        /// self-managed permissions.
+        /// </para>
+        ///  <ul> <li> 
+        /// <para>
+        /// If you are signed in to the management account, specify <code>SELF</code>.
+        /// </para>
+        ///  </li> <li> 
+        /// <para>
+        /// If you are signed in to a delegated administrator account, specify <code>DELEGATED_ADMIN</code>.
+        /// </para>
+        ///  
+        /// <para>
+        /// Your AWS account must be registered as a delegated administrator in the management
+        /// account. For more information, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/stacksets-orgs-delegated-admin.html">Register
+        /// a delegated administrator</a> in the <i>AWS CloudFormation User Guide</i>.
+        /// </para>
+        ///  </li> </ul>
+        /// </summary>
+        public CallAs CallAs
+        {
+            get { return this._callAs; }
+            set { this._callAs = value; }
+        }
+
+        // Check to see if CallAs property is set
+        internal bool IsSetCallAs()
+        {
+            return this._callAs != null;
+        }
 
         /// <summary>
         /// Gets and sets the property StackName. 
@@ -132,8 +173,8 @@ namespace Amazon.CloudFormation.Model
         /// Gets and sets the property TemplateURL. 
         /// <para>
         /// Location of file containing the template body. The URL must point to a template (max
-        /// size: 460,800 bytes) that is located in an Amazon S3 bucket. For more information
-        /// about templates, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
+        /// size: 460,800 bytes) that is located in an Amazon S3 bucket or a Systems Manager document.
+        /// For more information about templates, see <a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/template-anatomy.html">Template
         /// Anatomy</a> in the AWS CloudFormation User Guide.
         /// </para>
         ///  

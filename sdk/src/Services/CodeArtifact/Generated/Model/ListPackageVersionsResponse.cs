@@ -87,10 +87,6 @@ namespace Amazon.CodeArtifact.Model
         /// <para>
         ///  <code>maven</code> 
         /// </para>
-        ///  </li> <li> 
-        /// <para>
-        ///  <code>nuget</code> 
-        /// </para>
         ///  </li> </ul>
         /// </summary>
         public PackageFormat Format
@@ -122,11 +118,6 @@ namespace Amazon.CodeArtifact.Model
         ///  </li> <li> 
         /// <para>
         ///  A Python package does not contain a corresponding component, so Python packages do
-        /// not have a namespace. 
-        /// </para>
-        ///  </li> <li> 
-        /// <para>
-        ///  A NuGet package does not contain a corresponding component, so NuGet packages do
         /// not have a namespace. 
         /// </para>
         ///  </li> </ul>
@@ -185,8 +176,8 @@ namespace Amazon.CodeArtifact.Model
         /// <summary>
         /// Gets and sets the property Versions. 
         /// <para>
-        ///  The returned list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html">
-        /// <code>PackageVersionSummary</code> </a> objects. 
+        ///  The returned list of <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionSummary.html">PackageVersionSummary</a>
+        /// objects. 
         /// </para>
         /// </summary>
         public List<PackageVersionSummary> Versions

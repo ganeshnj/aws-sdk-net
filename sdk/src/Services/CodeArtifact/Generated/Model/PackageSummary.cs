@@ -29,9 +29,8 @@ using Amazon.Runtime.Internal;
 namespace Amazon.CodeArtifact.Model
 {
     /// <summary>
-    /// Details about a package, including its format, namespace, and name. The <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackages.html">
-    /// <code>ListPackages</code> </a> operation returns a list of <code>PackageSummary</code>
-    /// objects.
+    /// Details about a package, including its format, namespace, and name. The <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_ListPackages.html">ListPackages</a>
+    /// operation returns a list of <code>PackageSummary</code> objects.
     /// </summary>
     public partial class PackageSummary
     {
@@ -55,10 +54,6 @@ namespace Amazon.CodeArtifact.Model
         ///  </li> <li> 
         /// <para>
         ///  <code>maven</code> 
-        /// </para>
-        ///  </li> <li> 
-        /// <para>
-        ///  <code>nuget</code> 
         /// </para>
         ///  </li> </ul>
         /// </summary>
@@ -91,11 +86,6 @@ namespace Amazon.CodeArtifact.Model
         ///  </li> <li> 
         /// <para>
         ///  A Python package does not contain a corresponding component, so Python packages do
-        /// not have a namespace. 
-        /// </para>
-        ///  </li> <li> 
-        /// <para>
-        ///  A NuGet package does not contain a corresponding component, so NuGet packages do
         /// not have a namespace. 
         /// </para>
         ///  </li> </ul>

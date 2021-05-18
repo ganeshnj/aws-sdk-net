@@ -36,17 +36,15 @@ namespace Amazon.ECS
     /// Amazon Elastic Container Service (Amazon ECS) is a highly scalable, fast, container
     /// management service that makes it easy to run, stop, and manage Docker containers on
     /// a cluster. You can host your cluster on a serverless infrastructure that is managed
-    /// by Amazon ECS by launching your services or tasks using the Fargate launch type. For
-    /// more control, you can host your tasks on a cluster of Amazon Elastic Compute Cloud
-    /// (Amazon EC2) instances that you manage by using the EC2 launch type. For more information
-    /// about launch types, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/launch_types.html">Amazon
-    /// ECS Launch Types</a>.
+    /// by Amazon ECS by launching your services or tasks on AWS Fargate. For more control,
+    /// you can host your tasks on a cluster of Amazon Elastic Compute Cloud (Amazon EC2)
+    /// instances that you manage.
     /// </para>
     ///  
     /// <para>
-    /// Amazon ECS lets you launch and stop container-based applications with simple API calls,
-    /// allows you to get the state of your cluster from a centralized service, and gives
-    /// you access to many familiar Amazon EC2 features.
+    /// Amazon ECS makes it easy to launch and stop container-based applications with simple
+    /// API calls, allows you to get the state of your cluster from a centralized service,
+    /// and gives you access to many familiar Amazon EC2 features.
     /// </para>
     ///  
     /// <para>
@@ -56,9 +54,6 @@ namespace Amazon.ECS
     /// management systems or worry about scaling your management infrastructure.
     /// </para>
     /// </summary>
-#if NETSTANDARD13
-    [Obsolete("Support for .NET Standard 1.3 is in maintenance mode and will only receive critical bug fixes and security patches. Visit https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/migration-from-net-standard-1-3.html for further details.")]
-#endif
     public partial interface IAmazonECS : IAmazonService, IDisposable
     {
 #if AWS_ASYNC_ENUMERABLES_API
@@ -1023,6 +1018,46 @@ namespace Amazon.ECS
 
         #endregion
                 
+        #region  ExecuteCommand
+
+
+
+        /// <summary>
+        /// Runs a command remotely on a container within a task.
+        /// </summary>
+        /// <param name="request">Container for the necessary parameters to execute the ExecuteCommand service method.</param>
+        /// <param name="cancellationToken">
+        ///     A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+        /// </param>
+        /// 
+        /// <returns>The response from the ExecuteCommand service method, as returned by ECS.</returns>
+        /// <exception cref="Amazon.ECS.Model.AccessDeniedException">
+        /// You do not have authorization to perform the requested action.
+        /// </exception>
+        /// <exception cref="Amazon.ECS.Model.ClientException">
+        /// These errors are usually caused by a client action, such as using an action or resource
+        /// on behalf of a user that doesn't have permissions to use the action or resource, or
+        /// specifying an identifier that is not valid.
+        /// </exception>
+        /// <exception cref="Amazon.ECS.Model.ClusterNotFoundException">
+        /// The specified cluster could not be found. You can view your available clusters with
+        /// <a>ListClusters</a>. Amazon ECS clusters are Region-specific.
+        /// </exception>
+        /// <exception cref="Amazon.ECS.Model.InvalidParameterException">
+        /// The specified parameter is invalid. Review the available parameters for the API request.
+        /// </exception>
+        /// <exception cref="Amazon.ECS.Model.ServerException">
+        /// These errors are usually caused by a server issue.
+        /// </exception>
+        /// <exception cref="Amazon.ECS.Model.TargetNotConnectedException">
+        /// The target container is not properly configured with the execute command agent or
+        /// the container is no longer active or running.
+        /// </exception>
+        /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/ExecuteCommand">REST API Reference for ExecuteCommand Operation</seealso>
+        Task<ExecuteCommandResponse> ExecuteCommandAsync(ExecuteCommandRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
+
+        #endregion
+                
         #region  ListAccountSettings
 
 
@@ -1903,6 +1938,39 @@ namespace Amazon.ECS
 
         #endregion
                 
+        #region  UpdateCluster
+
+
+
+        /// <summary>
+        /// Updates the cluster.
+        /// </summary>
+        /// <param name="request">Container for the necessary parameters to execute the UpdateCluster service method.</param>
+        /// <param name="cancellationToken">
+        ///     A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+        /// </param>
+        /// 
+        /// <returns>The response from the UpdateCluster service method, as returned by ECS.</returns>
+        /// <exception cref="Amazon.ECS.Model.ClientException">
+        /// These errors are usually caused by a client action, such as using an action or resource
+        /// on behalf of a user that doesn't have permissions to use the action or resource, or
+        /// specifying an identifier that is not valid.
+        /// </exception>
+        /// <exception cref="Amazon.ECS.Model.ClusterNotFoundException">
+        /// The specified cluster could not be found. You can view your available clusters with
+        /// <a>ListClusters</a>. Amazon ECS clusters are Region-specific.
+        /// </exception>
+        /// <exception cref="Amazon.ECS.Model.InvalidParameterException">
+        /// The specified parameter is invalid. Review the available parameters for the API request.
+        /// </exception>
+        /// <exception cref="Amazon.ECS.Model.ServerException">
+        /// These errors are usually caused by a server issue.
+        /// </exception>
+        /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/ecs-2014-11-13/UpdateCluster">REST API Reference for UpdateCluster Operation</seealso>
+        Task<UpdateClusterResponse> UpdateClusterAsync(UpdateClusterRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
+
+        #endregion
+                
         #region  UpdateClusterSettings
 
 
@@ -1947,12 +2015,21 @@ namespace Amazon.ECS
         /// your container instance was launched with the Amazon ECS-optimized AMI or another
         /// operating system.
         /// 
-        ///  
+        ///  <note> 
         /// <para>
-        ///  <code>UpdateContainerAgent</code> requires the Amazon ECS-optimized AMI or Amazon
-        /// Linux with the <code>ecs-init</code> service installed and running. For help updating
-        /// the Amazon ECS container agent on other operating systems, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent">Manually
-        /// Updating the Amazon ECS Container Agent</a> in the <i>Amazon Elastic Container Service
+        /// The <code>UpdateContainerAgent</code> API isn't supported for container instances
+        /// using the Amazon ECS-optimized Amazon Linux 2 (arm64) AMI. To update the container
+        /// agent, you can update the <code>ecs-init</code> package which will update the agent.
+        /// For more information, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/agent-update-ecs-ami.html">Updating
+        /// the Amazon ECS container agent</a> in the <i>Amazon Elastic Container Service Developer
+        /// Guide</i>.
+        /// </para>
+        ///  </note> 
+        /// <para>
+        /// The <code>UpdateContainerAgent</code> API requires an Amazon ECS-optimized AMI or
+        /// Amazon Linux AMI with the <code>ecs-init</code> service installed and running. For
+        /// help updating the Amazon ECS container agent on other operating systems, see <a href="https://docs.aws.amazon.com/AmazonECS/latest/developerguide/ecs-agent-update.html#manually_update_agent">Manually
+        /// updating the Amazon ECS container agent</a> in the <i>Amazon Elastic Container Service
         /// Developer Guide</i>.
         /// </para>
         /// </summary>

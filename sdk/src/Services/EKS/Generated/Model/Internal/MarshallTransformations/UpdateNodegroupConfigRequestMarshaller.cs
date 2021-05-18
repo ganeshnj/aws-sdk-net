@@ -66,7 +66,6 @@ namespace Amazon.EKS.Model.Internal.MarshallTransformations
                 throw new AmazonEKSException("Request object does not have required field NodegroupName set");
             request.AddPathResource("{nodegroupName}", StringUtils.FromString(publicRequest.NodegroupName));
             request.ResourcePath = "/clusters/{name}/node-groups/{nodegroupName}/update-config";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -101,6 +100,17 @@ namespace Amazon.EKS.Model.Internal.MarshallTransformations
 
                     var marshaller = NodegroupScalingConfigMarshaller.Instance;
                     marshaller.Marshall(publicRequest.ScalingConfig, context);
+
+                    context.Writer.WriteObjectEnd();
+                }
+
+                if(publicRequest.IsSetTaints())
+                {
+                    context.Writer.WritePropertyName("taints");
+                    context.Writer.WriteObjectStart();
+
+                    var marshaller = UpdateTaintsPayloadMarshaller.Instance;
+                    marshaller.Marshall(publicRequest.Taints, context);
 
                     context.Writer.WriteObjectEnd();
                 }

@@ -132,6 +132,16 @@ namespace Amazon.SageMaker
         /// add the tags when you first create the tuning job by specifying them in the <code>Tags</code>
         /// parameter of <a>CreateHyperParameterTuningJob</a> 
         /// </para>
+        ///  </note> <note> 
+        /// <para>
+        /// Tags that you add to a SageMaker Studio Domain or User Profile by calling this API
+        /// are also added to any Apps that the Domain or User Profile launches after you call
+        /// this API, but not to Apps that the Domain or User Profile launched before you called
+        /// this API. To make sure that the tags associated with a Domain or User Profile are
+        /// also added to all Apps that the Domain or User Profile launches, add the tags when
+        /// you first create the Domain or User Profile by specifying them in the <code>Tags</code>
+        /// parameter of <a>CreateDomain</a> or <a>CreateUserProfile</a>.
+        /// </para>
         ///  </note>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the AddTags service method.</param>
@@ -162,6 +172,16 @@ namespace Amazon.SageMaker
         /// job are also added to all training jobs that the hyperparameter tuning job launches,
         /// add the tags when you first create the tuning job by specifying them in the <code>Tags</code>
         /// parameter of <a>CreateHyperParameterTuningJob</a> 
+        /// </para>
+        ///  </note> <note> 
+        /// <para>
+        /// Tags that you add to a SageMaker Studio Domain or User Profile by calling this API
+        /// are also added to any Apps that the Domain or User Profile launches after you call
+        /// this API, but not to Apps that the Domain or User Profile launched before you called
+        /// this API. To make sure that the tags associated with a Domain or User Profile are
+        /// also added to all Apps that the Domain or User Profile launches, add the tags when
+        /// you first create the Domain or User Profile by specifying them in the <code>Tags</code>
+        /// parameter of <a>CreateDomain</a> or <a>CreateUserProfile</a>.
         /// </para>
         ///  </note>
         /// </summary>
@@ -230,6 +250,15 @@ namespace Amazon.SageMaker
         /// action or activity. For example, a model deployment or an HPO job. Generally, an action
         /// involves at least one input or output artifact. For more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html">Amazon
         /// SageMaker ML Lineage Tracking</a>.
+        /// 
+        ///  <note> 
+        /// <para>
+        ///  <code>CreateAction</code> can only be invoked from within an SageMaker managed environment.
+        /// This includes SageMaker training jobs, processing jobs, transform jobs, and SageMaker
+        /// notebooks. A call to <code>CreateAction</code> from outside one of these environments
+        /// results in an error.
+        /// </para>
+        ///  </note>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the CreateAction service method.</param>
         /// 
@@ -248,6 +277,15 @@ namespace Amazon.SageMaker
         /// action or activity. For example, a model deployment or an HPO job. Generally, an action
         /// involves at least one input or output artifact. For more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html">Amazon
         /// SageMaker ML Lineage Tracking</a>.
+        /// 
+        ///  <note> 
+        /// <para>
+        ///  <code>CreateAction</code> can only be invoked from within an SageMaker managed environment.
+        /// This includes SageMaker training jobs, processing jobs, transform jobs, and SageMaker
+        /// notebooks. A call to <code>CreateAction</code> from outside one of these environments
+        /// results in an error.
+        /// </para>
+        ///  </note>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the CreateAction service method.</param>
         /// <param name="cancellationToken">
@@ -298,10 +336,10 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Creates a running App for the specified UserProfile. Supported Apps are JupyterServer
-        /// and KernelGateway. This operation is automatically invoked by Amazon SageMaker Studio
-        /// upon access to the associated Domain, and when new kernel configurations are selected
-        /// by the user. A user may have multiple Apps active simultaneously.
+        /// Creates a running app for the specified UserProfile. Supported apps are <code>JupyterServer</code>
+        /// and <code>KernelGateway</code>. This operation is automatically invoked by Amazon
+        /// SageMaker Studio upon access to the associated Domain, and when new kernel configurations
+        /// are selected by the user. A user may have multiple Apps active simultaneously.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the CreateApp service method.</param>
         /// 
@@ -319,10 +357,10 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Creates a running App for the specified UserProfile. Supported Apps are JupyterServer
-        /// and KernelGateway. This operation is automatically invoked by Amazon SageMaker Studio
-        /// upon access to the associated Domain, and when new kernel configurations are selected
-        /// by the user. A user may have multiple Apps active simultaneously.
+        /// Creates a running app for the specified UserProfile. Supported apps are <code>JupyterServer</code>
+        /// and <code>KernelGateway</code>. This operation is automatically invoked by Amazon
+        /// SageMaker Studio upon access to the associated Domain, and when new kernel configurations
+        /// are selected by the user. A user may have multiple Apps active simultaneously.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the CreateApp service method.</param>
         /// <param name="cancellationToken">
@@ -388,6 +426,15 @@ namespace Amazon.SageMaker
         /// a URI addressable object or data. Some examples are the S3 URI of a dataset and the
         /// ECR registry path of an image. For more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html">Amazon
         /// SageMaker ML Lineage Tracking</a>.
+        /// 
+        ///  <note> 
+        /// <para>
+        ///  <code>CreateArtifact</code> can only be invoked from within an SageMaker managed
+        /// environment. This includes SageMaker training jobs, processing jobs, transform jobs,
+        /// and SageMaker notebooks. A call to <code>CreateArtifact</code> from outside one of
+        /// these environments results in an error.
+        /// </para>
+        ///  </note>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the CreateArtifact service method.</param>
         /// 
@@ -406,6 +453,15 @@ namespace Amazon.SageMaker
         /// a URI addressable object or data. Some examples are the S3 URI of a dataset and the
         /// ECR registry path of an image. For more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html">Amazon
         /// SageMaker ML Lineage Tracking</a>.
+        /// 
+        ///  <note> 
+        /// <para>
+        ///  <code>CreateArtifact</code> can only be invoked from within an SageMaker managed
+        /// environment. This includes SageMaker training jobs, processing jobs, transform jobs,
+        /// and SageMaker notebooks. A call to <code>CreateArtifact</code> from outside one of
+        /// these environments results in an error.
+        /// </para>
+        ///  </note>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the CreateArtifact service method.</param>
         /// <param name="cancellationToken">
@@ -430,14 +486,12 @@ namespace Amazon.SageMaker
         /// 
         ///  
         /// <para>
-        /// Find the best performing model after you run an Autopilot job by calling . Deploy
-        /// that model by following the steps described in <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html">Step
-        /// 6.1: Deploy the Model to Amazon SageMaker Hosting Services</a>.
+        /// Find the best performing model after you run an Autopilot job by calling .
         /// </para>
         ///  
         /// <para>
-        /// For information about how to use Autopilot, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html">
-        /// Automate Model Development with Amazon SageMaker Autopilot</a>.
+        /// For information about how to use Autopilot, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html">Automate
+        /// Model Development with Amazon SageMaker Autopilot</a>.
         /// </para>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the CreateAutoMLJob service method.</param>
@@ -460,14 +514,12 @@ namespace Amazon.SageMaker
         /// 
         ///  
         /// <para>
-        /// Find the best performing model after you run an Autopilot job by calling . Deploy
-        /// that model by following the steps described in <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html">Step
-        /// 6.1: Deploy the Model to Amazon SageMaker Hosting Services</a>.
+        /// Find the best performing model after you run an Autopilot job by calling .
         /// </para>
         ///  
         /// <para>
-        /// For information about how to use Autopilot, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html">
-        /// Automate Model Development with Amazon SageMaker Autopilot</a>.
+        /// For information about how to use Autopilot, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html">Automate
+        /// Model Development with Amazon SageMaker Autopilot</a>.
         /// </para>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the CreateAutoMLJob service method.</param>
@@ -672,6 +724,15 @@ namespace Amazon.SageMaker
         /// logical grouping of other tracking or experiment entities. Some examples are an endpoint
         /// and a model package. For more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html">Amazon
         /// SageMaker ML Lineage Tracking</a>.
+        /// 
+        ///  <note> 
+        /// <para>
+        ///  <code>CreateContext</code> can only be invoked from within an SageMaker managed environment.
+        /// This includes SageMaker training jobs, processing jobs, transform jobs, and SageMaker
+        /// notebooks. A call to <code>CreateContext</code> from outside one of these environments
+        /// results in an error.
+        /// </para>
+        ///  </note>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the CreateContext service method.</param>
         /// 
@@ -690,6 +751,15 @@ namespace Amazon.SageMaker
         /// logical grouping of other tracking or experiment entities. Some examples are an endpoint
         /// and a model package. For more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/lineage-tracking.html">Amazon
         /// SageMaker ML Lineage Tracking</a>.
+        /// 
+        ///  <note> 
+        /// <para>
+        ///  <code>CreateContext</code> can only be invoked from within an SageMaker managed environment.
+        /// This includes SageMaker training jobs, processing jobs, transform jobs, and SageMaker
+        /// notebooks. A call to <code>CreateContext</code> from outside one of these environments
+        /// results in an error.
+        /// </para>
+        ///  </note>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the CreateContext service method.</param>
         /// <param name="cancellationToken">
@@ -1378,10 +1448,9 @@ namespace Amazon.SageMaker
         /// </para>
         ///  
         /// <para>
-        /// When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK, all experiments,
-        /// trials, and trial components are automatically tracked, logged, and indexed. When
-        /// you use the AWS SDK for Python (Boto), you must use the logging APIs provided by the
-        /// SDK.
+        /// When you use SageMaker Studio or the SageMaker Python SDK, all experiments, trials,
+        /// and trial components are automatically tracked, logged, and indexed. When you use
+        /// the AWS SDK for Python (Boto), you must use the logging APIs provided by the SDK.
         /// </para>
         ///  
         /// <para>
@@ -1427,10 +1496,9 @@ namespace Amazon.SageMaker
         /// </para>
         ///  
         /// <para>
-        /// When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK, all experiments,
-        /// trials, and trial components are automatically tracked, logged, and indexed. When
-        /// you use the AWS SDK for Python (Boto), you must use the logging APIs provided by the
-        /// SDK.
+        /// When you use SageMaker Studio or the SageMaker Python SDK, all experiments, trials,
+        /// and trial components are automatically tracked, logged, and indexed. When you use
+        /// the AWS SDK for Python (Boto), you must use the logging APIs provided by the SDK.
         /// </para>
         ///  
         /// <para>
@@ -2171,7 +2239,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the CreateModelPackage service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceLimitExceededException">
         /// You have exceeded an Amazon SageMaker resource limit. For example, you might have
@@ -2215,7 +2284,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the CreateModelPackage service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceLimitExceededException">
         /// You have exceeded an Amazon SageMaker resource limit. For example, you might have
@@ -2646,9 +2716,10 @@ namespace Amazon.SageMaker
         /// 
         ///  <note> 
         /// <para>
-        /// The URL that you get from a call to <code>CreatePresignedDomainUrl</code> is valid
-        /// only for 5 minutes. If you try to use the URL after the 5-minute limit expires, you
-        /// are directed to the AWS console sign-in page.
+        /// The URL that you get from a call to <code>CreatePresignedDomainUrl</code> has a default
+        /// timeout of 5 minutes. You can configure this value using <code>ExpiresInSeconds</code>.
+        /// If you try to use the URL after the timeout limit expires, you are directed to the
+        /// AWS console sign-in page.
         /// </para>
         ///  </note>
         /// </summary>
@@ -2672,9 +2743,10 @@ namespace Amazon.SageMaker
         /// 
         ///  <note> 
         /// <para>
-        /// The URL that you get from a call to <code>CreatePresignedDomainUrl</code> is valid
-        /// only for 5 minutes. If you try to use the URL after the 5-minute limit expires, you
-        /// are directed to the AWS console sign-in page.
+        /// The URL that you get from a call to <code>CreatePresignedDomainUrl</code> has a default
+        /// timeout of 5 minutes. You can configure this value using <code>ExpiresInSeconds</code>.
+        /// If you try to use the URL after the timeout limit expires, you are directed to the
+        /// AWS console sign-in page.
         /// </para>
         ///  </note>
         /// </summary>
@@ -2902,7 +2974,7 @@ namespace Amazon.SageMaker
         ///  <code>OutputDataConfig</code> - Identifies the Amazon S3 bucket where you want Amazon
         /// SageMaker to save the results of model training. 
         /// </para>
-        ///   </li> <li> 
+        ///  </li> <li> 
         /// <para>
         ///  <code>ResourceConfig</code> - Identifies the resources, ML compute instances, and
         /// ML storage volumes to deploy for model training. In distributed training, you specify
@@ -2926,7 +2998,16 @@ namespace Amazon.SageMaker
         /// <para>
         ///  <code>StoppingCondition</code> - To help cap training costs, use <code>MaxRuntimeInSeconds</code>
         /// to set a time limit for training. Use <code>MaxWaitTimeInSeconds</code> to specify
-        /// how long you are willing to wait for a managed spot training job to complete. 
+        /// how long a managed spot training job has to complete. 
+        /// </para>
+        ///  </li> <li> 
+        /// <para>
+        ///  <code>Environment</code> - The environment variables to set in the Docker container.
+        /// </para>
+        ///  </li> <li> 
+        /// <para>
+        ///  <code>RetryStrategy</code> - The number of times to retry the job when the job fails
+        /// due to an <code>InternalServerError</code>.
         /// </para>
         ///  </li> </ul> 
         /// <para>
@@ -2989,7 +3070,7 @@ namespace Amazon.SageMaker
         ///  <code>OutputDataConfig</code> - Identifies the Amazon S3 bucket where you want Amazon
         /// SageMaker to save the results of model training. 
         /// </para>
-        ///   </li> <li> 
+        ///  </li> <li> 
         /// <para>
         ///  <code>ResourceConfig</code> - Identifies the resources, ML compute instances, and
         /// ML storage volumes to deploy for model training. In distributed training, you specify
@@ -3013,7 +3094,16 @@ namespace Amazon.SageMaker
         /// <para>
         ///  <code>StoppingCondition</code> - To help cap training costs, use <code>MaxRuntimeInSeconds</code>
         /// to set a time limit for training. Use <code>MaxWaitTimeInSeconds</code> to specify
-        /// how long you are willing to wait for a managed spot training job to complete. 
+        /// how long a managed spot training job has to complete. 
+        /// </para>
+        ///  </li> <li> 
+        /// <para>
+        ///  <code>Environment</code> - The environment variables to set in the Docker container.
+        /// </para>
+        ///  </li> <li> 
+        /// <para>
+        ///  <code>RetryStrategy</code> - The number of times to retry the job when the job fails
+        /// due to an <code>InternalServerError</code>.
         /// </para>
         ///  </li> </ul> 
         /// <para>
@@ -3178,16 +3268,14 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Creates an Amazon SageMaker <i>trial</i>. A trial is a set of steps called <i>trial
-        /// components</i> that produce a machine learning model. A trial is part of a single
-        /// Amazon SageMaker <i>experiment</i>.
+        /// Creates an SageMaker <i>trial</i>. A trial is a set of steps called <i>trial components</i>
+        /// that produce a machine learning model. A trial is part of a single SageMaker <i>experiment</i>.
         /// 
         ///  
         /// <para>
-        /// When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK, all experiments,
-        /// trials, and trial components are automatically tracked, logged, and indexed. When
-        /// you use the AWS SDK for Python (Boto), you must use the logging APIs provided by the
-        /// SDK.
+        /// When you use SageMaker Studio or the SageMaker Python SDK, all experiments, trials,
+        /// and trial components are automatically tracked, logged, and indexed. When you use
+        /// the AWS SDK for Python (Boto), you must use the logging APIs provided by the SDK.
         /// </para>
         ///  
         /// <para>
@@ -3216,16 +3304,14 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Creates an Amazon SageMaker <i>trial</i>. A trial is a set of steps called <i>trial
-        /// components</i> that produce a machine learning model. A trial is part of a single
-        /// Amazon SageMaker <i>experiment</i>.
+        /// Creates an SageMaker <i>trial</i>. A trial is a set of steps called <i>trial components</i>
+        /// that produce a machine learning model. A trial is part of a single SageMaker <i>experiment</i>.
         /// 
         ///  
         /// <para>
-        /// When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK, all experiments,
-        /// trials, and trial components are automatically tracked, logged, and indexed. When
-        /// you use the AWS SDK for Python (Boto), you must use the logging APIs provided by the
-        /// SDK.
+        /// When you use SageMaker Studio or the SageMaker Python SDK, all experiments, trials,
+        /// and trial components are automatically tracked, logged, and indexed. When you use
+        /// the AWS SDK for Python (Boto), you must use the logging APIs provided by the SDK.
         /// </para>
         ///  
         /// <para>
@@ -3270,10 +3356,9 @@ namespace Amazon.SageMaker
         /// </para>
         ///  
         /// <para>
-        /// When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK, all experiments,
-        /// trials, and trial components are automatically tracked, logged, and indexed. When
-        /// you use the AWS SDK for Python (Boto), you must use the logging APIs provided by the
-        /// SDK.
+        /// When you use SageMaker Studio or the SageMaker Python SDK, all experiments, trials,
+        /// and trial components are automatically tracked, logged, and indexed. When you use
+        /// the AWS SDK for Python (Boto), you must use the logging APIs provided by the SDK.
         /// </para>
         ///  
         /// <para>
@@ -3282,10 +3367,10 @@ namespace Amazon.SageMaker
         /// </para>
         ///  <note> 
         /// <para>
-        ///  <code>CreateTrialComponent</code> can only be invoked from within an Amazon SageMaker
-        /// managed environment. This includes Amazon SageMaker training jobs, processing jobs,
-        /// transform jobs, and Amazon SageMaker notebooks. A call to <code>CreateTrialComponent</code>
-        /// from outside one of these environments results in an error.
+        ///  <code>CreateTrialComponent</code> can only be invoked from within an SageMaker managed
+        /// environment. This includes SageMaker training jobs, processing jobs, transform jobs,
+        /// and SageMaker notebooks. A call to <code>CreateTrialComponent</code> from outside
+        /// one of these environments results in an error.
         /// </para>
         ///  </note>
         /// </summary>
@@ -3312,10 +3397,9 @@ namespace Amazon.SageMaker
         /// </para>
         ///  
         /// <para>
-        /// When you use Amazon SageMaker Studio or the Amazon SageMaker Python SDK, all experiments,
-        /// trials, and trial components are automatically tracked, logged, and indexed. When
-        /// you use the AWS SDK for Python (Boto), you must use the logging APIs provided by the
-        /// SDK.
+        /// When you use SageMaker Studio or the SageMaker Python SDK, all experiments, trials,
+        /// and trial components are automatically tracked, logged, and indexed. When you use
+        /// the AWS SDK for Python (Boto), you must use the logging APIs provided by the SDK.
         /// </para>
         ///  
         /// <para>
@@ -3324,10 +3408,10 @@ namespace Amazon.SageMaker
         /// </para>
         ///  <note> 
         /// <para>
-        ///  <code>CreateTrialComponent</code> can only be invoked from within an Amazon SageMaker
-        /// managed environment. This includes Amazon SageMaker training jobs, processing jobs,
-        /// transform jobs, and Amazon SageMaker notebooks. A call to <code>CreateTrialComponent</code>
-        /// from outside one of these environments results in an error.
+        ///  <code>CreateTrialComponent</code> can only be invoked from within an SageMaker managed
+        /// environment. This includes SageMaker training jobs, processing jobs, transform jobs,
+        /// and SageMaker notebooks. A call to <code>CreateTrialComponent</code> from outside
+        /// one of these environments results in an error.
         /// </para>
         ///  </note>
         /// </summary>
@@ -4012,8 +4096,8 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Deletes an Amazon SageMaker experiment. All trials associated with the experiment
-        /// must be deleted first. Use the <a>ListTrials</a> API to get a list of the trials associated
+        /// Deletes an SageMaker experiment. All trials associated with the experiment must be
+        /// deleted first. Use the <a>ListTrials</a> API to get a list of the trials associated
         /// with the experiment.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DeleteExperiment service method.</param>
@@ -4028,8 +4112,8 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Deletes an Amazon SageMaker experiment. All trials associated with the experiment
-        /// must be deleted first. Use the <a>ListTrials</a> API to get a list of the trials associated
+        /// Deletes an SageMaker experiment. All trials associated with the experiment must be
+        /// deleted first. Use the <a>ListTrials</a> API to get a list of the trials associated
         /// with the experiment.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DeleteExperiment service method.</param>
@@ -4387,7 +4471,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the DeleteModelPackage service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DeleteModelPackage">REST API Reference for DeleteModelPackage Operation</seealso>
         DeleteModelPackageResponse DeleteModelPackage(DeleteModelPackageRequest request);
@@ -4411,7 +4496,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the DeleteModelPackage service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/sagemaker-2017-07-24/DeleteModelPackage">REST API Reference for DeleteModelPackage Operation</seealso>
         Task<DeleteModelPackageResponse> DeleteModelPackageAsync(DeleteModelPackageRequest request, CancellationToken cancellationToken = default(CancellationToken));
@@ -4622,7 +4708,9 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Deletes a pipeline if there are no in-progress executions.
+        /// Deletes a pipeline if there are no running instances of the pipeline. To delete a
+        /// pipeline, you must stop all running instances of the pipeline using the <code>StopPipelineExecution</code>
+        /// API. When you delete a pipeline, all instances of the pipeline are deleted.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DeletePipeline service method.</param>
         /// 
@@ -4636,7 +4724,9 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Deletes a pipeline if there are no in-progress executions.
+        /// Deletes a pipeline if there are no running instances of the pipeline. To delete a
+        /// pipeline, you must stop all running instances of the pipeline using the <code>StopPipelineExecution</code>
+        /// API. When you delete a pipeline, all instances of the pipeline are deleted.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DeletePipeline service method.</param>
         /// <param name="cancellationToken">
@@ -4696,6 +4786,12 @@ namespace Amazon.SageMaker
         /// tags are not removed from training jobs that the hyperparameter tuning job launched
         /// before you called this API.
         /// </para>
+        ///  </note> <note> 
+        /// <para>
+        /// When you call this API to delete tags from a SageMaker Studio Domain or User Profile,
+        /// the deleted tags are not removed from Apps that the SageMaker Studio Domain or User
+        /// Profile launched before you called this API.
+        /// </para>
         ///  </note>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DeleteTags service method.</param>
@@ -4718,6 +4814,12 @@ namespace Amazon.SageMaker
         /// When you call this API to delete tags from a hyperparameter tuning job, the deleted
         /// tags are not removed from training jobs that the hyperparameter tuning job launched
         /// before you called this API.
+        /// </para>
+        ///  </note> <note> 
+        /// <para>
+        /// When you call this API to delete tags from a SageMaker Studio Domain or User Profile,
+        /// the deleted tags are not removed from Apps that the SageMaker Studio Domain or User
+        /// Profile launched before you called this API.
         /// </para>
         ///  </note>
         /// </summary>
@@ -5138,7 +5240,7 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Returns information about an Amazon SageMaker job.
+        /// Returns information about an Amazon SageMaker AutoML job.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DescribeAutoMLJob service method.</param>
         /// 
@@ -5152,7 +5254,7 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Returns information about an Amazon SageMaker job.
+        /// Returns information about an Amazon SageMaker AutoML job.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DescribeAutoMLJob service method.</param>
         /// <param name="cancellationToken">
@@ -6280,7 +6382,16 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Returns information about a training job.
+        /// Returns information about a training job. 
+        /// 
+        ///  
+        /// <para>
+        /// Some of the attributes below only appear if the training job successfully starts.
+        /// If the training job fails, <code>TrainingJobStatus</code> is <code>Failed</code> and,
+        /// depending on the <code>FailureReason</code>, attributes like <code>TrainingStartTime</code>,
+        /// <code>TrainingTimeInSeconds</code>, <code>TrainingEndTime</code>, and <code>BillableTimeInSeconds</code>
+        /// may not be present in the response.
+        /// </para>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DescribeTrainingJob service method.</param>
         /// 
@@ -6294,7 +6405,16 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// Returns information about a training job.
+        /// Returns information about a training job. 
+        /// 
+        ///  
+        /// <para>
+        /// Some of the attributes below only appear if the training job successfully starts.
+        /// If the training job fails, <code>TrainingJobStatus</code> is <code>Failed</code> and,
+        /// depending on the <code>FailureReason</code>, attributes like <code>TrainingStartTime</code>,
+        /// <code>TrainingTimeInSeconds</code>, <code>TrainingEndTime</code>, and <code>BillableTimeInSeconds</code>
+        /// may not be present in the response.
+        /// </para>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the DescribeTrainingJob service method.</param>
         /// <param name="cancellationToken">
@@ -6986,7 +7106,7 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// List the Candidates created for the job.
+        /// List the candidates created for the job.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the ListCandidatesForAutoMLJob service method.</param>
         /// 
@@ -7000,7 +7120,7 @@ namespace Amazon.SageMaker
 
 
         /// <summary>
-        /// List the Candidates created for the job.
+        /// List the candidates created for the job.
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the ListCandidatesForAutoMLJob service method.</param>
         /// <param name="cancellationToken">
@@ -8123,6 +8243,38 @@ namespace Amazon.SageMaker
 
         /// <summary>
         /// Lists training jobs.
+        /// 
+        ///  <note> 
+        /// <para>
+        /// When <code>StatusEquals</code> and <code>MaxResults</code> are set at the same time,
+        /// the <code>MaxResults</code> number of training jobs are first retrieved ignoring the
+        /// <code>StatusEquals</code> parameter and then they are filtered by the <code>StatusEquals</code>
+        /// parameter, which is returned as a response.
+        /// </para>
+        ///  
+        /// <para>
+        /// For example, if <code>ListTrainingJobs</code> is invoked with the following parameters:
+        /// </para>
+        ///  
+        /// <para>
+        ///  <code>{ ... MaxResults: 100, StatusEquals: InProgress ... }</code> 
+        /// </para>
+        ///  
+        /// <para>
+        /// First, 100 trainings jobs with any status, including those other than <code>InProgress</code>,
+        /// are selected (sorted according to the creation time, from the most current to the
+        /// oldest). Next, those with a status of <code>InProgress</code> are returned.
+        /// </para>
+        ///  
+        /// <para>
+        /// You can quickly test the API using the following AWS CLI code.
+        /// </para>
+        ///  
+        /// <para>
+        ///  <code>aws sagemaker list-training-jobs --max-results 100 --status-equals InProgress</code>
+        /// 
+        /// </para>
+        ///  </note>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the ListTrainingJobs service method.</param>
         /// 
@@ -8134,6 +8286,38 @@ namespace Amazon.SageMaker
 
         /// <summary>
         /// Lists training jobs.
+        /// 
+        ///  <note> 
+        /// <para>
+        /// When <code>StatusEquals</code> and <code>MaxResults</code> are set at the same time,
+        /// the <code>MaxResults</code> number of training jobs are first retrieved ignoring the
+        /// <code>StatusEquals</code> parameter and then they are filtered by the <code>StatusEquals</code>
+        /// parameter, which is returned as a response.
+        /// </para>
+        ///  
+        /// <para>
+        /// For example, if <code>ListTrainingJobs</code> is invoked with the following parameters:
+        /// </para>
+        ///  
+        /// <para>
+        ///  <code>{ ... MaxResults: 100, StatusEquals: InProgress ... }</code> 
+        /// </para>
+        ///  
+        /// <para>
+        /// First, 100 trainings jobs with any status, including those other than <code>InProgress</code>,
+        /// are selected (sorted according to the creation time, from the most current to the
+        /// oldest). Next, those with a status of <code>InProgress</code> are returned.
+        /// </para>
+        ///  
+        /// <para>
+        /// You can quickly test the API using the following AWS CLI code.
+        /// </para>
+        ///  
+        /// <para>
+        ///  <code>aws sagemaker list-training-jobs --max-results 100 --status-equals InProgress</code>
+        /// 
+        /// </para>
+        ///  </note>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the ListTrainingJobs service method.</param>
         /// <param name="cancellationToken">
@@ -9160,7 +9344,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateAction service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.
@@ -9180,7 +9365,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateAction service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.
@@ -9234,7 +9420,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateArtifact service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.
@@ -9254,7 +9441,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateArtifact service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.
@@ -9302,7 +9490,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateContext service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.
@@ -9322,7 +9511,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateContext service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.
@@ -9579,7 +9769,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateExperiment service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.
@@ -9600,7 +9791,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateExperiment service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.
@@ -9912,7 +10104,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateTrial service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.
@@ -9932,7 +10125,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateTrial service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.
@@ -9952,7 +10146,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateTrialComponent service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.
@@ -9972,7 +10167,8 @@ namespace Amazon.SageMaker
         /// 
         /// <returns>The response from the UpdateTrialComponent service method, as returned by SageMaker.</returns>
         /// <exception cref="Amazon.SageMaker.Model.ConflictException">
-        /// There was a conflict when you attempted to modify an experiment, trial, or trial component.
+        /// There was a conflict when you attempted to modify a SageMaker entity such as an <code>Experiment</code>
+        /// or <code>Artifact</code>.
         /// </exception>
         /// <exception cref="Amazon.SageMaker.Model.ResourceNotFoundException">
         /// Resource being access is not found.

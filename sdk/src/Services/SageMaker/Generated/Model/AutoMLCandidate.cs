@@ -30,11 +30,12 @@ namespace Amazon.SageMaker.Model
 {
     /// <summary>
     /// An Autopilot job returns recommendations, or candidates. Each candidate has futher
-    /// details about the steps involed, and the status.
+    /// details about the steps involved and the status.
     /// </summary>
     public partial class AutoMLCandidate
     {
         private string _candidateName;
+        private CandidateProperties _candidateProperties;
         private CandidateStatus _candidateStatus;
         private List<AutoMLCandidateStep> _candidateSteps = new List<AutoMLCandidateStep>();
         private DateTime? _creationTime;
@@ -48,7 +49,7 @@ namespace Amazon.SageMaker.Model
         /// <summary>
         /// Gets and sets the property CandidateName. 
         /// <para>
-        /// The candidate name.
+        /// The name of the candidate.
         /// </para>
         /// </summary>
         [AWSProperty(Required=true, Min=1, Max=64)]
@@ -62,6 +63,24 @@ namespace Amazon.SageMaker.Model
         internal bool IsSetCandidateName()
         {
             return this._candidateName != null;
+        }
+
+        /// <summary>
+        /// Gets and sets the property CandidateProperties. 
+        /// <para>
+        /// The AutoML candidate's properties.
+        /// </para>
+        /// </summary>
+        public CandidateProperties CandidateProperties
+        {
+            get { return this._candidateProperties; }
+            set { this._candidateProperties = value; }
+        }
+
+        // Check to see if CandidateProperties property is set
+        internal bool IsSetCandidateProperties()
+        {
+            return this._candidateProperties != null;
         }
 
         /// <summary>
@@ -86,7 +105,7 @@ namespace Amazon.SageMaker.Model
         /// <summary>
         /// Gets and sets the property CandidateSteps. 
         /// <para>
-        /// The candidate's steps.
+        /// Information about the candidate's steps.
         /// </para>
         /// </summary>
         [AWSProperty(Required=true)]
@@ -176,7 +195,7 @@ namespace Amazon.SageMaker.Model
         /// <summary>
         /// Gets and sets the property InferenceContainers. 
         /// <para>
-        /// The inference containers.
+        /// Information about the inference container definitions.
         /// </para>
         /// </summary>
         [AWSProperty(Max=5)]
@@ -214,7 +233,7 @@ namespace Amazon.SageMaker.Model
         /// <summary>
         /// Gets and sets the property ObjectiveStatus. 
         /// <para>
-        /// The objective status.
+        /// The objective's status.
         /// </para>
         /// </summary>
         [AWSProperty(Required=true)]

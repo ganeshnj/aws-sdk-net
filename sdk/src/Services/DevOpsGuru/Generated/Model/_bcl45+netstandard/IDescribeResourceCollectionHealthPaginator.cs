@@ -1,4 +1,3 @@
-#if !NETSTANDARD13
 /*
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
@@ -35,6 +34,10 @@ namespace Amazon.DevOpsGuru.Model
         /// Enumerable containing all of the CloudFormation
         /// </summary>
         IPaginatedEnumerable<CloudFormationHealth> CloudFormation { get; }
+
+        /// <summary>
+        /// Enumerable containing all of the Service
+        /// </summary>
+        IPaginatedEnumerable<ServiceHealth> Service { get; }
     }
 }
-#endif

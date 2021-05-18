@@ -63,7 +63,6 @@ namespace Amazon.CustomerProfiles.Model.Internal.MarshallTransformations
                 throw new AmazonCustomerProfilesException("Request object does not have required field DomainName set");
             request.AddPathResource("{DomainName}", StringUtils.FromString(publicRequest.DomainName));
             request.ResourcePath = "/domains/{DomainName}";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -85,6 +84,17 @@ namespace Amazon.CustomerProfiles.Model.Internal.MarshallTransformations
                 {
                     context.Writer.WritePropertyName("DefaultExpirationDays");
                     context.Writer.Write(publicRequest.DefaultExpirationDays);
+                }
+
+                if(publicRequest.IsSetMatching())
+                {
+                    context.Writer.WritePropertyName("Matching");
+                    context.Writer.WriteObjectStart();
+
+                    var marshaller = MatchingRequestMarshaller.Instance;
+                    marshaller.Marshall(publicRequest.Matching, context);
+
+                    context.Writer.WriteObjectEnd();
                 }
 
                 if(publicRequest.IsSetTags())

@@ -81,9 +81,25 @@ namespace Amazon.TranscribeService
     {
 
         /// <summary>
+        /// Constant EnAU for CLMLanguageCode
+        /// </summary>
+        public static readonly CLMLanguageCode EnAU = new CLMLanguageCode("en-AU");
+        /// <summary>
+        /// Constant EnGB for CLMLanguageCode
+        /// </summary>
+        public static readonly CLMLanguageCode EnGB = new CLMLanguageCode("en-GB");
+        /// <summary>
         /// Constant EnUS for CLMLanguageCode
         /// </summary>
         public static readonly CLMLanguageCode EnUS = new CLMLanguageCode("en-US");
+        /// <summary>
+        /// Constant EsUS for CLMLanguageCode
+        /// </summary>
+        public static readonly CLMLanguageCode EsUS = new CLMLanguageCode("es-US");
+        /// <summary>
+        /// Constant HiIN for CLMLanguageCode
+        /// </summary>
+        public static readonly CLMLanguageCode HiIN = new CLMLanguageCode("hi-IN");
 
         /// <summary>
         /// This constant constructor does not need to be called if the constant
@@ -370,6 +386,52 @@ namespace Amazon.TranscribeService
         /// <param name="value">The string value to convert to the constant class.</param>
         /// <returns></returns>
         public static implicit operator MediaFormat(string value)
+        {
+            return FindValue(value);
+        }
+    }
+
+
+    /// <summary>
+    /// Constants used for properties of type MedicalContentIdentificationType.
+    /// </summary>
+    public class MedicalContentIdentificationType : ConstantClass
+    {
+
+        /// <summary>
+        /// Constant PHI for MedicalContentIdentificationType
+        /// </summary>
+        public static readonly MedicalContentIdentificationType PHI = new MedicalContentIdentificationType("PHI");
+
+        /// <summary>
+        /// This constant constructor does not need to be called if the constant
+        /// you are attempting to use is already defined as a static instance of 
+        /// this class.
+        /// This constructor should be used to construct constants that are not
+        /// defined as statics, for instance if attempting to use a feature that is
+        /// newer than the current version of the SDK.
+        /// </summary>
+        public MedicalContentIdentificationType(string value)
+            : base(value)
+        {
+        }
+
+        /// <summary>
+        /// Finds the constant for the unique value.
+        /// </summary>
+        /// <param name="value">The unique value for the constant</param>
+        /// <returns>The constant for the unique value</returns>
+        public static MedicalContentIdentificationType FindValue(string value)
+        {
+            return FindValue<MedicalContentIdentificationType>(value);
+        }
+
+        /// <summary>
+        /// Utility method to convert strings to the constant class.
+        /// </summary>
+        /// <param name="value">The string value to convert to the constant class.</param>
+        /// <returns></returns>
+        public static implicit operator MedicalContentIdentificationType(string value)
         {
             return FindValue(value);
         }
@@ -744,6 +806,10 @@ namespace Amazon.TranscribeService
         /// Constant Remove for VocabularyFilterMethod
         /// </summary>
         public static readonly VocabularyFilterMethod Remove = new VocabularyFilterMethod("remove");
+        /// <summary>
+        /// Constant Tag for VocabularyFilterMethod
+        /// </summary>
+        public static readonly VocabularyFilterMethod Tag = new VocabularyFilterMethod("tag");
 
         /// <summary>
         /// This constant constructor does not need to be called if the constant

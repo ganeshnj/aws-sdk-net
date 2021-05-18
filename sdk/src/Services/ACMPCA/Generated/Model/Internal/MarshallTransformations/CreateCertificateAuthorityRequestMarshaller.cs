@@ -62,7 +62,6 @@ namespace Amazon.ACMPCA.Model.Internal.MarshallTransformations
             request.HttpMethod = "POST";
 
             request.ResourcePath = "/";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -89,6 +88,12 @@ namespace Amazon.ACMPCA.Model.Internal.MarshallTransformations
                 {
                     context.Writer.WritePropertyName("IdempotencyToken");
                     context.Writer.Write(publicRequest.IdempotencyToken);
+                }
+
+                if(publicRequest.IsSetKeyStorageSecurityStandard())
+                {
+                    context.Writer.WritePropertyName("KeyStorageSecurityStandard");
+                    context.Writer.Write(publicRequest.KeyStorageSecurityStandard);
                 }
 
                 if(publicRequest.IsSetRevocationConfiguration())

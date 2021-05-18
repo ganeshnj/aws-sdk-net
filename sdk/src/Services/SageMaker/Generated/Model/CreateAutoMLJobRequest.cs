@@ -34,14 +34,12 @@ namespace Amazon.SageMaker.Model
     /// 
     ///  
     /// <para>
-    /// Find the best performing model after you run an Autopilot job by calling . Deploy
-    /// that model by following the steps described in <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/ex1-deploy-model.html">Step
-    /// 6.1: Deploy the Model to Amazon SageMaker Hosting Services</a>.
+    /// Find the best performing model after you run an Autopilot job by calling .
     /// </para>
     ///  
     /// <para>
-    /// For information about how to use Autopilot, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html">
-    /// Automate Model Development with Amazon SageMaker Autopilot</a>.
+    /// For information about how to use Autopilot, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development.html">Automate
+    /// Model Development with Amazon SageMaker Autopilot</a>.
     /// </para>
     /// </summary>
     public partial class CreateAutoMLJobRequest : AmazonSageMakerRequest
@@ -51,6 +49,7 @@ namespace Amazon.SageMaker.Model
         private AutoMLJobObjective _autoMLJobObjective;
         private bool? _generateCandidateDefinitionsOnly;
         private List<AutoMLChannel> _inputDataConfig = new List<AutoMLChannel>();
+        private ModelDeployConfig _modelDeployConfig;
         private AutoMLOutputDataConfig _outputDataConfig;
         private ProblemType _problemType;
         private string _roleArn;
@@ -59,7 +58,8 @@ namespace Amazon.SageMaker.Model
         /// <summary>
         /// Gets and sets the property AutoMLJobConfig. 
         /// <para>
-        /// Contains CompletionCriteria and SecurityConfig.
+        /// Contains <code>CompletionCriteria</code> and <code>SecurityConfig</code> settings
+        /// for the AutoML job.
         /// </para>
         /// </summary>
         public AutoMLJobConfig AutoMLJobConfig
@@ -77,7 +77,7 @@ namespace Amazon.SageMaker.Model
         /// <summary>
         /// Gets and sets the property AutoMLJobName. 
         /// <para>
-        /// Identifies an Autopilot job. Must be unique to your account and is case-insensitive.
+        /// Identifies an Autopilot job. The name must be unique to your account and is case-insensitive.
         /// </para>
         /// </summary>
         [AWSProperty(Required=true, Min=1, Max=32)]
@@ -96,9 +96,9 @@ namespace Amazon.SageMaker.Model
         /// <summary>
         /// Gets and sets the property AutoMLJobObjective. 
         /// <para>
-        /// Defines the objective of a an AutoML job. You provide a <a>AutoMLJobObjective$MetricName</a>
-        /// and Autopilot infers whether to minimize or maximize it. If a metric is not specified,
-        /// the most commonly used ObjectiveMetric for problem type is automaically selected.
+        /// Defines the objective metric used to measure the predictive quality of an AutoML job.
+        /// You provide an <a>AutoMLJobObjective$MetricName</a> and Autopilot infers whether to
+        /// minimize or maximize it.
         /// </para>
         /// </summary>
         public AutoMLJobObjective AutoMLJobObjective
@@ -116,7 +116,7 @@ namespace Amazon.SageMaker.Model
         /// <summary>
         /// Gets and sets the property GenerateCandidateDefinitionsOnly. 
         /// <para>
-        /// Generates possible candidates without training a model. A candidate is a combination
+        /// Generates possible candidates without training the models. A candidate is a combination
         /// of data preprocessors, algorithms, and algorithm parameter settings.
         /// </para>
         /// </summary>
@@ -135,8 +135,9 @@ namespace Amazon.SageMaker.Model
         /// <summary>
         /// Gets and sets the property InputDataConfig. 
         /// <para>
-        /// Similar to InputDataConfig supported by Tuning. Format(s) supported: CSV. Minimum
-        /// of 500 rows.
+        /// An array of channel objects that describes the input data and its location. Each channel
+        /// is a named input source. Similar to <code>InputDataConfig</code> supported by . Format(s)
+        /// supported: CSV. Minimum of 500 rows.
         /// </para>
         /// </summary>
         [AWSProperty(Required=true, Min=1, Max=20)]
@@ -153,9 +154,34 @@ namespace Amazon.SageMaker.Model
         }
 
         /// <summary>
+        /// Gets and sets the property ModelDeployConfig. 
+        /// <para>
+        /// Specifies how to generate the endpoint name for an automatic one-click Autopilot model
+        /// deployment.
+        /// </para>
+        /// </summary>
+        public ModelDeployConfig ModelDeployConfig
+        {
+            get { return this._modelDeployConfig; }
+            set { this._modelDeployConfig = value; }
+        }
+
+        // Check to see if ModelDeployConfig property is set
+        internal bool IsSetModelDeployConfig()
+        {
+            return this._modelDeployConfig != null;
+        }
+
+        /// <summary>
         /// Gets and sets the property OutputDataConfig. 
         /// <para>
-        /// Similar to OutputDataConfig supported by Tuning. Format(s) supported: CSV.
+        /// Provides information about encryption and the Amazon S3 output path needed to store
+        /// artifacts from an AutoML job. Format(s) supported: CSV.
+        /// </para>
+        ///  
+        /// <para>
+        /// &lt;para&gt;Specifies whether to automatically deploy the best &amp;ATP; model to
+        /// an endpoint and the name of that endpoint if deployed automatically.&lt;/para&gt;
         /// </para>
         /// </summary>
         [AWSProperty(Required=true)]
@@ -174,8 +200,10 @@ namespace Amazon.SageMaker.Model
         /// <summary>
         /// Gets and sets the property ProblemType. 
         /// <para>
-        /// Defines the kind of preprocessing and algorithms intended for the candidates. Options
-        /// include: BinaryClassification, MulticlassClassification, and Regression.
+        /// Defines the type of supervised learning available for the candidates. Options include:
+        /// <code>BinaryClassification</code>, <code>MulticlassClassification</code>, and <code>Regression</code>.
+        /// For more information, see <a href="https://docs.aws.amazon.com/sagemaker/latest/dg/autopilot-automate-model-development-problem-types.html">
+        /// Amazon SageMaker Autopilot problem types and algorithm support</a>.
         /// </para>
         /// </summary>
         public ProblemType ProblemType
@@ -194,6 +222,11 @@ namespace Amazon.SageMaker.Model
         /// Gets and sets the property RoleArn. 
         /// <para>
         /// The ARN of the role that is used to access the data.
+        /// </para>
+        ///  
+        /// <para>
+        /// &lt;para&gt;Specifies whether to automatically deploy the best &amp;ATP; model to
+        /// an endpoint and the name of that endpoint if deployed automatically.&lt;/para&gt;
         /// </para>
         /// </summary>
         [AWSProperty(Required=true, Min=20, Max=2048)]

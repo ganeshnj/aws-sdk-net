@@ -49,9 +49,6 @@ namespace Amazon.MarketplaceCatalog
     /// AWS Marketplace.
     /// </para>
     /// </summary>
-#if NETSTANDARD13
-    [Obsolete("Support for .NET Standard 1.3 is in maintenance mode and will only receive critical bug fixes and security patches. Visit https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/migration-from-net-standard-1-3.html for further details.")]
-#endif
     public partial class AmazonMarketplaceCatalogClient : AmazonServiceClient, IAmazonMarketplaceCatalog
     {
         private static IServiceMetadata serviceMetadata = new AmazonMarketplaceCatalogMetadata();
@@ -554,8 +551,13 @@ namespace Amazon.MarketplaceCatalog
         ///  
         /// <para>
         /// For example, you cannot start the ChangeSet described in the <a href="https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/API_StartChangeSet.html#API_StartChangeSet_Examples">example</a>
-        /// below because it contains two changes to execute the same change type (<code>AddRevisions</code>)
-        /// against the same entity (<code>entity-id@1)</code>.
+        /// later in this topic, because it contains two changes to execute the same change type
+        /// (<code>AddRevisions</code>) against the same entity (<code>entity-id@1)</code>.
+        /// </para>
+        ///  
+        /// <para>
+        /// For more information about working with change sets, see <a href="https://docs.aws.amazon.com/marketplace-catalog/latest/api-reference/welcome.html#working-with-change-sets">
+        /// Working with change sets</a>.
         /// </para>
         /// </summary>
         /// <param name="request">Container for the necessary parameters to execute the StartChangeSet service method.</param>

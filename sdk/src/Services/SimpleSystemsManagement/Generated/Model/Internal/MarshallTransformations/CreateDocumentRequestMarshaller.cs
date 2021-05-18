@@ -62,7 +62,6 @@ namespace Amazon.SimpleSystemsManagement.Model.Internal.MarshallTransformations
             request.HttpMethod = "POST";
 
             request.ResourcePath = "/";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -88,6 +87,12 @@ namespace Amazon.SimpleSystemsManagement.Model.Internal.MarshallTransformations
                 {
                     context.Writer.WritePropertyName("Content");
                     context.Writer.Write(publicRequest.Content);
+                }
+
+                if(publicRequest.IsSetDisplayName())
+                {
+                    context.Writer.WritePropertyName("DisplayName");
+                    context.Writer.Write(publicRequest.DisplayName);
                 }
 
                 if(publicRequest.IsSetDocumentFormat())

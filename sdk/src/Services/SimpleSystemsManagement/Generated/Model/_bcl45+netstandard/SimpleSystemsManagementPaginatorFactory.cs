@@ -1,4 +1,3 @@
-#if !NETSTANDARD13
 /*
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
@@ -373,6 +372,14 @@ namespace Amazon.SimpleSystemsManagement.Model
         }
 
         /// <summary>
+        /// Paginator for ListOpsItemRelatedItems operation
+        ///</summary>
+        public IListOpsItemRelatedItemsPaginator ListOpsItemRelatedItems(ListOpsItemRelatedItemsRequest request) 
+        {
+            return new ListOpsItemRelatedItemsPaginator(this.client, request);
+        }
+
+        /// <summary>
         /// Paginator for ListOpsMetadata operation
         ///</summary>
         public IListOpsMetadataPaginator ListOpsMetadata(ListOpsMetadataRequest request) 
@@ -397,4 +404,3 @@ namespace Amazon.SimpleSystemsManagement.Model
         }
     }
 }
-#endif

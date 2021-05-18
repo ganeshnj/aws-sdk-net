@@ -1,4 +1,3 @@
-#if !NETSTANDARD13
 /*
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
@@ -35,11 +34,5 @@ namespace Amazon.IoTDeviceAdvisor.Model
         /// Paginator for ListSuiteRuns operation
         ///</summary>
         IListSuiteRunsPaginator ListSuiteRuns(ListSuiteRunsRequest request);
-
-        /// <summary>
-        /// Paginator for ListTestCases operation
-        ///</summary>
-        IListTestCasesPaginator ListTestCases(ListTestCasesRequest request);
     }
 }
-#endif

@@ -36,9 +36,6 @@ namespace Amazon.KinesisAnalyticsV2
     /// author and run Java, SQL, or Scala code against streaming sources to perform time
     /// series analytics, feed real-time dashboards, and create real-time metrics.
     /// </summary>
-#if NETSTANDARD13
-    [Obsolete("Support for .NET Standard 1.3 is in maintenance mode and will only receive critical bug fixes and security patches. Visit https://docs.aws.amazon.com/sdk-for-net/v3/developer-guide/migration-from-net-standard-1-3.html for further details.")]
-#endif
     public partial interface IAmazonKinesisAnalyticsV2 : IAmazonService, IDisposable
     {
                 
@@ -379,9 +376,15 @@ namespace Amazon.KinesisAnalyticsV2
         ///  
         /// <para>
         /// The IAM role or user used to call this API defines the permissions to access the extension.
-        /// Once the presigned URL is created, no additional permission is required to access
+        /// After the presigned URL is created, no additional permission is required to access
         /// this URL. IAM authorization policies for this API are also enforced for every HTTP
         /// request that attempts to connect to the extension. 
+        /// </para>
+        ///  
+        /// <para>
+        /// You control the amount of time that the URL will be valid using the <code>SessionExpirationDurationInSeconds</code>
+        /// parameter. If you do not provide this parameter, the returned URL is valid for twelve
+        /// hours.
         /// </para>
         ///  <note> 
         /// <para>
@@ -773,6 +776,42 @@ namespace Amazon.KinesisAnalyticsV2
 
         #endregion
                 
+        #region  DescribeApplicationVersion
+
+
+
+        /// <summary>
+        /// Provides a detailed description of a specified version of the application. To see
+        /// a list of all the versions of an application, invoke the <a>ListApplicationVersions</a>
+        /// operation.
+        /// 
+        ///  <note> 
+        /// <para>
+        /// This operation is supported only for Amazon Kinesis Data Analytics for Apache Flink.
+        /// </para>
+        ///  </note>
+        /// </summary>
+        /// <param name="request">Container for the necessary parameters to execute the DescribeApplicationVersion service method.</param>
+        /// <param name="cancellationToken">
+        ///     A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+        /// </param>
+        /// 
+        /// <returns>The response from the DescribeApplicationVersion service method, as returned by KinesisAnalyticsV2.</returns>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.InvalidArgumentException">
+        /// The specified input parameter value is not valid.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.ResourceNotFoundException">
+        /// Specified application can't be found.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.UnsupportedOperationException">
+        /// The request was rejected because a specified parameter is not supported or a specified
+        /// resource is not valid for this operation.
+        /// </exception>
+        /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/DescribeApplicationVersion">REST API Reference for DescribeApplicationVersion Operation</seealso>
+        Task<DescribeApplicationVersionResponse> DescribeApplicationVersionAsync(DescribeApplicationVersionRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
+
+        #endregion
+                
         #region  DiscoverInputSchema
 
 
@@ -873,6 +912,47 @@ namespace Amazon.KinesisAnalyticsV2
 
         #endregion
                 
+        #region  ListApplicationVersions
+
+
+
+        /// <summary>
+        /// Lists all the versions for the specified application, including versions that were
+        /// rolled back. The response also includes a summary of the configuration associated
+        /// with each version.
+        /// 
+        ///  
+        /// <para>
+        /// To get the complete description of a specific application version, invoke the <a>DescribeApplicationVersion</a>
+        /// operation.
+        /// </para>
+        ///  <note> 
+        /// <para>
+        /// This operation is supported only for Amazon Kinesis Data Analytics for Apache Flink.
+        /// </para>
+        ///  </note>
+        /// </summary>
+        /// <param name="request">Container for the necessary parameters to execute the ListApplicationVersions service method.</param>
+        /// <param name="cancellationToken">
+        ///     A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+        /// </param>
+        /// 
+        /// <returns>The response from the ListApplicationVersions service method, as returned by KinesisAnalyticsV2.</returns>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.InvalidArgumentException">
+        /// The specified input parameter value is not valid.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.ResourceNotFoundException">
+        /// Specified application can't be found.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.UnsupportedOperationException">
+        /// The request was rejected because a specified parameter is not supported or a specified
+        /// resource is not valid for this operation.
+        /// </exception>
+        /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/ListApplicationVersions">REST API Reference for ListApplicationVersions Operation</seealso>
+        Task<ListApplicationVersionsResponse> ListApplicationVersionsAsync(ListApplicationVersionsRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
+
+        #endregion
+                
         #region  ListTagsForResource
 
 
@@ -901,6 +981,61 @@ namespace Amazon.KinesisAnalyticsV2
         /// </exception>
         /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/ListTagsForResource">REST API Reference for ListTagsForResource Operation</seealso>
         Task<ListTagsForResourceResponse> ListTagsForResourceAsync(ListTagsForResourceRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
+
+        #endregion
+                
+        #region  RollbackApplication
+
+
+
+        /// <summary>
+        /// Reverts the application to the previous running version. You can roll back an application
+        /// if you suspect it is stuck in a transient status. 
+        /// 
+        ///  
+        /// <para>
+        /// You can roll back an application only if it is in the <code>UPDATING</code> or <code>AUTOSCALING</code>
+        /// status.
+        /// </para>
+        ///  
+        /// <para>
+        /// When you rollback an application, it loads state data from the last successful snapshot.
+        /// If the application has no snapshots, Kinesis Data Analytics rejects the rollback request.
+        /// </para>
+        ///  
+        /// <para>
+        /// This action is not supported for Kinesis Data Analytics for SQL applications.
+        /// </para>
+        /// </summary>
+        /// <param name="request">Container for the necessary parameters to execute the RollbackApplication service method.</param>
+        /// <param name="cancellationToken">
+        ///     A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+        /// </param>
+        /// 
+        /// <returns>The response from the RollbackApplication service method, as returned by KinesisAnalyticsV2.</returns>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.ConcurrentModificationException">
+        /// Exception thrown as a result of concurrent modifications to an application. This error
+        /// can be the result of attempting to modify an application without using the current
+        /// application ID.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.InvalidArgumentException">
+        /// The specified input parameter value is not valid.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.InvalidRequestException">
+        /// The request JSON is not valid for the operation.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.ResourceInUseException">
+        /// The application is not available for this operation.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.ResourceNotFoundException">
+        /// Specified application can't be found.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.UnsupportedOperationException">
+        /// The request was rejected because a specified parameter is not supported or a specified
+        /// resource is not valid for this operation.
+        /// </exception>
+        /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/RollbackApplication">REST API Reference for RollbackApplication Operation</seealso>
+        Task<RollbackApplicationResponse> RollbackApplicationAsync(RollbackApplicationRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
 
         #endregion
                 
@@ -1112,6 +1247,9 @@ namespace Amazon.KinesisAnalyticsV2
         /// <exception cref="Amazon.KinesisAnalyticsV2.Model.InvalidRequestException">
         /// The request JSON is not valid for the operation.
         /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.LimitExceededException">
+        /// The number of allowed resources has been exceeded.
+        /// </exception>
         /// <exception cref="Amazon.KinesisAnalyticsV2.Model.ResourceInUseException">
         /// The application is not available for this operation.
         /// </exception>
@@ -1120,6 +1258,70 @@ namespace Amazon.KinesisAnalyticsV2
         /// </exception>
         /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/UpdateApplication">REST API Reference for UpdateApplication Operation</seealso>
         Task<UpdateApplicationResponse> UpdateApplicationAsync(UpdateApplicationRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
+
+        #endregion
+                
+        #region  UpdateApplicationMaintenanceConfiguration
+
+
+
+        /// <summary>
+        /// Updates the maintenance configuration of the Kinesis Data Analytics application. 
+        /// 
+        ///  
+        /// <para>
+        /// You can invoke this operation on an application that is in one of the two following
+        /// states: <code>READY</code> or <code>RUNNING</code>. If you invoke it when the application
+        /// is in a state other than these two states, it throws a <code>ResourceInUseException</code>.
+        /// The service makes use of the updated configuration the next time it schedules maintenance
+        /// for the application. If you invoke this operation after the service schedules maintenance,
+        /// the service will apply the configuration update the next time it schedules maintenance
+        /// for the application. This means that you might not see the maintenance configuration
+        /// update applied to the maintenance process that follows a successful invocation of
+        /// this operation, but to the following maintenance process instead.
+        /// </para>
+        ///  
+        /// <para>
+        /// To see the current maintenance configuration of your application, invoke the <a>DescribeApplication</a>
+        /// operation.
+        /// </para>
+        ///  
+        /// <para>
+        /// For information about application maintenance, see <a href="https://docs.aws.amazon.com/kinesisanalytics/latest/java/maintenance.html">Kinesis
+        /// Data Analytics for Apache Flink Maintenance</a>.
+        /// </para>
+        ///  <note> 
+        /// <para>
+        /// This operation is supported only for Amazon Kinesis Data Analytics for Apache Flink.
+        /// </para>
+        ///  </note>
+        /// </summary>
+        /// <param name="request">Container for the necessary parameters to execute the UpdateApplicationMaintenanceConfiguration service method.</param>
+        /// <param name="cancellationToken">
+        ///     A cancellation token that can be used by other objects or threads to receive notice of cancellation.
+        /// </param>
+        /// 
+        /// <returns>The response from the UpdateApplicationMaintenanceConfiguration service method, as returned by KinesisAnalyticsV2.</returns>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.ConcurrentModificationException">
+        /// Exception thrown as a result of concurrent modifications to an application. This error
+        /// can be the result of attempting to modify an application without using the current
+        /// application ID.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.InvalidArgumentException">
+        /// The specified input parameter value is not valid.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.ResourceInUseException">
+        /// The application is not available for this operation.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.ResourceNotFoundException">
+        /// Specified application can't be found.
+        /// </exception>
+        /// <exception cref="Amazon.KinesisAnalyticsV2.Model.UnsupportedOperationException">
+        /// The request was rejected because a specified parameter is not supported or a specified
+        /// resource is not valid for this operation.
+        /// </exception>
+        /// <seealso href="http://docs.aws.amazon.com/goto/WebAPI/kinesisanalyticsv2-2018-05-23/UpdateApplicationMaintenanceConfiguration">REST API Reference for UpdateApplicationMaintenanceConfiguration Operation</seealso>
+        Task<UpdateApplicationMaintenanceConfigurationResponse> UpdateApplicationMaintenanceConfigurationAsync(UpdateApplicationMaintenanceConfigurationRequest request, System.Threading.CancellationToken cancellationToken = default(CancellationToken));
 
         #endregion
         

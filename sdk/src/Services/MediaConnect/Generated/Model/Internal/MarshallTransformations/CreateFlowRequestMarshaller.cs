@@ -60,7 +60,6 @@ namespace Amazon.MediaConnect.Model.Internal.MarshallTransformations
             request.HttpMethod = "POST";
 
             request.ResourcePath = "/v1/flows";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -82,6 +81,22 @@ namespace Amazon.MediaConnect.Model.Internal.MarshallTransformations
 
                         var marshaller = GrantEntitlementRequestMarshaller.Instance;
                         marshaller.Marshall(publicRequestEntitlementsListValue, context);
+
+                        context.Writer.WriteObjectEnd();
+                    }
+                    context.Writer.WriteArrayEnd();
+                }
+
+                if(publicRequest.IsSetMediaStreams())
+                {
+                    context.Writer.WritePropertyName("mediaStreams");
+                    context.Writer.WriteArrayStart();
+                    foreach(var publicRequestMediaStreamsListValue in publicRequest.MediaStreams)
+                    {
+                        context.Writer.WriteObjectStart();
+
+                        var marshaller = AddMediaStreamRequestMarshaller.Instance;
+                        marshaller.Marshall(publicRequestMediaStreamsListValue, context);
 
                         context.Writer.WriteObjectEnd();
                     }

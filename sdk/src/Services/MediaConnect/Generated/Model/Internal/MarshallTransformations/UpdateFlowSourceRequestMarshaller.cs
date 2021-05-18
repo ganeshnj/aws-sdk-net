@@ -66,7 +66,6 @@ namespace Amazon.MediaConnect.Model.Internal.MarshallTransformations
                 throw new AmazonMediaConnectException("Request object does not have required field SourceArn set");
             request.AddPathResource("{sourceArn}", StringUtils.FromString(publicRequest.SourceArn));
             request.ResourcePath = "/v1/flows/{flowArn}/source/{sourceArn}";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -111,6 +110,34 @@ namespace Amazon.MediaConnect.Model.Internal.MarshallTransformations
                 {
                     context.Writer.WritePropertyName("maxLatency");
                     context.Writer.Write(publicRequest.MaxLatency);
+                }
+
+                if(publicRequest.IsSetMaxSyncBuffer())
+                {
+                    context.Writer.WritePropertyName("maxSyncBuffer");
+                    context.Writer.Write(publicRequest.MaxSyncBuffer);
+                }
+
+                if(publicRequest.IsSetMediaStreamSourceConfigurations())
+                {
+                    context.Writer.WritePropertyName("mediaStreamSourceConfigurations");
+                    context.Writer.WriteArrayStart();
+                    foreach(var publicRequestMediaStreamSourceConfigurationsListValue in publicRequest.MediaStreamSourceConfigurations)
+                    {
+                        context.Writer.WriteObjectStart();
+
+                        var marshaller = MediaStreamSourceConfigurationRequestMarshaller.Instance;
+                        marshaller.Marshall(publicRequestMediaStreamSourceConfigurationsListValue, context);
+
+                        context.Writer.WriteObjectEnd();
+                    }
+                    context.Writer.WriteArrayEnd();
+                }
+
+                if(publicRequest.IsSetMinLatency())
+                {
+                    context.Writer.WritePropertyName("minLatency");
+                    context.Writer.Write(publicRequest.MinLatency);
                 }
 
                 if(publicRequest.IsSetProtocol())

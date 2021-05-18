@@ -22,6 +22,7 @@ using Amazon.Runtime.Internal;
 using Amazon.Runtime.Internal.Transform;
 using System.Globalization;
 using Amazon.Util;
+using Amazon.Runtime.Internal.Util;
 
 #pragma warning disable 1591
 
@@ -54,15 +55,14 @@ namespace Amazon.S3.Model.Internal.MarshallTransformations
             if (string.IsNullOrEmpty(completeMultipartUploadRequest.Key))
                 throw new System.ArgumentException("Key is a required property and must be set before making this call.", "CompleteMultipartUploadRequest.Key");
 
-			request.MarshallerVersion = 2;
 			request.ResourcePath = string.Format(CultureInfo.InvariantCulture, "/{0}/{1}",
                                                  S3Transforms.ToStringValue(completeMultipartUploadRequest.BucketName),
                                                  S3Transforms.ToStringValue(completeMultipartUploadRequest.Key));
 
             request.AddSubResource("uploadId", S3Transforms.ToStringValue(completeMultipartUploadRequest.UploadId));
 
-            var stringWriter = new StringWriter(System.Globalization.CultureInfo.InvariantCulture);
-            using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Encoding = Encoding.UTF8, OmitXmlDeclaration = true }))
+            var stringWriter = new XMLEncodedStringWriter(System.Globalization.CultureInfo.InvariantCulture);
+            using (var xmlWriter = XmlWriter.Create(stringWriter, new XmlWriterSettings() { Encoding = Encoding.UTF8, OmitXmlDeclaration = true, NewLineHandling = NewLineHandling.Entitize }))
             {
                 xmlWriter.WriteStartElement("CompleteMultipartUpload", "");
                 var multipartUploadMultipartUploadpartsList = completeMultipartUploadRequest.PartETags;

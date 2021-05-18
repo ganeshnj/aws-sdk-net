@@ -62,7 +62,6 @@ namespace Amazon.SimpleSystemsManagement.Model.Internal.MarshallTransformations
             request.HttpMethod = "POST";
 
             request.ResourcePath = "/";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -96,6 +95,17 @@ namespace Amazon.SimpleSystemsManagement.Model.Internal.MarshallTransformations
                 {
                     context.Writer.WritePropertyName("AutomationTargetParameterName");
                     context.Writer.Write(publicRequest.AutomationTargetParameterName);
+                }
+
+                if(publicRequest.IsSetCalendarNames())
+                {
+                    context.Writer.WritePropertyName("CalendarNames");
+                    context.Writer.WriteArrayStart();
+                    foreach(var publicRequestCalendarNamesListValue in publicRequest.CalendarNames)
+                    {
+                            context.Writer.Write(publicRequestCalendarNamesListValue);
+                    }
+                    context.Writer.WriteArrayEnd();
                 }
 
                 if(publicRequest.IsSetComplianceSeverity())

@@ -62,7 +62,6 @@ namespace Amazon.Snowball.Model.Internal.MarshallTransformations
             request.HttpMethod = "POST";
 
             request.ResourcePath = "/";
-            request.MarshallerVersion = 2;
             using (StringWriter stringWriter = new StringWriter(CultureInfo.InvariantCulture))
             {
                 JsonWriter writer = new JsonWriter(stringWriter);
@@ -113,6 +112,12 @@ namespace Amazon.Snowball.Model.Internal.MarshallTransformations
                 {
                     context.Writer.WritePropertyName("KmsKeyARN");
                     context.Writer.Write(publicRequest.KmsKeyARN);
+                }
+
+                if(publicRequest.IsSetLongTermPricingId())
+                {
+                    context.Writer.WritePropertyName("LongTermPricingId");
+                    context.Writer.Write(publicRequest.LongTermPricingId);
                 }
 
                 if(publicRequest.IsSetNotification())

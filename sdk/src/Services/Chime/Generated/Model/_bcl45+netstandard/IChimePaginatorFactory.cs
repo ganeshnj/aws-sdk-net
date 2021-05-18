@@ -1,4 +1,3 @@
-#if !NETSTANDARD13
 /*
  * Copyright Amazon.com, Inc. or its affiliates. All Rights Reserved.
  * 
@@ -145,6 +144,10 @@ namespace Amazon.Chime.Model
         /// Paginator for ListVoiceConnectors operation
         ///</summary>
         IListVoiceConnectorsPaginator ListVoiceConnectors(ListVoiceConnectorsRequest request);
+
+        /// <summary>
+        /// Paginator for SearchAvailablePhoneNumbers operation
+        ///</summary>
+        ISearchAvailablePhoneNumbersPaginator SearchAvailablePhoneNumbers(SearchAvailablePhoneNumbersRequest request);
     }
 }
-#endif

@@ -30,9 +30,8 @@ namespace Amazon.CodeArtifact.Model
 {
     /// <summary>
     /// Container for the parameters to the DescribePackageVersion operation.
-    /// Returns a <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">
-    /// <code>PackageVersionDescription</code> </a> object that contains information about
-    /// the requested package version.
+    /// Returns a <a href="https://docs.aws.amazon.com/codeartifact/latest/APIReference/API_PackageVersionDescription.html">PackageVersionDescription</a>
+    /// object that contains information about the requested package version.
     /// </summary>
     public partial class DescribePackageVersionRequest : AmazonCodeArtifactRequest
     {
@@ -102,10 +101,6 @@ namespace Amazon.CodeArtifact.Model
         /// <para>
         ///  <code>maven</code> 
         /// </para>
-        ///  </li> <li> 
-        /// <para>
-        ///  <code>nuget</code> 
-        /// </para>
         ///  </li> </ul>
         /// </summary>
         [AWSProperty(Required=true)]
@@ -138,11 +133,6 @@ namespace Amazon.CodeArtifact.Model
         ///  </li> <li> 
         /// <para>
         ///  A Python package does not contain a corresponding component, so Python packages do
-        /// not have a namespace. 
-        /// </para>
-        ///  </li> <li> 
-        /// <para>
-        ///  A NuGet package does not contain a corresponding component, so NuGet packages do
         /// not have a namespace. 
         /// </para>
         ///  </li> </ul>

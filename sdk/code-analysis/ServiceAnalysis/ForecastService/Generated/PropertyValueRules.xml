@@ -137,6 +137,10 @@
     <max>256</max>
   </property-value-rule>
   <property-value-rule>
+    <property>Amazon.ForecastService.Model.DeleteResourceTreeRequest.ResourceArn</property>
+    <max>256</max>
+  </property-value-rule>
+  <property-value-rule>
     <property>Amazon.ForecastService.Model.DescribeDatasetRequest.DatasetArn</property>
     <max>256</max>
   </property-value-rule>
@@ -417,6 +421,10 @@
   </property-value-rule>
   <property-value-rule>
     <property>Amazon.ForecastService.Model.ListTagsForResourceRequest.ResourceArn</property>
+    <max>256</max>
+  </property-value-rule>
+  <property-value-rule>
+    <property>Amazon.ForecastService.Model.StopResourceRequest.ResourceArn</property>
     <max>256</max>
   </property-value-rule>
   <property-value-rule>
